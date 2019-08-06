@@ -45,6 +45,12 @@ tener estas caracteristics col-12 col-md-11 col-xl-10 */
 
 }
 
+.form-control {
+  border-radius: 0;
+  border-color: #000;
+}
+
+
 /* ------------------  Titulo principal ------------------  */
 h1{
     font-size: 5em;
@@ -338,6 +344,10 @@ form button{
   display: block;
 }
 
+.col-form-label {
+  padding-right: 0px;
+}
+
 /* ------------------  Style Imagen en formulario ------------------  */
 .imgcontainer {
   text-align: center;
@@ -348,6 +358,20 @@ img.avatar {
   width: 80%;
   border-radius: 50%;
   border: 3px solid black;
+}
+
+.imgtexto {
+  color: #000;
+  text-transform: uppercase;
+  background-color: rgba(255,255,255,0.5);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 60%;
+  left: 50%;
 }
 /* ------------------  Style Switch ------------------  */
 
@@ -466,7 +490,7 @@ input:checked + .slider:before {
   object-fit: cover;
   /*min-width: 250px;
   min-height: 200px;*/
- 
+
 }
 
 
@@ -552,7 +576,7 @@ header{
 
 .dropdown-menu {
     text-align: center!important;
-    
+
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 0rem;
 }
@@ -879,6 +903,19 @@ footer a:hover{
     line-height: 2em;
   }
 
+  .imgtexto {
+    color: #000;
+    text-transform: uppercase;
+    background-color: rgba(255,255,255,0.5);
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+  }
 
   /* --------------------------------------------------------------------------------- Perfil */
   .containerProfile{
@@ -1066,7 +1103,19 @@ form button.volver{
 }
 
 /* --------------------------------------------------------------------------------- Register */
-
+.imgtexto {
+  color: #000;
+  text-transform: uppercase;
+  background-color: rgba(255,255,255,0.5);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 60%;
+  left: 50%;
+}
 /* --------------------------------------------------------------------------------- HEADER */
 
 .mainHeader {
@@ -1152,7 +1201,7 @@ form button.volver{
 }
 
 .dropdown-menu {
-    
+
     box-shadow: 0px 2px 2px #ccc;
 }
 /* --------------------------------------------------------------------------------- En Construccion */
