@@ -12,8 +12,8 @@ class ProductController extends Controller
       return view('product-detail', compact('id'));
     }
 
-    public function list(){
-    	/*$product = Product::all();*/
+    public function index(){
+    	/*$products = Product::all();*/
     	$products = [];
     	return view('products', compact('products'));
     }

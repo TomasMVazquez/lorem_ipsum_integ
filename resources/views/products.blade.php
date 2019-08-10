@@ -25,15 +25,15 @@
 <!--listado de articulos-->
 
   <div class="listado-productos">
-      {{-- // @foreach (products as product) --}}
+      {{-- // @foreach ($products as $product) --}}
       <div class="col-md-6 col-lg-4 col-producto">
         <div class="card producto">
-        <a href="/product-detail/{id}"><img src="{{-- // $unaImagen --}}" class="card-img-top" alt="{{-- product->name --}}"></a>
+        <a href="/product-detail/{id}"><img src="/storage/avatar/{{-- // $product[image] --}}" class="card-img-top" alt="{{-- $product->name --}}"></a>
         <div class="card-body detalle-producto">
             <div class="encabezado-producto">
               <h5 class="card-title nombre-producto" style="text-align:left;">
                   <a href="/product-detail/{id}">
-                    {{--product->name--}}
+                    {{--$product->name--}}
                   </a>
               </h5>
               <div>

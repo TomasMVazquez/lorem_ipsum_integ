@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/faqs', function () {return view('faqs');});
 
-Route::get('/products', 'ProductController@list')->name('list');
+Route::get('/products', 'ProductController@index')->name('index');
 
 Route::get('/products/{id}', 'ProductController@show')->name('show');
+
+Route::get('/profile', 'UserController@show')->name('profile');
