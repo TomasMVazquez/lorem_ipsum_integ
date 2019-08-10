@@ -9,9 +9,6 @@ class Category extends Model
   public $table = "categories";
   //public $primaryKey = "id";
 
-  // Aclaramos que no están definidas estas columnas
-  public $timestamps = false;
-
   // Especificamos las columnas que podemos escribir
   protected $fillable = ['name'];
 
@@ -19,5 +16,5 @@ class Category extends Model
   protected $guarded = ['id'];
 
   // Relaciones
-  
+
 }

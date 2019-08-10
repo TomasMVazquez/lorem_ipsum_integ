@@ -6,15 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    // Innecesarias - borrar
-      // public $table = "products";
-      // public $primaryKey = "id";
-
-    // Aclaramos que no están definidas estas columnas
-    public $timestamps = false;
-
     // Especificamos las columnas que podemos escribir
-    protected $fillable = ['name', 'brief', 'description', 'rating', 'presentation', 'benefits', 'use', 'subcategory_id'];
+    protected $fillable = ['name', 'brief', 'description', 'rating', 'benefits', 'uses', 'subcategory_id'];
 
     // Especificamos las columnas que están protegidas
   	protected $guarded = ['id'];

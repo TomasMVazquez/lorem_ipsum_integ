@@ -9,9 +9,6 @@ class Subcategory extends Model
   public $table = "subcategories";
   //public $primaryKey = "id";
 
-  // Aclaramos que no están definidas estas columnas
-  public $timestamps = false;
-
   // Especificamos las columnas que podemos escribir
   protected $fillable = ['name', 'category_id'];
 
