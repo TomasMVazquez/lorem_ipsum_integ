@@ -30,7 +30,7 @@ class Subcategory extends Model
   // Con User
   public function users()
   {
-    return $this->belongsToMany(User::class), "user_subcategory", "subcategory_id", "user_id";
+    return $this->belongsToMany(User::class, "user_subcategory", "subcategory_id", "user_id");
   }
 
 }

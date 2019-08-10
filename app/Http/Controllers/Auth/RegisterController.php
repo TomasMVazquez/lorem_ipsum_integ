@@ -42,6 +42,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm() {
+      $categories = Category::all();
+      $subcategories = Subcategory::all();
+      return view('auth.register', compact('categories', 'subcategories'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -77,7 +83,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'country' => $data['country'],
           //  'avatar' => $data['avatar'],
-          //  'notifications'=> $data['notifications'],
+            'notifications'=> $data['notifications'],
             'password' => Hash::make($data['password']),
         ]);
     }

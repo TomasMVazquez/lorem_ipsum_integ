@@ -136,53 +136,32 @@
     <div>
       <div class="col-12">
         <!-- SWITCH PARA QUE QUIERO VER -->
-        <label for="categorias"><b>Categorías</b></label>
+        <label for="categories"><b>Categorías</b></label>
         <div class="container containerSwitch">
-          @if (count($categorias)>5)
-            @foreach ($categorias as $unaCategoria)
+            @foreach ($categories as $oneCategory)
               <div class="containerUnSwitchCat col-6 col-md-4 col-xl-4">
                 <label class="switch">
-                  <input type="checkbox" name="categorias[]" value="{{$unaCategoria}}"
-                  @if ($_POST)
-                    @if (isset($categoriasInPost))
-                      @foreach ($categoriasInPost as $unaCatInPost)
-                        @if($unaCatInPost == $unaCategoria)
-                          checked
-                        @endif
-                      @endforeach
-                    @endif
-                  @else
-                    checked
-                  @endif
-                  >
+                  <input type="checkbox" name="categories[]">
                   <span class="slider round"></span>
                 </label>
-                <span class="switchText">{{$unaCategoria}}</span>
+                <span class="switchText">{{$oneCategory->name}}</span>
               </div>
+              <label for="subcategories"></label>
+              <div class="container containerSwitch">
+              @foreach ($subcategories as $oneSubcategory)
+                @if ($oneSubcategory->category_id == $oneCategory->id)
+
+                <div class="containerUnSwitchCat col-6 col-md-4 col-xl-4">
+                  <label class="switch">
+                    <input type="checkbox" name="categories[]">
+                    <span class="slider round"></span>
+                  </label>
+                  <span class="switchText">{{$oneSubcategory->name}}</span>
+                </div>
+              @endif
+              @endforeach
+            </div>
             @endforeach
-          @else
-            @foreach ($categorias as $unaCategoria)
-              <div class="containerUnSwitchCat col-6 col-md-4 col-xl-6">
-                <label class="switch">
-                  <input type="checkbox" name="categorias[]" value="{{$unaCategoria}}"
-                  @if ($_POST)
-                    @if (isset($categoriasInPost))
-                      @foreach ($categoriasInPost as $unaCatInPost)
-                        @if ($unaCatInPost == $unaCategoria)
-                          checked
-                        @endif
-                      @endforeach
-                    @endif
-                  @else
-                    checked
-                  @endif
-                  >
-                  <span class="slider round"></span>
-                </label>
-                <span class="switchText">{{$unaCategoria}}</span>
-              </div>
-            @endforeach
-          @endif
         </div>
         <!-- FIN SWITCH PARA QUE QUIERO VER -->
         <!-- SWITCH PARA QUE QUIERO RECIBIR -->
