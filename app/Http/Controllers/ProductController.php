@@ -11,4 +11,10 @@ class ProductController extends Controller
     {
       return view('product-detail', compact('id'));
     }
+
+    public function list(){
+    	/*$product = Product::all();*/
+    	$products = [];
+    	return view('products', compact('products'));
+    }
 }
