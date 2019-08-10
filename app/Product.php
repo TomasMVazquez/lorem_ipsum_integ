@@ -13,13 +13,27 @@ class Product extends Model
   	protected $guarded = ['id'];
 
     // Relaciones
+    // Con Subcategory
     public function subcategory()
   	{
-  		return $this->belongsTo(Subcategory::class);
+  		return $this->belongsTo(Subcategory::class, 'subcategory_id');
   	}
 
-  	public function users()
+    // Con Users
+  	public function user()
   	{
-  		return $this->belongsToMany(User::class);
+  		return $this->belongsToMany(User::class), 'user_product', 'product_id', 'user_id';
+  	}
+
+    // Con Images
+    public function image()
+    {
+      return $this->hasMany(Image::class, 'product_id');
+    }
+
+    // Con Presentaciones
+    public function presentation()
+  	{
+  		return $this->belongsToMany(Presentation::class), 'presentation_product', 'product_id', 'presentation_id';
   	}
 }

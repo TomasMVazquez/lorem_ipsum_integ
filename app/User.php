@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Prophecy\Doubler\ClassPatch\DisableConstructorPatch;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user', 'first_name', 'last_name', 'email', 'country', 'avatar', 'password', 
+        'user', 'first_name', 'last_name', 'email', 'country', 'avatar', 'notifications','password',
     ];
 
     /**
@@ -24,6 +25,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $guarded = ['id']:
+
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -36,4 +40,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relaciones
+    //Con Subcategories
+    protected function subcategory()
+    {
+      return $this->belongsToMany(Subcategory::class, 'user_subcategory', 'user_id', 'subcategory_id');
+    }
+
+    // Con Productos
+    protected function product()
+    {
+      return $this->belongsToMany(Product::class, 'user_product', 'user_id', 'product_id');
+    }
 }

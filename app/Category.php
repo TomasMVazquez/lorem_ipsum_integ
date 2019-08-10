@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-  public $table = "categories";
-  //public $primaryKey = "id";
+  protected $table = "categories";
 
   // Especificamos las columnas que podemos escribir
   protected $fillable = ['name'];
@@ -16,5 +15,8 @@ class Category extends Model
   protected $guarded = ['id'];
 
   // Relaciones
-
+  public function subcategory()
+  {
+    return $this->hasMany(Subcategory::class, 'subcategory_id');
+  }
 }

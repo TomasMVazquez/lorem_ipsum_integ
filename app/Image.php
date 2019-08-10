@@ -4,18 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Presentation extends Model
+class Image extends Model
 {
   // Especificamos las columnas que podemos escribir
-  protected $fillable = ['type'];
+  protected $fillable = ['route', 'product_id'];
 
   // Especificamos las columnas que están protegidas
-  protected $guarded = ['id'];
+  public $guarded = ['id'];
 
   // Relaciones
   // Con Products
   public function product()
   {
-    return $this->belongsToMany(Product::class, "presentation_product", "presentation_id", "product_id");
+    return $this->belongsTo(Product::class, "product_id");
   }
+
+
 }
