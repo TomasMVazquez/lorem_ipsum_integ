@@ -1,7 +1,7 @@
 @extends('template')
 
 {{-- Agregar el nombre del producto --}}
-@section('title',"Lorem ipsum | ")
+@section('title',"Lorem ipsum | Bienvenido $user")
 
 @section('mainContent')
 
