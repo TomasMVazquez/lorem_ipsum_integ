@@ -27,31 +27,32 @@ $menu = [
 
     <div class="col-7 perfilHeader">
         <div class="dropdown">
-           @if(isset($user['name']))
-           <a class="nav-link dropdown-toggle p-0"  href="#" id="navbardrop" data-toggle="dropdown">
-             {{ "Bienvenide ". $user['name']}}
-              {{$imgPerfil = $user['imgProfile']}}
-           </a>
+          @auth
+            <a class="nav-link dropdown-toggle p-0"  href="#" id="navbardrop" data-toggle="dropdown">
+              {{ "Bienvenide "}}
+               {{-- {{$imgPerfil = $user['imgProfile']}} --}}
+            </a>
 
-           <div class="dropdown-menu ">
-              <a class="dropdown-item" href="/profile">Mi cuenta</a>
-              <a class="dropdown-item" href="/profile">Ver Favoritos</a>
-              <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
-           </div>
-
-           </div>
-
-            <div class="img">
-              <img src="{{$imgPerfil}}" alt="imagen de perfil del usuario logeado">
+            <div class="dropdown-menu ">
+               <a class="dropdown-item" href="/profile">Mi cuenta</a>
+               <a class="dropdown-item" href="/profile">Ver Favoritos</a>
+               <a class="dropdown-item" href="/">Cerrar Sesión</a>
             </div>
 
-          @else
-             <div style="text-align: right;">
-                Bienvenide<p><i class="fas fa-sign-in-alt mr-2"></i><a href="/login">¡Ingresá al sistema!</a></p>
+            </div>
+
+             <div class="img">
+               <img src="/imgs/img_avatar4" alt="imagen de perfil del usuario logeado">
              </div>
+          @endauth
+          @guest
+            <div style="text-align: right;">
+               Bienvenide<p><i class="fas fa-sign-in-alt mr-2"></i><a href="/login">¡Ingresá al sistema!</a></p>
+            </div>
+          @endguest
+
           </div>
 
-           @endif
 
       </div>
 
@@ -86,25 +87,26 @@ $menu = [
           @endif
         @endforeach
 
-        @if(!isset($user))
+        @guest
             <li class="nav-item"><a class="nav-link" href="/register">Registrate</a></li>
-        @endif
+        @endguest
 
         <li class="text-center perfilMobile">
-              @if(isset($user['name']))
+              @auth
                  <a class="nav-link dropdown-toggle p-1" href="#" id="navbardrop" data-toggle="dropdown">
-                   {{"Bienvenide ". $user['name']}}
+                   {{"Bienvenide "}}
                  </a>
                  <div class="dropdown-menu ">
                    <a class="dropdown-item" href="/profile">Mi cuenta</a>
                    <a class="dropdown-item" href="/profile">Ver Favoritos</a>
                    <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
                  </div>
-               @else
+               @endauth
+               @guest
                   <div>
                     <i class="fas fa-sign-in-alt mr-2"></i><a href="/login">¡Ingresá al sistema!</a>
                   </div>
-               @endif
+               @endguest
          </li>
       </ul>
  </nav>

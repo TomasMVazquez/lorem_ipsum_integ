@@ -9,7 +9,6 @@
   //Los pasamos a un array
   $arrayPaises = json_decode($paises,true);
   $categorias = ["Maquillajes","Labiales","Shampoos","Cremas","Mascaras","Tonificadores","Algo","Otros"];
-  $notificaciones = ["noticias"];
    ?>
 
 
@@ -28,7 +27,9 @@
 
 <div class="mainContainer">
 
-  <form class="col-12 col-md-11 col-xl-10" method="post" enctype="multipart/form-data">
+    <form class="col-12 col-md-11 col-xl-10" method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
+      @csrf
+
 
     <div class="container containerRegister">
       <!-- CONTENEDOR IMAGEN AVATAR -->
@@ -186,10 +187,9 @@
         <!-- FIN SWITCH PARA QUE QUIERO VER -->
         <!-- SWITCH PARA QUE QUIERO RECIBIR -->
         <div class="container containerSwitch">
-          @foreach ($notificaciones as $unaNotificacion)
             <div class="containerUnSwitchNot col-12">
               <label class="switch">
-                <input type="checkbox" name="notificaciones[]" value="{{$unaNotificacion}}"
+                <input type="checkbox" name="notifications" value="1"
                 @if ($_POST)
                   @if (isset($notifInPost))
                     checked
@@ -200,9 +200,8 @@
                  >
                 <span class="slider round"></span>
               </label>
-              <em class="switchText">Quiero recibir {{$unaNotificacion}} </em>
+              <em class="switchText">Quiero recibir noticias </em>
             </div>
-          @endforeach
         </div>
         <!-- FIN SWITCH PARA QUE QUIERO RECIBIR -->
       </div>
@@ -254,7 +253,7 @@
     <div class="container">
       <div class="btnForm">
         <button class="btn-secondary volver" type="button">Volver</button>
-        <button class="btn-primary" type="submit">Registrarse</button>
+        <button class="btn-primary" type="submit">{{ __('Registrarse') }}</button>
       </div>
     </div>
 
