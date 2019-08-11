@@ -14,7 +14,7 @@ class Presentation extends Model
 
   // Relaciones
   // Con Products
-  public function product()
+  public function products()
   {
     return $this->belongsToMany(Product::class, "presentation_product", "presentation_id", "product_id");
   }

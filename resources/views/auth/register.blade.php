@@ -8,8 +8,8 @@
   $paises = file_get_contents('https://restcountries.eu/rest/v2/all');
   //Los pasamos a un array
   $arrayPaises = json_decode($paises,true);
-  $categorias = ["Maquillajes","Labiales","Shampoos","Cremas","Mascaras","Tonificadores","Algo","Otros"];
-   ?>
+
+?>
 
 
 
@@ -140,27 +140,33 @@
         <div class="container containerSwitch">
             @foreach ($categories as $oneCategory)
               <div class="containerUnSwitchCat col-6 col-md-4 col-xl-4">
-                <label class="switch">
+                {{-- <label class="switch">
                   <input type="checkbox" name="categories[]">
                   <span class="slider round"></span>
-                </label>
+                </label> --}}
                 <span class="switchText">{{$oneCategory->name}}</span>
               </div>
+
               <label for="subcategories"></label>
               <div class="container containerSwitch">
-              @foreach ($subcategories as $oneSubcategory)
-                @if ($oneSubcategory->category_id == $oneCategory->id)
 
-                <div class="containerUnSwitchCat col-6 col-md-4 col-xl-4">
-                  <label class="switch">
-                    <input type="checkbox" name="categories[]">
-                    <span class="slider round"></span>
-                  </label>
-                  <span class="switchText">{{$oneSubcategory->name}}</span>
-                </div>
-              @endif
-              @endforeach
-            </div>
+                @foreach ($subcategories as $oneSubcategory)
+
+                  @if ($oneSubcategory->category_id == $oneCategory->id)
+
+                    <div class="containerUnSwitchCat col-6 col-md-4 col-xl-4">
+                      <label class="switch">
+                        <input type="checkbox" name="subcategories[]" value="{{$oneSubcategory->id}}">
+                        <span class="slider round"></span>
+                      </label>
+                      <span class="switchText">{{$oneSubcategory->name}}</span>
+                    </div>
+
+                  @endif
+
+                @endforeach
+
+              </div>
             @endforeach
         </div>
         <!-- FIN SWITCH PARA QUE QUIERO VER -->

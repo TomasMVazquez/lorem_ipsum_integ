@@ -57,14 +57,24 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'user' => ['required', 'string', 'max:255', 'unique:users'],
-            'first_name' => ['required', 'string', 'max:50'],
-            'last_name' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'user' => ['required', 'string', 'max:100', 'unique:users'],
+            'first_name' => ['required', 'string', 'max:100'],
+            'last_name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
             'country' => ['required'],
-            //'avatar' => ['string', 'email', 'max:255'],
-            //'notifications' => ['string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:5', 'confirmed'],
+            'avatar' => ['image'],
+            'password' => ['required', 'min:5', 'confirmed'],
+        ], [
+            'user.required' => 'Debes ingresar un nombre de usuarie',
+            'user.unique' => 'Ya existe une usuarie con ese nombre',
+            'first_name.required' => 'Debes ingresar tu nombre',
+            'last_name.required' => 'Debes ingresar tu apellido',
+            'email.required' => 'Debes ingresar tu email',
+            'email.unique' => 'Ya existe une usuarie con ese email',
+            'country.required' => 'Debes seleccionar tu país',
+            'avatar' => ['image'],
+            'password.required' => 'Debes ingresar una contraseña',
+            'password.min' => 'Tu conraseña debe tener al menos 5 caracteres'
         ]);
     }
 
@@ -76,15 +86,49 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      // Imagen de perfil
+
+        // Recupero
+        $image = $data["avatar"];
+
+        // Armo un nombre único para este archivo
+        $finalImage = uniqid("img_") . "." . $image->extension();
+
+        // Subo el archivo en la carpeta elegida
+        $image->storePubliclyAs("public/avatars", $finalImage);
+
+
+/*
         return User::create([
             'user' => $data['user'],
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'country' => $data['country'],
-          //'avatar' => $data['avatar'],
+            'avatar' => $finalImage,
+            //'subcategories'=> $data['notifications'],
             'notifications'=> $data['notifications'],
             'password' => Hash::make($data['password']),
         ]);
-    }
+
+*/
+        $user = User::create([
+            'user' => $data['user'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'country' => $data['country'],
+            'avatar' => $finalImage,
+            'notifications'=> $data['notifications'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        // Subcategorias
+        $subcategories = $data['subcategories'];
+
+        $user->subcategories()->attach($subcategories);
+
+        return $user;
+
+  }
 }

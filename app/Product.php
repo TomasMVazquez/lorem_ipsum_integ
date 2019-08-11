@@ -20,13 +20,13 @@ class Product extends Model
   	}
 
     // Con Users
-  	public function user()
+  	public function users()
   	{
   		return $this->belongsToMany(User::class), 'user_product', 'product_id', 'user_id';
   	}
 
     // Con Images
-    public function image()
+    public function images()
     {
       return $this->hasMany(Image::class, 'product_id');
     }

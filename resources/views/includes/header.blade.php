@@ -42,7 +42,7 @@ $menu = [
             </div>
 
              <div class="img">
-               <img src="/imgs/img_avatar4" alt="imagen de perfil del usuario logeado">
+               <img src="/storage/avatars/{{Auth::user()->avatar}}" alt="imagen de perfil del usuario logeado">
              </div>
           @endauth
           @guest

@@ -43,13 +43,13 @@ class User extends Authenticatable
 
     // Relaciones
     //Con Subcategories
-    protected function subcategory()
+    public function subcategories()
     {
       return $this->belongsToMany(Subcategory::class, 'user_subcategory', 'user_id', 'subcategory_id');
     }
 
     // Con Productos
-    protected function product()
+    public function products()
     {
       return $this->belongsToMany(Product::class, 'user_product', 'user_id', 'product_id');
     }
