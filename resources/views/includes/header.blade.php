@@ -3,8 +3,8 @@
 $menu = [
   "Quiénes Somos" => "index.php#nosotres",
   "Productos" => [
-    "Cósmetica Capilar" => "productos.php",
-    "Corporales" => "corporales.php",
+    "Cósmetica Capilar" => "/products",
+    "Corporales" => "/products",
   ],
   /*"Registrate" => "register.php",
   "Perfil" => "perfil.php",*/
@@ -29,14 +29,14 @@ $menu = [
         <div class="dropdown">
           @auth
             <a class="nav-link dropdown-toggle p-0"  href="#" id="navbardrop" data-toggle="dropdown">
-              {{ "Bienvenide "}}
+              Bienvenide {{Auth::user()->first_name}}
                {{-- {{$imgPerfil = $user['imgProfile']}} --}}
             </a>
 
             <div class="dropdown-menu ">
                <a class="dropdown-item" href="/profile">Mi cuenta</a>
                <a class="dropdown-item" href="/profile">Ver Favoritos</a>
-               <a class="dropdown-item" href="/">Cerrar Sesión</a>
+               <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
             </div>
 
             </div>
