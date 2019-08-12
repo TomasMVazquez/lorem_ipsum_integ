@@ -28,3 +28,4 @@ Route::get('/products', 'ProductController@index')->name('index');
 Route::get('/products/{id}', 'ProductController@show')->name('show');
 
 Route::get('/profile', 'UserController@show')->name('profile');
+Route::get('/admin', 'AdminController@index');
