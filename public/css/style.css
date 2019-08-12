@@ -554,18 +554,26 @@ header{
   padding: 10px 0 0 0;
 }
 
+.clmPerfilOrig{
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+  color: #fff;
+  justify-content: space-between!important;
+}
+
+.clmPerfil{
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #fff;
+  justify-content: space-between!important;
+  padding: 15px 20px;
+}
+
 .perfilHeader .img img{
   display: none;
 }
-
- .clmPerfil{
-    display: none;
-    flex-direction: column;
-    align-items: flex-end;
-    color: #fff;
-    justify-content: space-between!important;
-    padding: 15px 20px;
-  }
 
 .perfilMobile {
     border-top: 1px solid #333;
@@ -576,38 +584,9 @@ header{
 
 .dropdown-menu {
     text-align: center!important;
-
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 0rem;
 }
-/*
-.perfilHeader{
-  display: none;
-}
-
-
-.socialMedia{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-
-  align-items: center;
-}
-.socialMedia li{
-  font-size: 1rem;
-  margin: 5px;
-}
-
-.socialMedia li a{
-  background: #666;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}*/
 
 .searchHeader{
   display: flex;
@@ -616,7 +595,6 @@ header{
   align-self: center;
   justify-content: center;
 }
-
 
 .searchHeader .form-control{
   border-radius: 0px;
@@ -663,6 +641,7 @@ header{
     border-radius: 0rem;
     box-shadow: 0px;
 }
+
 /* --------------------------------------------------------------------------------- FAQ */
 
 .mt-4{
@@ -774,8 +753,6 @@ footer a:hover{
 @media (min-width:480px){
 
   /* --------------------------------------------------------------------------------- HEADER */
-
-
   .mainHeader {
     display: flex;
     flex-wrap: wrap;
@@ -799,19 +776,6 @@ footer a:hover{
     padding: 15px 20px;
   }
 
-/*
-  .perfilHeader{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  .perfilHeader img{
-    display: none;
-  }
-*/
-
   .navbar-toggler{
     margin: 20px 0 0 0;
     border: none;
@@ -832,7 +796,6 @@ footer a:hover{
     width: 70%;
   }
 
-
   /*---------------INDEX----------------------------------------------------------------------*/
   .about{
     margin-top: 0.2em;
@@ -842,21 +805,6 @@ footer a:hover{
         font-family: 'Reenie Beanie', cursive;
     }
 
-  /*.about{
-  margin-top: 0.2em;
-  margin-bottom: 0em;
-      font-size:5em;
-      text-align: center;
-      font-family: 'Reenie Beanie', cursive;
-  }
-    .aboutp{
-      margin-left: 55px;
-      margin-right: 55px;
-      margin-top: 0em;
-      font-size: 2em;
-      text-align: justify;
-      text-align: left;
-    }*/
   .aboutp{
     margin-left: 55px;
     margin-right: 55px;
@@ -968,15 +916,17 @@ footer a:hover{
   }
 
   /* --------------------------------------------------------------------------------- HEADER */
-/*
-    .mainHeader {
-      display: flex;
-      flex-wrap: wrap;
-    }
-*/
 
     .clmLogo{
       padding: 15px 0 0 0;
+    }
+
+    .clmPerfilOrig{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      color: #fff;
+      justify-content: space-between!important;
     }
 
     .clmPerfil{
@@ -998,8 +948,7 @@ footer a:hover{
     }
 
     .perfilHeader{
-
-      width: 100%;
+      /* width: 100%; */
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -1014,7 +963,7 @@ footer a:hover{
     }
 
     .navbar-brand img{
-      width: 50%;
+      width: 70%;
     }
 
     .navbar-nav {
@@ -1136,10 +1085,18 @@ form button.volver{
   padding: 10px 0 0 0;
 }
 
+.clmPerfilOrig{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #fff;
+  justify-content: space-between!important;
+}
+
 .clmPerfil {
     display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
+    flex-direction: row;
+    /* align-items: flex-start; */
     padding: 10px 0;
  }
 
@@ -1148,7 +1105,6 @@ form button.volver{
 }
 
 .perfilHeader .avatar{
-
   margin: 20px auto;
   display: block;
   width: 100%;
@@ -1193,8 +1149,6 @@ form button.volver{
      align-self: flex-start!important;
      margin: 0;
  }
-
-
 
 .navbar-expand-md .navbar-collapse {
     justify-content: flex-end;
