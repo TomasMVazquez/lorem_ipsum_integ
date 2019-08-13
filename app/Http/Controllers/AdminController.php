@@ -20,4 +20,5 @@ class AdminController extends Controller
       
       return view('admin',compact('products','categories','subcategories','images'));
     }
+
 }
