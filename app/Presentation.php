@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Presentation extends Model
 {
+
   // Especificamos las columnas que podemos escribir
   protected $fillable = ['type'];
 
@@ -18,4 +19,5 @@ class Presentation extends Model
   {
     return $this->belongsToMany(Product::class, "presentation_product", "presentation_id", "product_id");
   }
+
 }

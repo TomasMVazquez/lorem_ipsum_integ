@@ -16,6 +16,7 @@ class Product extends Model
     // Con Subcategory
     public function subcategory()
   	{
+
   		return $this->belongsTo(Subcategory::class, 'subcategory_id');
   	}
 
@@ -35,5 +36,9 @@ class Product extends Model
     public function presentation()
   	{
   		return $this->belongsToMany(Presentation::class, 'presentation_product', 'product_id', 'presentation_id');
+<<<<<<< HEAD
+}
+=======
   	}
+>>>>>>> master
 }

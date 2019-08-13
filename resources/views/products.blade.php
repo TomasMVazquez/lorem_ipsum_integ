@@ -1,9 +1,9 @@
-@extends('template')
+@extends('template');
 
 {{-- Agregar el nombre del categoría --}}
-@section('title',"Lorem ipsum | categoria")
+@section('title',"Lorem ipsum | categoria");
 
-@section('mainContent')
+@section('mainContent');
 
 <div class="contenedor-productos">
     <div class="row justify-content-center row-sin-margen">
@@ -25,16 +25,16 @@
 <!--listado de articulos-->
 
   <div class="listado-productos">
-      {{-- // @foreach ($products as $product) --}}
+    @foreach ($products as $product)
       <div class="col-md-6 col-lg-4 col-producto">
         <div class="card producto">
-        <a href="/product-detail/{id}"><img src="/storage/avatar/{{-- // $product[image] --}}" class="card-img-top" alt="{{-- $product->name --}}"></a>
-        <div class="card-body detalle-producto">
+          <a href="/product-detail/{{ $product->id }}"><img src="{{ $product->images->first()->route }}" class="card-img-top" alt="{{ $product->name }}"></a>
+          <div class="card-body detalle-producto">
             <div class="encabezado-producto">
               <h5 class="card-title nombre-producto" style="text-align:left;">
-                  <a href="/product-detail/{id}">
-                    {{--$product->name--}}
-                  </a>
+                <a href="/product-detail/{{ $product->id }}">
+                  {{   $product->name  }}
+                </a>
               </h5>
               <div>
                 <ul class="corazon">
@@ -43,20 +43,21 @@
               </div>
             </div>
             <p class="card-text">
-              {{-- substr(product["copete"], 0, 120) . "..."--}}</p>
-            <div class="row">
-              <p class="card-text col-10">
-                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-              </p>
-              <p class="col-2"><i class="fas fa-share-alt"></i></p>
-            </div>
-            <div class="boton-detalle">
-              <a class="btn btn-primary btn-block" href="/product-detail/{id}" role="button">Ver detalle</a>
+              {{str_limit($product->brief, $limit = 100, $end= '...')}} </p>
+
+              <div class="row">
+                <p class="card-text col-10">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </p>
+                <p class="col-2"><i class="fas fa-share-alt"></i></p>
+              </div>
+              <div class="boton-detalle">
+                <a class="btn btn-primary btn-block" href="/product-detail/{{ $product->id }}" role="button">Ver detalle</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {{-- // @endforeach --}}
+    @endforeach
 
     </div>
     <!-- fin listado de articulos-->

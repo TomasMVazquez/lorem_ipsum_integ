@@ -76,6 +76,7 @@ class RegisterController extends Controller
             //'subcategories.required' => 'Elegí al menos una opción',
             'password.required' => 'Debes ingresar una contraseña',
             'password.min' => 'Tu conraseña debe tener al menos 5 caracteres'
+
         ]);
     }
 
@@ -112,9 +113,15 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'country' => $data['country'],
+<<<<<<< Updated upstream
             'avatar' => $finalImage,
             //'subcategories'=> $data['notifications'],
             'notifications'=> $data['notifications'],
+=======
+
+          //  'avatar' => $data['avatar'],
+          //  'notifications'=> $data['notifications'],
+>>>>>>> Stashed changes
             'password' => Hash::make($data['password']),
         ]);
 

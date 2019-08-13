@@ -18,7 +18,16 @@ class Subcategory extends Model
   // Con Category
   public function category()
 	{
-		return $this->belongsTo(Category::class);
+		return $this->belongsTo(Category::class, "category_id");
+	}
+  public function product()
+	{
+		return $this->hasMany(Product::class, "product_id");
+	}
+
+  public function user()
+	{
+		return $this->belongsToMany(User::class, "user_subcategory", "subcategory_id", "user_id");
 	}
 
   // Con Product
