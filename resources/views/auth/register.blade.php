@@ -168,6 +168,11 @@
 
               </div>
             @endforeach
+            @error('subcategories[]')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <!-- FIN SWITCH PARA QUE QUIERO VER -->
         <!-- SWITCH PARA QUE QUIERO RECIBIR -->
