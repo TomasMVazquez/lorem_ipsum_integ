@@ -36,5 +36,9 @@ class Product extends Model
     public function presentation()
   	{
   		return $this->belongsToMany(Presentation::class, 'presentation_product', 'product_id', 'presentation_id');
+<<<<<<< HEAD
 }
+=======
+  	}
+>>>>>>> master
 }

@@ -62,6 +62,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'country' => ['required'],
+            //'subcategories' => ['required'],
             'avatar' => ['image'],
             'password' => ['required', 'min:5', 'confirmed'],
         ], [
@@ -72,7 +73,7 @@ class RegisterController extends Controller
             'email.required' => 'Debes ingresar tu email',
             'email.unique' => 'Ya existe une usuarie con ese email',
             'country.required' => 'Debes seleccionar tu país',
-            'avatar' => ['image'],
+            //'subcategories.required' => 'Elegí al menos una opción',
             'password.required' => 'Debes ingresar una contraseña',
             'password.min' => 'Tu conraseña debe tener al menos 5 caracteres'
 
@@ -87,7 +88,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      $request = app('request');
+
       // Imagen de perfil
+      if($request->hasfile('avatar')){
 
         // Recupero
         $image = $data["avatar"];
@@ -98,6 +102,9 @@ class RegisterController extends Controller
         // Subo el archivo en la carpeta elegida
         $image->storePubliclyAs("public/avatars", $finalImage);
 
+      } else {
+        $finalImage = 'img_avatar4.png';
+      }
 
 /*
         return User::create([
@@ -131,11 +138,13 @@ class RegisterController extends Controller
         ]);
 
         // Subcategorias
-        $subcategories = $data['subcategories'];
+        if($request->has('subcategories')){
 
-        $user->subcategories()->attach($subcategories);
+          $subcategories = $data['subcategories'];
+          $user->subcategories()->attach($subcategories);
+        }
 
-        return $user;
+          return $user;
 
   }
 }

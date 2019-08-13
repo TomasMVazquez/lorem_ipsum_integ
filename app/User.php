@@ -54,4 +54,12 @@ class User extends Authenticatable
       return $this->belongsToMany(Product::class, 'user_product', 'user_id', 'product_id');
 
     }
+
+    public function isAdmin()
+    {
+        if(Auth::user()->admin){
+            return true;
+        }
+        return false;
+    }
 }
