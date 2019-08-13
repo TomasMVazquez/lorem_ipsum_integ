@@ -172,6 +172,7 @@
         <!-- FIN SWITCH PARA QUE QUIERO VER -->
         <!-- SWITCH PARA QUE QUIERO RECIBIR -->
         <div class="container containerSwitch">
+
             <div class="containerUnSwitchNot col-12">
               <label class="switch">
                 <input type="checkbox" name="notifications" value="1"

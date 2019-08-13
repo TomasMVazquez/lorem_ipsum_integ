@@ -16,13 +16,14 @@ class Product extends Model
     // Con Subcategory
     public function subcategory()
   	{
+
   		return $this->belongsTo(Subcategory::class, 'subcategory_id');
   	}
 
     // Con Users
   	public function users()
   	{
-  		return $this->belongsToMany(User::class), 'user_product', 'product_id', 'user_id';
+  		return $this->belongsToMany(User::class, 'user_product', 'product_id', 'user_id');
   	}
 
     // Con Images
@@ -34,6 +35,6 @@ class Product extends Model
     // Con Presentaciones
     public function presentation()
   	{
-  		return $this->belongsToMany(Presentation::class), 'presentation_product', 'product_id', 'presentation_id';
-  	}
+  		return $this->belongsToMany(Presentation::class, 'presentation_product', 'product_id', 'presentation_id');
+}
 }

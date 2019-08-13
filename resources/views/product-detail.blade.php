@@ -12,7 +12,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="productos.php">Productos</a></li>
         <li class="breadcrumb-item active" aria-current="page">
-            {{-- $productoDetallado["nombre"] --}}
+            {{ $productoDetallado["nombre"] }}
         </li>
       </ol>
     </nav>
@@ -26,13 +26,13 @@
               {{-- // $productoDetallado["imagen-principal"] --}}
               " alt="Imagen Producto 1">
             <div class="img-min">
-                {{-- // foreach ($productoDetallado["imagenes-secundarias"] as $unaImagen): --}}
+             @foreach ($productoDetallado["imagenes-secundarias"] as $unaImagen):
               <img src="
                   {{-- // $unaImagen --}}
                   " alt="
                   {{-- $productoDetallado["nombre"] --}}
                   ">
-              {{-- // endforeach; --}}
+              @endforeach;
             </div>
           </div>
 

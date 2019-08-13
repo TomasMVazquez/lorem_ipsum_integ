@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-/*use App\Product*/
+use App\Product;
+use App\Image;
 
 class ProductController extends Controller
 {
@@ -14,8 +15,10 @@ class ProductController extends Controller
     }
 
     public function index(){
-    	/*$products = Product::all();*/
-    	$products = [];
-    	return view('products', compact('products'));
+    	$products = Product::all();
+      $images = Image::all();
+    	return view('products', compact('products','images'));
     }
+
+
 }
