@@ -20,8 +20,8 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-        // if (Auth::user() &&  Auth::user()->admin == 1) {
-        if (true) {
+        if (Auth::user() &&  Auth::user()->admin == 1) {
+       
             return $next($request);
         }
         // abort(403);

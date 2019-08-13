@@ -3,6 +3,8 @@
 @section('title',"Lorem ipsum | Admin View")
 
 @section('mainContent')
+
+{{-- {{Auth::User()}} --}}
 {{-- Conetnedor del admin --}}
   <div class="adminConteiner" style="margin: 20px;display: flex;flex-direction: column;">
 {{-- titulo --}}
