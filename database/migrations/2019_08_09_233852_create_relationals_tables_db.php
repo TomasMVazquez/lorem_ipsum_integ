@@ -49,12 +49,12 @@ class CreateRelationalsTablesDb extends Migration
       //Insert images
       DB::table('images')->insert(
         array(
-          array('product_id' => '1','route' => '/imgs/items/1.jpg'),
-          array('product_id' => '2','route' => '/imgs/items/2.jpg'),
-          array('product_id' => '3','route' => '/imgs/items/3.jpg'),
-          array('product_id' => '4','route' => '/imgs/items/4.jpg'),
-          array('product_id' => '5','route' => '/imgs/items/5.jpg'),
-          array('product_id' => '6','route' => '/imgs/items/6.jpg')
+          array('product_id' => '1','route' => '/items/1.jpg'),
+          array('product_id' => '2','route' => '/items/2.jpg'),
+          array('product_id' => '3','route' => '/items/3.jpg'),
+          array('product_id' => '4','route' => '/items/4.jpg'),
+          array('product_id' => '5','route' => '/items/5.jpg'),
+          array('product_id' => '6','route' => '/items/6.jpg')
       ));
 
     }

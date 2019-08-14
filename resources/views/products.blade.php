@@ -28,7 +28,7 @@
     @foreach ($products as $product)
       <div class="col-md-6 col-lg-4 col-producto">
         <div class="card producto">
-          <a href="/product-detail/{{ $product->id }}"><img src="{{ $product->images->first()->route }}" class="card-img-top" alt="{{ $product->name }}"></a>
+          <a href="/product-detail/{{ $product->id }}"><img src="/storage{{ $product->images->first()->route }}" class="card-img-top" alt="{{ $product->name }}"></a>
           <div class="card-body detalle-producto">
             <div class="encabezado-producto">
               <h5 class="card-title nombre-producto" style="text-align:left;">
