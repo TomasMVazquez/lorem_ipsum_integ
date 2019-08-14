@@ -30,3 +30,6 @@ Route::get('/products/{id}', 'ProductController@show')->name('show');
 
 Route::get('/profile', 'UserController@show')->name('profile');
 Route::get('/admin', 'AdminController@index')->middleware('isAdmin');
+Route::get('/admin/{id}', 'AdminController@edit')->middleware('isAdmin');
+Route::delete('/admin/{id}', 'AdminController@destroy')->middleware('isAdmin');
+Route::put('/admin/{id}', 'AdminController@update')->middleware('isAdmin');
