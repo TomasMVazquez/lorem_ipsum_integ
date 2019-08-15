@@ -29,7 +29,14 @@ Route::get('/products', 'ProductController@index')->name('index');
 Route::get('/products/{id}', 'ProductController@show')->name('show');
 
 Route::get('/profile', 'UserController@show')->name('profile');
+
+// Administrador index
 Route::get('/admin', 'AdminController@index')->middleware('isAdmin');
-Route::get('/admin/{id}', 'AdminController@edit')->middleware('isAdmin');
-Route::delete('/admin/{id}', 'AdminController@destroy')->middleware('isAdmin');
+// Adminstrador crear producto
+Route::get('/admin/add', 'AdminController@add')->middleware('isAdmin');
+Route::post('/admin/add', 'AdminController@store')->middleware('isAdmin');
+// Administrador Editar Producto
+Route::get('/admin/{id}', 'AdminController@edit')->middleware('isAdmin')->name('edit');
 Route::put('/admin/{id}', 'AdminController@update')->middleware('isAdmin');
+// Administrador Eliminar Producto
+Route::delete('/admin/{id}', 'AdminController@destroy')->middleware('isAdmin');

@@ -1,36 +1,31 @@
-@extends('template')
+.@extends('template')
 
 {{-- Agregar el nombre del producto --}}
 @section('title',"Lorem ipsum | Admin")
 
 @section('mainContent')
 
-  <div class="" style="display: flex; flex-direction: column;">
+  <div class="">
     <!-- TITULO DE LA PAG -->
     <div class="col-12 col-md-11 col-xl-10">
-      <h1 class="titulo">Editar: </h1>
-      <p>Edita el formulario para crear actualizar.</p>
-      <h2>{{ $productToEdit->name }}</h2>
+      <h1 class="titulo">Agregar: </h1>
+      <p>Completar el formulario para crear producto.</p>
     </div>
     <!-- FIN TITULO DE LA PAG -->
 
     {{-- Comienzo del formulario --}}
     <div class="col-12"
-    style="display: flex; flex-direction: row; justify-content: center;">
+    style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap;">
       <form class="col-10" method="POST" enctype="multipart/form-data" action="" style="padding: 10px;">
         @csrf
-        {{ method_field('put') }}
 
         <div class="row">
           <label class="col-2 text-right">Categoria:</label>
           <div class="col-4">
 						<select class="form-control" name="category">
+              <option value="" selected>Seleccionar Categoria</option>
 							@foreach ($categories as $category)
-                @if ($productToEdit->subcategory->category->id == $category->id)
-                  <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
-                @else
-                  <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
-                @endif
+                <option value="{{ $category->id }}"> {{ $category->name }}</option>
 							@endforeach
 						</select>
 						@error ('category')
@@ -41,12 +36,9 @@
           <label class="col-2 text-right">Subcategoria:</label>
           <div class="col-4">
 						<select class="form-control" name="subcategory">
+              <option value="" selected>Seleccionar Sub-Categoria</option>
 							@foreach ($subcategories as $subcategory)
-                @if ($productToEdit->subcategory_id == $subcategory->id)
-                  <option value="{{ $subcategory->id }}" selected> {{ $subcategory->name }}</option>
-                @else
-                  <option value="{{ $subcategory->id }}"> {{ $subcategory->name }}</option>
-                @endif
+                <option value="{{ $subcategory->id }}"> {{ $subcategory->name }}</option>
 							@endforeach
 						</select>
 						@error ('subcategory')
@@ -57,9 +49,9 @@
         </div>
         <br>
         <div class="row">
-          @foreach ($images as $image)
+          @for ($i = 1; $i < 5; $i++)
             <div class="col-3">
-              <img src="/storage{{ $image->route }}" alt="" style="width: 260px; height: 250px;">
+              <img src="" alt="" style="width: 260px; height: 250px;">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="poster">
                 <label class="custom-file-label">Choose file...</label>
@@ -68,14 +60,14 @@
                 <i style="color: red;"> {{ $errors->first('poster') }}</i>
               @enderror
             </div>
-          @endforeach
+          @endfor
         </div>
         <br>
         <div class="row">
           <div class="col-6">
   					<div class="form-group">
   						<label>Nombre:</label>
-              <textarea rows='2' name="name" class="form-control" value="">{{ old('name', $productToEdit->name) }}</textarea>
+              <textarea rows='2' name="name" class="form-control" value="">{{ old('name') }}</textarea>
   						@error ('name')
   							<i style="color: red;"> {{ $errors->first('name') }}</i>
   						@enderror
@@ -85,7 +77,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Detalle:</label>
-              <textarea rows='2' name="brief" class="form-control" value="">{{ old('brief', $productToEdit->brief) }}</textarea>
+              <textarea rows='2' name="brief" class="form-control" value="">{{ old('brief') }}</textarea>
               @error ('brief')
                 <i style="color: red;"> {{ $errors->first('brief') }}</i>
               @enderror
@@ -97,7 +89,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Descripcion:</label>
-              <textarea rows='6' name="description" class="form-control" value="">{{ old('description', $productToEdit->description) }}</textarea>
+              <textarea rows='6' name="description" class="form-control" value="">{{ old('description') }}</textarea>
               @error ('description')
                 <i style="color: red;"> {{ $errors->first('description') }}</i>
               @enderror
@@ -107,7 +99,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Usos:</label>
-              <textarea rows='6' name="uses" class="form-control" value="">{{ old('uses', $productToEdit->uses) }}</textarea>
+              <textarea rows='6' name="uses" class="form-control" value="">{{ old('uses') }}</textarea>
               @error ('uses')
                 <i style="color: red;"> {{ $errors->first('uses') }}</i>
               @enderror
@@ -119,7 +111,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Beneficios:</label>
-              <textarea rows='2' name="benefits" class="form-control" value="">{{ old('benefits', $productToEdit->benefits) }}</textarea>
+              <textarea rows='2' name="benefits" class="form-control" value="">{{ old('benefits') }}</textarea>
               @error ('benefits')
                 <i style="color: red;"> {{ $errors->first('benefits') }}</i>
               @enderror
@@ -129,23 +121,22 @@
           <div class="col-6">
             <div class="form-group">
               <label>Rating:</label>
-              <input type="text" name="rating" class="form-control" value="{{ old('rating', $productToEdit->rating) }}">
+              <input type="text" name="rating" class="form-control" value="{{ old('rating') }}">
   						@error ('rating')
   							<i style="color: red;"> {{ $errors->first('rating') }}</i>
   						@enderror
-            </div>
           </div>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">
-              EDIT
-            </button>
-          </div>
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">
+            ADD
+          </button>
         </div>
-      </form>
-
+      </div>
+    </form>
     {{-- fin del formulario --}}
   </div>
 @endsection

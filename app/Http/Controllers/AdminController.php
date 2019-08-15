@@ -21,6 +21,13 @@ class AdminController extends Controller
       return view('admin',compact('products','categories','subcategories','images'));
     }
 
+    public function add ()
+    {
+      $categories = Category::all();
+      $subcategories = Subcategory::all();
+      return view('product-add', compact('categories','subcategories'));
+    }
+
     public function destroy ($id)
   	{
   		$productToDelete = Product::find($id);
