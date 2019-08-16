@@ -64,7 +64,7 @@ class RegisterController extends Controller
             'country' => ['required'],
             //'subcategories' => ['required'],
             'avatar' => ['image'],
-            'password' => ['required', 'min:5', 'confirmed'],
+            'password' => ['required', 'min:5', 'confirmed', 'regex:/DH/'],
         ], [
             'user.required' => 'Debes ingresar un nombre de usuarie',
             'user.unique' => 'Ya existe une usuarie con ese nombre',
