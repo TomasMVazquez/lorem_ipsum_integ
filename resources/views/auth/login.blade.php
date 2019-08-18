@@ -16,7 +16,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail o Usuario') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
                                 @error('email')
@@ -60,11 +60,14 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                  <a class="btn btn-link" href="{{ route('password.request') }}">
+                                  <a class="btn btn-link psw" href="{{ route('password.request') }}">
                                         {{ __('Olvidé mi contraseña') }}
                                     </a>
                                 @endif
                             </div>
+                        </div>
+                        <div class="btnForm">
+                          <a class="btn btn-secondary btn-block reg" href="/register">Aún no tengo cuenta</a>
                         </div>
                     </form>
                 {{-- </div> --}}

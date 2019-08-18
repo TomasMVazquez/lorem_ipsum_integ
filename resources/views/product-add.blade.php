@@ -1,4 +1,4 @@
-.@extends('template')
+@extends('template')
 
 {{-- Agregar el nombre del producto --}}
 @section('title',"Lorem ipsum | Admin")
@@ -15,20 +15,22 @@
 
     <div class="col-12" style="display: flex; flex-direction: row; justify-content: end;">
       <!-- AGREGAR CATEGORIA  -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-cat-modal-sm" style="margin: 10px;">AGREGAR Categoria</button>
+      <div class="" style="display: flex; flex-direction: column; justify-content: center;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-cat-modal-sm" style="margin: 10px;">AGREGAR Categoria</button>
+        @error ('nameCat')
+          <i style="color: red;"> {{ $errors->first('nameCat') }}</i>
+        @enderror
+      </div>
 
       <div class="modal fade bd-cat-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
-            <form class="" method="post"  enctype="multipart/form-data" action="" style="padding: 10px; border:none;">
+            <form class="" method="post"  enctype="multipart/form-data" action="/admin/addCat" style="padding: 10px; border:none;">
               @csrf
 
               <div class="form-group">
                 <label>Nueva Categoría:</label>
-                <input type="text" name="name" class="form-control" value="{{ old('name') }}">
-                @error ('name')
-                  <i style="color: red;"> {{ $errors->first('name') }}</i>
-                @enderror
+                <input type="text" name="nameCat" class="form-control" value="{{ old('nameCat') }}">
               </div>
 
               <button type="submit" class="btn btn-primary">
@@ -40,20 +42,32 @@
       </div>
       {{-- Agregar subcategoria --}}
       <!-- AGREGAR CATEGORIA  -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-sub-modal-sm" style="margin: 10px;">AGREGAR Sub-Categoria</button>
+      <div class="" style="display: flex; flex-direction: column; justify-content: center;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-sub-modal-sm" style="margin: 10px;">AGREGAR Sub-Categoria</button>
+        @error ('categorySub')
+          <i style="color: red;"> {{ $errors->first('categorySub') }}</i>
+        @enderror
+        @error ('nameSub')
+          <i style="color: red;"> {{ $errors->first('nameSub') }}</i>
+        @enderror
+      </div>
 
       <div class="modal fade bd-sub-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
-            <form class="" method="post"  enctype="multipart/form-data" action="" style="padding: 10px; border:none;">
+            <form class="" method="post"  enctype="multipart/form-data" action="/admin/addSubCat" style="padding: 10px; border:none;">
               @csrf
+
+  						<select class="form-control" name="categorySub">
+                <option value="" selected>Seleccionar Categoria</option>
+  							@foreach ($categories as $category)
+                  <option value="{{ $category->id }}"> {{ $category->name }}</option>
+  							@endforeach
+  						</select>
 
               <div class="form-group">
                 <label>Nueva Sub-Categoría:</label>
-                <input type="text" name="name" class="form-control" value="{{ old('name') }}">
-                @error ('name')
-                  <i style="color: red;"> {{ $errors->first('name') }}</i>
-                @enderror
+                <input type="text" name="nameSub" class="form-control" value="{{ old('name') }}">
               </div>
 
               <button type="submit" class="btn btn-primary">
@@ -64,20 +78,22 @@
         </div>
       </div>
       <!-- AGREGAR PResentacion  -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-pre-modal-sm" style="margin: 10px;">AGREGAR Presentacion</button>
+      <div class=""style="display: flex; flex-direction: column; justify-content: center;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-pre-modal-sm" style="margin: 10px;">AGREGAR Presentacion</button>
+        @error ('typePres')
+          <i style="color: red;"> {{ $errors->first('typePres') }}</i>
+        @enderror
+      </div>
 
       <div class="modal fade bd-pre-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
-            <form class="" method="post"  enctype="multipart/form-data" action="" style="padding: 10px; border:none;">
+            <form class="" method="post"  enctype="multipart/form-data" action="/admin/addPres" style="padding: 10px; border:none;">
               @csrf
 
               <div class="form-group">
                 <label>Nueva Presentacion:</label>
-                <input type="text" name="name" class="form-control" value="{{ old('type') }}">
-                @error ('type')
-                  <i style="color: red;"> {{ $errors->first('type') }}</i>
-                @enderror
+                <input type="text" name="typePres" class="form-control" value="{{ old('typePres') }}">
               </div>
 
               <button type="submit" class="btn btn-primary">
