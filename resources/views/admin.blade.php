@@ -26,7 +26,7 @@
               @if ($subcategory->category_id == $category->id)
                 <div class="card-header" id="{{ $subcategory->name }}">
                   <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ str_replace(' ','',$subcategory->name) }}" aria-expanded="true" aria-controls="collapse{{ str_replace(' ','',$subcategory->name) }}">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ str_replace(' ','',$subcategory->name) }}" aria-expanded="true" aria-controls="collapse{{ str_replace(' ','',$subcategory->name) }}" style="width: 100%;text-align: left;">
                       {{ $subcategory->name }}
                     </button>
                   </h2>
