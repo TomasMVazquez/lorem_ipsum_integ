@@ -15,7 +15,7 @@
 
     <div class="col-12" style="display: flex; flex-direction: row; justify-content: end;">
       <!-- AGREGAR CATEGORIA  -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-cat-modal-sm" style="margin: 10px;">Add Categroy</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-cat-modal-sm" style="margin: 10px;">AGREGAR Categoria</button>
 
       <div class="modal fade bd-cat-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -32,7 +32,7 @@
               </div>
 
               <button type="submit" class="btn btn-primary">
-                ADD
+                AGREGAR
               </button>
             </form>
           </div>
@@ -40,7 +40,7 @@
       </div>
       {{-- Agregar subcategoria --}}
       <!-- AGREGAR CATEGORIA  -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-sub-modal-sm" style="margin: 10px;">Add Sub-Categroy</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-sub-modal-sm" style="margin: 10px;">AGREGAR Sub-Categoria</button>
 
       <div class="modal fade bd-sub-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -57,7 +57,31 @@
               </div>
 
               <button type="submit" class="btn btn-primary">
-                ADD
+                AGREGAR
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- AGREGAR PResentacion  -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-pre-modal-sm" style="margin: 10px;">AGREGAR Presentacion</button>
+
+      <div class="modal fade bd-pre-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <form class="" method="post"  enctype="multipart/form-data" action="" style="padding: 10px; border:none;">
+              @csrf
+
+              <div class="form-group">
+                <label>Nueva Presentacion:</label>
+                <input type="text" name="name" class="form-control" value="{{ old('type') }}">
+                @error ('type')
+                  <i style="color: red;"> {{ $errors->first('type') }}</i>
+                @enderror
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                AGREGAR
               </button>
             </form>
           </div>
@@ -104,13 +128,13 @@
         <div class="row">
           @for ($i = 1; $i < 5; $i++)
             <div class="col-3">
-              <img src="" alt="" style="width: 260px; height: 250px;">
+              <img src="/imgs/logos/logo-loremipsum-black.png" alt="" style="width: 260px; height: 250px;">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="poster">
                 <label class="custom-file-label">Choose file...</label>
               </div>
               @error ('image')
-                <i style="color: red;"> {{ $errors->first('poster') }}</i>
+                <i style="color: red;"> {{ $errors->first('image') }}</i>
               @enderror
             </div>
           @endfor
@@ -173,19 +197,36 @@
 
           <div class="col-6">
             <div class="form-group">
+             <label for="presentationType">Presentaciones:</label>
+             <select multiple class="form-control" id="presentationType">
+               @foreach ($presentations as $presentation)
+                 <option>{{$presentation->type}}</option>
+               @endforeach
+             </select>
+           </div>
+           @error ('presentation')
+             <i style="color: red;"> {{ $errors->first('presentation') }}</i>
+           @enderror
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
               <label>Rating:</label>
               <input type="text" name="rating" class="form-control" value="{{ old('rating') }}">
   						@error ('rating')
   							<i style="color: red;"> {{ $errors->first('rating') }}</i>
   						@enderror
+            </div>
           </div>
+
         </div>
-      </div>
 
       <div class="row">
         <div class="col-12">
           <button type="submit" class="btn btn-primary">
-            ADD PRODUCT
+            AGREGAR PRODUCTO
           </button>
         </div>
       </div>

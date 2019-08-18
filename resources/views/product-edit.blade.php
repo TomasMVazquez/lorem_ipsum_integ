@@ -17,7 +17,7 @@
     {{-- Comienzo del formulario --}}
     <div class="col-12"
     style="display: flex; flex-direction: row; justify-content: center;">
-      <form class="col-10" method="POST" enctype="multipart/form-data" action="" style="padding: 10px;">
+      <form class="col-10" method="POST" enctype="multipart/form-data" action="/admin/{{$productToEdit->id}}" style="padding: 10px;">
         @csrf
         {{ method_field('put') }}
 
@@ -40,7 +40,7 @@
 
           <label class="col-2 text-right">Subcategoria:</label>
           <div class="col-4">
-						<select class="form-control" name="subcategory">
+						<select class="form-control" name="subcategory_id">
 							@foreach ($subcategories as $subcategory)
                 @if ($productToEdit->subcategory_id == $subcategory->id)
                   <option value="{{ $subcategory->id }}" selected> {{ $subcategory->name }}</option>
@@ -49,26 +49,40 @@
                 @endif
 							@endforeach
 						</select>
-						@error ('subcategory')
-							<i style="color: red;"> {{ $errors->first('subcategory') }}</i>
+						@error ('subcategory_id')
+							<i style="color: red;"> {{ $errors->first('subcategory_id') }}</i>
 						@enderror
 					</div>
 
         </div>
         <br>
         <div class="row">
-          @foreach ($images as $image)
+          @if (count($images)>0)
+            @foreach ($images as $image)
+              <div class="col-3">
+                <img src="/storage/items/{{ $image->route }}" alt="" style="width: 260px; height: 250px;">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" name="image"><code>{{ old('image') }}</code>
+                  <label class="custom-file-label">Choose file...</label>
+                </div>
+                @error ('image')
+                  <i style="color: red;"> {{ $errors->first('image') }}</i>
+                @enderror
+              </div>
+            @endforeach
+          @else
             <div class="col-3">
-              <img src="/storage{{ $image->route }}" alt="" style="width: 260px; height: 250px;">
+              <img src="/imgs/logos/logo-loremipsum-black.png" alt="" style="width: 260px; height: 250px;">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" name="poster">
+                <input type="file" class="custom-file-input" name="image">
                 <label class="custom-file-label">Choose file...</label>
               </div>
               @error ('image')
-                <i style="color: red;"> {{ $errors->first('poster') }}</i>
+                <i style="color: red;"> {{ $errors->first('image') }}</i>
               @enderror
             </div>
-          @endforeach
+          @endif
+
         </div>
         <br>
         <div class="row">
@@ -119,13 +133,35 @@
           <div class="col-6">
             <div class="form-group">
               <label>Beneficios:</label>
-              <textarea rows='2' name="benefits" class="form-control" value="">{{ old('benefits', $productToEdit->benefits) }}</textarea>
+              <textarea rows='3' name="benefits" class="form-control" value="">{{ old('benefits', $productToEdit->benefits) }}</textarea>
               @error ('benefits')
                 <i style="color: red;"> {{ $errors->first('benefits') }}</i>
               @enderror
             </div>
           </div>
 
+          <div class="col-6">
+            <div class="form-group">
+             <label for="presentationType">Presentaciones:</label>
+             <select multiple name="presentation[]" class="form-control" id="presentationType">
+               @foreach ($presentations as $presentation)
+                 @foreach ($productToEdit->presentation as $productPresentation)
+                   @if ($presentation->id == $productPresentation->id)
+                     <option value="{{$presentation->id}}" selected>{{$presentation->type}}</option>
+                     @break
+                   @endif
+                 @endforeach
+                 <option value="{{$presentation->id}}">{{$presentation->type}}</option>
+               @endforeach
+             </select>
+           </div>
+           @error ('presentation')
+             <i style="color: red;"> {{ $errors->first('presentation') }}</i>
+           @enderror
+          </div>
+        </div>
+
+        <div class="row">
           <div class="col-6">
             <div class="form-group">
               <label>Rating:</label>
@@ -135,12 +171,13 @@
   						@enderror
             </div>
           </div>
+
         </div>
 
         <div class="row">
           <div class="col-12">
             <button type="submit" class="btn btn-primary">
-              EDIT
+              EDITAR
             </button>
           </div>
         </div>

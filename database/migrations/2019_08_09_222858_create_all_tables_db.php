@@ -53,6 +53,7 @@ class CreateAllTablesDb extends Migration
             $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->foreign('subcategory_id')->references('id')->on('subcategories');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('user_product', function (Blueprint $table) {
