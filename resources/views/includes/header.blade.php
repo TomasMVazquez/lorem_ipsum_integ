@@ -9,7 +9,6 @@
         <img src="/imgs/logos/logo-loremipsum.png" alt="logo de lorem ipsum">
       </a>
       {{-- boton hamburguesa en mobile --}}
-      {{-- TODO funcioan si estas logeado sino no --}}
       <button class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -17,7 +16,6 @@
     {{-- fin logo --}}
 
     {{-- Buscador --}}
-    {{-- TODO Style en css cambiarlos apra que se vea bien en todas las pantallas --}}
     <div class="clmPerfil col-12 col-sm-7 col-md-4 col-lg-3" style="margin-top:20px">
       <form class="searchHeader" action="/products">
         <input class="col-lg-11 form-control mr-sm-2" type="text" placeholder="¡Quiero encontrarlo!">
@@ -67,7 +65,9 @@
             Productos
           </a>
           <div class="dropdown-menu  text-center">
-            <a class="dropdown-item" href="/products">Cosmetica Capilar</a>
+            @foreach ($categories as $category)
+              <a class="dropdown-item" href="/products">{{ $category->name }}</a>
+            @endforeach
           </div>
         </li>
         <li class="nav-item">

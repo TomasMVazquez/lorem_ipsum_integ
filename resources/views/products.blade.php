@@ -1,9 +1,9 @@
-@extends('template');
+@extends('template')
 
 {{-- Agregar el nombre del categoría --}}
-@section('title',"Lorem ipsum | categoria");
+@section('title',"Lorem ipsum | categoria")
 
-@section('mainContent');
+@section('mainContent')
 
 <div class="contenedor-productos">
     <div class="row justify-content-center row-sin-margen">
@@ -28,7 +28,7 @@
     @foreach ($products as $product)
       <div class="col-md-6 col-lg-4 col-producto">
         <div class="card producto">
-          <a href="/product-detail/{{ $product->id }}"><img src="/storage{{ $product->images->first()->route }}" class="card-img-top" alt="{{ $product->name }}"></a>
+          <a href="/product-detail/{{ $product->id }}"><img src="/storage/items/{{ $product->images->first()->route }}" class="card-img-top" alt="{{ $product->name }}"></a>
           <div class="card-body detalle-producto">
             <div class="encabezado-producto">
               <h5 class="card-title nombre-producto" style="text-align:left;">

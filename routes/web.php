@@ -1,6 +1,6 @@
 <?php
 use App\Http\Middleware\isAdmin;
-
+use App\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,8 @@ use App\Http\Middleware\isAdmin;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $categories = Category::All();
+    return view('index',compact('categories'));
 });
 
 Auth::routes();
@@ -29,4 +30,17 @@ Route::get('/products', 'ProductController@index')->name('index');
 Route::get('/products/{id}', 'ProductController@show')->name('show');
 
 Route::get('/profile', 'UserController@show')->name('profile');
+
+// Administrador index
 Route::get('/admin', 'AdminController@index')->middleware('isAdmin');
+// Adminstrador crear producto
+Route::get('/admin/add', 'AdminController@add')->middleware('isAdmin');
+Route::post('/admin/add', 'AdminController@store')->middleware('isAdmin');
+Route::post('/admin/addCat', 'AdminController@storeCategory')->middleware('isAdmin');
+Route::post('/admin/addSubCat', 'AdminController@storeSubCategory')->middleware('isAdmin');
+Route::post('/admin/addPres', 'AdminController@storePresentation')->middleware('isAdmin');
+// Administrador Editar Producto
+Route::get('/admin/{id}', 'AdminController@edit')->middleware('isAdmin')->name('edit');
+Route::put('/admin/{id}', 'AdminController@update')->middleware('isAdmin');
+// Administrador Eliminar Producto
+Route::delete('/admin/{id}', 'AdminController@destroy')->middleware('isAdmin');

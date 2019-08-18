@@ -6,7 +6,7 @@
     <title>@yield('title')</title>
   </head>
   <body>
-    @include('/includes/header')
+    @include('/includes/header', App\Category::All())
 
     @yield('mainContent')
 
