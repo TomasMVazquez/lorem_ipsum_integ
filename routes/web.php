@@ -30,6 +30,8 @@ Route::get('/products/{id}', 'ProductController@show')->name('show');
 
 Route::get('/profile', 'UserController@show')->name('profile');
 
+Route::put('/profile', 'UserController@update')->name('update');
+
 // Administrador index
 Route::get('/admin', 'AdminController@index')->middleware('isAdmin');
 // Adminstrador crear producto
