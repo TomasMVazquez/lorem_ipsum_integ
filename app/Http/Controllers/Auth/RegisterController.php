@@ -62,7 +62,6 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'country' => ['required'],
-            //'subcategories' => ['required'],
             'avatar' => ['image'],
             'password' => ['required', 'min:5', 'confirmed'],
         ], [
@@ -73,7 +72,7 @@ class RegisterController extends Controller
             'email.required' => 'Debes ingresar tu email',
             'email.unique' => 'Ya existe une usuarie con ese email',
             'country.required' => 'Debes seleccionar tu país',
-            //'subcategories.required' => 'Elegí al menos una opción',
+            'image' => 'El archivo seleccionado no es una imagen',
             'password.required' => 'Debes ingresar una contraseña',
             'password.min' => 'Tu conraseña debe tener al menos 5 caracteres'
 

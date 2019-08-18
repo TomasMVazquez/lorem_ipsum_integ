@@ -307,9 +307,11 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
   outline: none;
 }
 
-span.psw {
+.psw {
   display: flex;
   flex-direction: row-reverse;
+  margin-bottom: 10px;
+  font-size: 0.8em;
 }
 
 .reg {
@@ -332,6 +334,8 @@ span.psw {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  padding: 20px 0px;
+
 }
 
 form button{
@@ -824,9 +828,6 @@ footer a:hover{
 @media (min-width:768px){
 
   /* --------------------------------------------------------------------------------- Log_in */
-  form {
-    border: 1px solid #000000;
-  }
 
   .mainContainer {
     margin: 10px 0;
