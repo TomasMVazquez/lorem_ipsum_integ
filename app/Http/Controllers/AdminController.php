@@ -29,6 +29,54 @@ class AdminController extends Controller
       return view('product-add', compact('categories','subcategories','presentations'));
     }
 
+    public function storeCategory(Request $request)
+    {
+      $request->validate([
+        'nameCat' => 'required',
+  		], [
+  			'nameCat.required' => 'La categoria no puede estar vacio',
+  		]);
+
+    	$categoryToSave = new Category;
+      $categoryToSave->name = $request['nameCat'];
+      $categoryToSave->save();
+
+  		return redirect('/admin/add');
+    }
+
+    public function storeSubCategory(Request $request)
+    {
+      $request->validate([
+        'nameSub' => 'required',
+        'categorySub' => 'required'
+  		], [
+  			'nameSub.required' => 'La sub-categoria no puede estar vacio',
+        'categorySub.required' => 'Debes seleccionar una categoria',
+  		]);
+
+    	$subcategoryToSave = new Subcategory;
+      $subcategoryToSave->name = $request['nameSub'];
+      $subcategoryToSave->category_id = $request['categorySub'];
+      $subcategoryToSave->save();
+
+  		return redirect('/admin/add');
+    }
+
+    public function storePresentation(Request $request)
+    {
+      $request->validate([
+        'typePres' => 'required',
+  		], [
+  			'typePres.required' => 'El tipo de presenacion no puede estar vacio',
+  		]);
+
+    	$presentationToSave = new Presentation;
+      $presentationToSave->type = $request['typePres'];
+      $presentationToSave->save();
+
+  		return redirect('/admin/add');
+    }
+
     public function destroy ($id)
   	{
   		$productToDelete = Product::find($id);
@@ -50,7 +98,6 @@ class AdminController extends Controller
     //Funcion para editar el producto
   	public function update ($id, Request $request)
   	{
-      // dd($request);
 
       $request->validate([
   			'category' => 'required',
@@ -93,7 +140,6 @@ class AdminController extends Controller
         $productToUpdate->images()->save($newProdImage);
       }
 
-      // dd($request['presentation']);
       $productToUpdate->presentation()->sync($request['presentation']);
 
       $productToUpdate->name            = $request['name'];
@@ -103,7 +149,9 @@ class AdminController extends Controller
   		$productToUpdate->benefits        = $request['benefits'];
       $productToUpdate->uses            = $request['uses'];
   		$productToUpdate->subcategory_id  = $request['subcategory_id'];
+
   		$productToUpdate->save();
+
   		return redirect('/admin');
   	}
 }
