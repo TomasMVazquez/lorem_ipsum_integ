@@ -77,7 +77,7 @@
           </div>
         </div>
       </div>
-      <!-- AGREGAR PResentacion  -->
+      <!-- AGREGAR Presentacion  -->
       <div class=""style="display: flex; flex-direction: column; justify-content: center;">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-pre-modal-sm" style="margin: 10px;">AGREGAR Presentacion</button>
         @error ('typePres')
@@ -109,7 +109,7 @@
     {{-- Comienzo del formulario --}}
     <div class="col-12"
     style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap;">
-      <form class="col-10" method="POST" enctype="multipart/form-data" action="" style="padding: 10px;">
+      <form class="col-10" method="POST" enctype="multipart/form-data" action="/admin/add" style="padding: 10px;">
         @csrf
 
         <div class="row">
@@ -118,7 +118,11 @@
 						<select class="form-control" name="category">
               <option value="" selected>Seleccionar Categoria</option>
 							@foreach ($categories as $category)
-                <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                @if (old('category') == $category->id)
+                  <option selected value="{{ $category->id }}"> {{ $category->name }}</option>
+                @else
+                  <option value="{{ $category->id }}"> {{ $category->name }}</option>
+                @endif
 							@endforeach
 						</select>
 						@error ('category')
@@ -131,7 +135,11 @@
 						<select class="form-control" name="subcategory">
               <option value="" selected>Seleccionar Sub-Categoria</option>
 							@foreach ($subcategories as $subcategory)
-                <option value="{{ $subcategory->id }}"> {{ $subcategory->name }}</option>
+                @if (old('subcategory') == $subcategory->id)
+                  <option selected value="{{ $subcategory->id }}"> {{ $subcategory->name }}</option>
+                @else
+                  <option value="{{ $subcategory->id }}"> {{ $subcategory->name }}</option>
+                @endif
 							@endforeach
 						</select>
 						@error ('subcategory')
@@ -142,18 +150,18 @@
         </div>
         <br>
         <div class="row">
-          @for ($i = 1; $i < 5; $i++)
+          @for ($i = 0; $i < 4; $i++)
             <div class="col-3">
               <img src="/imgs/logos/logo-loremipsum-black.png" alt="" style="width: 260px; height: 250px;">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" name="poster">
+                <input type="file" class="custom-file-input" name="image">
                 <label class="custom-file-label">Choose file...</label>
               </div>
-              @error ('image')
-                <i style="color: red;"> {{ $errors->first('image') }}</i>
-              @enderror
             </div>
           @endfor
+          @error ('image')
+            <i style="color: red;"> {{ $errors->first('image') }}</i>
+          @enderror
         </div>
         <br>
         <div class="row">
@@ -214,9 +222,9 @@
           <div class="col-6">
             <div class="form-group">
              <label for="presentationType">Presentaciones:</label>
-             <select multiple class="form-control" id="presentationType">
+             <select multiple name="presentation[]" class="form-control" id="presentationType">
                @foreach ($presentations as $presentation)
-                 <option>{{$presentation->type}}</option>
+                 <option value="{{ $presentation->id }}">{{$presentation->type}}</option>
                @endforeach
              </select>
            </div>
