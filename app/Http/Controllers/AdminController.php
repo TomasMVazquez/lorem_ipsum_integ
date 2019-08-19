@@ -77,6 +77,69 @@ class AdminController extends Controller
   		return redirect('/admin/add');
     }
 
+    public function store(Request $request)
+    {
+
+      $request->validate([
+  			'category' => 'required',
+        'subcategory' => 'required',
+        'image' => 'nullable | image | mimes:jpg,png,jpeg',
+        'name' => 'required',
+        'brief' => 'required',
+        'description' => 'required',
+        'uses' => 'required',
+        'benefits' => 'required',
+  			'presentation' => 'required',
+  			'rating' => 'required | numeric | between:0,10'
+  		], [
+  			'name.required' => 'El nombre es obligatorio',
+        'brief.required' => 'El resumen es obligatorio',
+        'description.required' => 'La descripcion es obligatorio',
+        'uses.required' => 'Los usos son obligatorio',
+        'benefits.required' => 'Los beneficios son obligatorio',
+        'presentation.required' => 'Los tipos de presentaciones son obligatorio',
+        'rating.required' => 'El rating es obligatorio',
+        'rating.numeric' => 'El rating debe ser un numero del 1 al 10',
+        'rating.between' => 'El rating debe ser un numero del 1 al 10'
+  		]);
+
+      $productToCreate = new Product;
+
+      // Imagen
+      if($request->hasfile('image')){
+
+        // Recupero
+        $images = $request["image"];
+
+        foreach ($images as $image) {
+          // Armo un nombre único para este archivo
+          $finalImage = uniqid("$productToCreate->id _") . "." . $image->extension();
+
+          // Subo el archivo en la carpeta elegida
+          $image->storePubliclyAs("public/items", $finalImage);
+
+          $newProdImage = new image(['product_id' => $productToCreate->id,'route' => $finalImage]);
+
+          $productToCreate->images()->save($newProdImage);
+        }
+      }
+
+
+      $productToCreate->presentation()->attach($request['presentation']);
+
+      $productToCreate->name            = $request['name'];
+  		$productToCreate->brief           = $request['brief'];
+  		$productToCreate->description     = $request['description'];
+  		$productToCreate->rating          = $request['rating'];
+  		$productToCreate->benefits        = $request['benefits'];
+      $productToCreate->uses            = $request['uses'];
+  		$productToCreate->subcategory_id  = $request['subcategory'];
+
+  		$productToCreate->save();
+
+  		return redirect('/admin');
+    }
+
     public function destroy ($id)
   	{
   		$productToDelete = Product::find($id);

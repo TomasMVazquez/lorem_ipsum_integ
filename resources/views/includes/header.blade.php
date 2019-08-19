@@ -1,3 +1,8 @@
+@php
+  use App\Category;
+  $categories = Category::all();
+@endphp
+
 {{-- Comienzo del header --}}
 <header class="bg-dark">
   {{-- comienzp de la nav bar --}}
