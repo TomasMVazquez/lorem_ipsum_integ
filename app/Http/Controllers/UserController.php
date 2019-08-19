@@ -21,31 +21,35 @@ class UserController extends Controller
     	$subcategories = Subcategory::all();
     	$userToUpdate = \Auth::user();
 
-    	// if($req->hasfile('avatar')){
+    	if($req->hasfile('avatar')){
 
-	    //     // Recupero
-	    //     $image = $req["avatar"];
+	    $image = $req["avatar"];
 
-	    //     // Armo un nombre único para este archivo
-	    //     $finalImage = uniqid("img_") . "." . $image->extension();
+	    $finalImage = uniqid("img_") . "." . $image->extension();
 
-	    //     // Subo el archivo en la carpeta elegida
-	    //     $image->storePubliclyAs("public/avatars", $finalImage);
+	    $image->storePubliclyAs("public/avatars", $finalImage);
 
-	    //   }  
+        $userToUpdate->avatar = $finalImage;
 
-	    if($req->has('subcategories')){
+	    }  
+
+        if($req->has('subcategories')){
 
           $subcategories = $req['subcategories'];
           $userToUpdate->subcategories()->attach($subcategories);
         }
 
-    	// $userToUpdate->avatar = $finalImage;
+	    // $subcategories = $req['subcategories'];
+        // $userToUpdate->$req['subcategories'];
+
+    	
     	// $userToUpdate->user = $req['user'];
 		$userToUpdate->first_name = $req['first_name'];
 		$userToUpdate->last_name = $req['last_name'];
 		$userToUpdate->email = $req['email'];
 		$userToUpdate->country = $req['country'];
+
+
 
 
 		$userToUpdate->save();

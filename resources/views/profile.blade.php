@@ -33,7 +33,9 @@
                 <div class="imgContainerProfile">
                   <label for="avatar"><b>Imagen de Perfil</b>
                     <div class="imgPerfil">
-                      <img src="public/avatars/{{Auth::user()->avatar}}" alt="Avatar"  style="cursor:pointer">
+                      <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="Avatar"  style="cursor:pointer">
+
+                     
                     </div>
 
                   </label>
@@ -175,10 +177,19 @@
                           >
                           <span class="slider round"></span>
                         </label>
-                        <em class="switchText">Quiero recibir  $unaNotificacion </em>
+                       
                       </div>
-                     endforeach;  
-                  </div> --}}
+                     endforeach; --}}
+                    <div class="container containerSwitch">
+                       <div class="containerUnSwitch col-12">
+                        <label class="switch">
+                        
+                          <input type="checkbox" name="subcategories[]" value="{{Auth::user()->notifications}}" >
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+                      <em class="switchText">Quiero recibir novedades!</em> 
+                  </div> 
                   <div class="btnForm" style="margin-top:20px">
                     <button class="btn-primary" type="submit">Actualizar</button>
                   </div>
