@@ -17,13 +17,13 @@
         <!-- COMIENZA EL PROFILE -->
         <div class="row">
           <!-- COSTADO CON EL PROFILE -->
-          <aside class="containerAside col-12 col-md-6 col-lg-5">
+          <aside class="containerAside col-12 col-md-6 col-lg-4">
             <div class="aside">
               <br>
-              <h2>Bienvenid@ {{ Auth::user()->first_name }} </h2>
-    <img src="public/avatars/img_5d58a1488f0e4.jpeg" alt="">
+              <h2>Bienvenid@ {{ Auth::user()->first_name }}</h2>
+
               <!-- PONEMOS UN FORMULARIO AUTOCOMPLETADO PARA QUE SI QUIERE LO PUEDA EDITAR -->
-              <form class="profile" method="POST" enctype="multipart/form-data" action="/profile">{{-- {{ route('profile') }} --}}
+              <form class="profile" method="post" enctype="multipart/form-data">
 
                  @csrf
 
@@ -34,8 +34,6 @@
                   <label for="avatar"><b>Imagen de Perfil</b>
                     <div class="imgPerfil">
                       <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="Avatar"  style="cursor:pointer">
-
-                     
                     </div>
 
                   </label>
@@ -46,63 +44,42 @@
                     </div>
                   endif;  --}}
                 </div>
-
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
 
                 <div class="container">
 
-                 
                   <label for="user"><b>Usuario</b></label>
-                  <input type="text" placeholder="Ingresar Usuario"  name="user"  value="{{Auth::user()->user}}"
+                  <input type="text" placeholder="Ingresar Usuario" name="user" value="{{Auth::user()->user}}"
                    disabled>
-                  
-                  
 
-                  <label for="first_name"><b>Nombre</b></label>
-                  <input id="first_name" type="text" placeholder="Ingresar Nombre" name="first_name" class="form-control @error('first_name') is-invalid @enderror"  value="{{Auth::user()->first_name}}"
-                  {{-- style="isset($errorsUpdate['inName']) ? 'border: solid 1.5px #BD3131;' : ''  --}}>
+                  <label for="name"><b>Nombre</b></label>
+                   <input id="first_name" type="text" placeholder="Ingresar Nombre" name="first_name" class="form-control @error('first_name') is-invalid @enderror"  value="{{Auth::user()->first_name}}">
 
-                  <!-- Manejo de errores usuario -->
                   @error('first_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                   @enderror
-                  {{-- if ( isset($errorsUpdate['inName']) ) : 
-                  <div class="alert alert-danger">
-                   $errorsUpdate['inName'] 
-                  </div>--}}
-                  {{-- endif --}}
+
 
                   <label for="lastName"><b>Apellido</b></label>
-                  <input type="text" placeholder="Ingresar Apellido" id="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{Auth::user()->last_name}}"
-                  {{--style=" isset($errorsUpdate['inLastName']) ? 'border: solid 1.5px #BD3131;' : ''  --}}>
-                  <!-- Manejo de errores usuario -->
+                  <input type="text" placeholder="Ingresar Apellido" id="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{Auth::user()->last_name}}">
+                  
                   @error('last_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                   @enderror
-                  {{-- if ( isset($errorsUpdate['inLastName']) ) : 
-                  <div class="alert alert-danger">
-                     $errorsUpdate['inLastName']
-                  </div>
-                   endif; --}}
 
                   <label for="email"><b>Email</b></label>
-                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Ingresar Email" value="{{Auth::user()->email}}"
-                  {{--style="  isset($errorsUpdate['inEmail']) ? 'border: solid 1.5px #BD3131;' : ''  --}}">
-                  <!-- Manejo de errores usuario -->
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Ingresar Email" value="{{Auth::user()->email}}">
+
                   @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                   @enderror
-                  {{--  if ( isset($errorsUpdate['inEmail']) ) :  
-                  <div class="alert alert-danger">
-                     $errorsUpdate['inEmail']  
-                  </div>
-                    endif;  --}}
+
 
                   <label for="country"><b>País</b></label>
                   <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
@@ -122,47 +99,11 @@
 
                   <!-- SWITCH PARA QUE QUIERO VER -->
                   <div class="container containerSwitch">
-                    @foreach ($categories as $category)
+                 {{--    @foreach ($categories as $category) --}}
                       <div class="containerUnSwitch col-12">
-                        <h5>{{$category->name}}</h5>
-                      </div>
-                       
-                          <label for="subcategories"></label>
-
-                        
-                            <div class="container containerSwitch">
-                                @foreach ($subcategories as $subcategory)
-  
-                                  @if ($subcategory->category_id == $category->id)
-                                    <div class="col-6"> 
-                                      <label class="switch">
-
-                                        @foreach (Auth::user()->subcategories as $userCategory)
-                                        
-                                          @if ($userCategory->id != $subcategory->id)
-                                            <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}" >
-                                          @else
-                                            <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}" checked>
-                                          @endif
-
-                                     @endforeach 
-
-                                        <span class="slider round"></span>
-                                      </label>
-                                      <span class="switchText">{{$subcategory->name}}</span>
-                                    </div>                                  
-                                    @endif
-                                 @endforeach
-                            </div>
-                          
-                    @endforeach
-                  </div>
-                  <!-- SWITCH PARA QUE QUIERO RECIBIR -->
-                  {{-- <div class="container containerSwitch">
-                      @foreach ($notificaciones as $unaNotificacion) :  
-                      <div class="containerUnSwitch col-12">
+                        <h5>{{-- {{$category->name}} --}}</h5>
                         <label class="switch">
-                          <input type="checkbox" name="notificaciones[]" value="  $unaNotificacion "
+                          <input type="checkbox" name="categorias[]" value="{{--  $unaCategoria "
                              if ($_POST): 
                                if (isset($categoriasInPost)): 
                                  foreach ($categoriasInPost as $unaCatInPost): 
@@ -172,24 +113,45 @@
                                  endforeach; 
                                endif; 
                              else: 
-                               if (isset($user['notificaciones'])) :  checked  endif; 
-                             endif;  
+                               if (isset($user['categorias'])) : 
+                                 foreach ($user['categorias'] as $categoria) : 
+                                   if ($categoria == $unaCategoria) : 
+                                    checked
+                                   endif; 
+                                 endforeach; 
+                               endif; 
+                             endif;  --}}"
                           >
                           <span class="slider round"></span>
                         </label>
-                       
+                        <span class="switchText switchTextPerfil">{{--  $unaCategoria  --}}</span>
                       </div>
-                     endforeach; --}}
-                    <div class="container containerSwitch">
-                       <div class="containerUnSwitch col-12">
+                   {{--  @endforeach; --}}
+                  </div>
+                  <!-- SWITCH PARA QUE QUIERO RECIBIR -->
+                  <div class="container containerSwitch">
+                    {{--  foreach ($notificaciones as $unaNotificacion) :  --}}
+                      <div class="containerUnSwitch col-12">
                         <label class="switch">
-                        
-                          <input type="checkbox" name="subcategories[]" value="{{Auth::user()->notifications}}" >
+                          <input type="checkbox" name="notificaciones[]" value="{{--  $unaNotificacion  --}}"
+                            {{--  if ($_POST): 
+                               if (isset($categoriasInPost)): 
+                                 foreach ($categoriasInPost as $unaCatInPost): 
+                                   if ($unaCatInPost == $unaCategoria): 
+                                    checked
+                                   endif; 
+                                 endforeach; 
+                               endif; 
+                             else: 
+                               if (isset($user['notificaciones'])) :  checked  endif; 
+                             endif;  --}}
+                          >
                           <span class="slider round"></span>
                         </label>
+                        <em class="switchText">Quiero recibir {{--  $unaNotificacion  --}}</em>
                       </div>
-                      <em class="switchText">Quiero recibir novedades!</em> 
-                  </div> 
+                    {{--  endforeach;  --}}
+                  </div>
                   <div class="btnForm" style="margin-top:20px">
                     <button class="btn-primary" type="submit">Actualizar</button>
                   </div>
@@ -206,7 +168,7 @@
             </div>
           </aside>
           <!-- MAIN CON LOS FAVORITOS -->
-          <main class="containerMain col-12 col-md-6 col-lg-7">
+          <main class="containerMain col-12 col-md-6 col-lg-8">
             <div class="main">
               <hr>
               <div class="container">
@@ -249,3 +211,4 @@
 
 
 @endsection
+
