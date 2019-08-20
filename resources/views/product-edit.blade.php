@@ -5,7 +5,7 @@
 
 @section('mainContent')
 
-  <div class="" style="display: flex; flex-direction: column;">
+  <div class="editAdminMainConteiner">
     <!-- TITULO DE LA PAG -->
     <div class="col-12 col-md-11 col-xl-10">
       <h1 class="titulo">Editar: </h1>
@@ -15,15 +15,14 @@
     <!-- FIN TITULO DE LA PAG -->
 
     {{-- Comienzo del formulario --}}
-    <div class="col-12"
-    style="display: flex; flex-direction: row; justify-content: center;">
-      <form class="col-10" method="POST" enctype="multipart/form-data" action="/admin/{{$productToEdit->id}}" style="padding: 10px;">
+    <div class="col-12 editAdminConteiner">
+      <form class="theEditForm col-12 col-md-10" method="POST" enctype="multipart/form-data" action="/admin/{{$productToEdit->id}}">
         @csrf
         {{ method_field('put') }}
 
         <div class="row">
-          <label class="col-2 text-right">Categoria:</label>
-          <div class="col-4">
+          <label class="col-4 col-md-2 text-right mrgMob">Categoria:</label>
+          <div class="col-8 col-md-4 mrgMob">
 						<select class="form-control" name="category">
 							@foreach ($categories as $category)
                 @if ($productToEdit->subcategory->category->id == $category->id)
@@ -38,8 +37,8 @@
 						@enderror
 					</div>
 
-          <label class="col-2 text-right">Subcategoria:</label>
-          <div class="col-4">
+          <label class="col-4 col-md-2 text-right mrgMob">Subcategoria:</label>
+          <div class="col-8 col-md-4 mrgMob">
 						<select class="form-control" name="subcategory_id">
 							@foreach ($subcategories as $subcategory)
                 @if ($productToEdit->subcategory_id == $subcategory->id)
@@ -59,8 +58,8 @@
         <div class="row">
           @if (count($images)>0)
             @foreach ($images as $image)
-              <div class="col-3">
-                <img src="/storage/items/{{ $image->route }}" alt="" style="width: 260px; height: 250px;">
+              <div class="col-10 col-md-6 col-lg-3">
+                <img class="imgMob" src="/storage/items/{{ $image->route }}" alt="">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" name="image"><code>{{ old('image') }}</code>
                   <label class="custom-file-label">Choose file...</label>
@@ -71,8 +70,8 @@
               </div>
             @endforeach
           @else
-            <div class="col-3">
-              <img src="/imgs/logos/logo-loremipsum-black.png" alt="" style="width: 260px; height: 250px;">
+            <div class="col-10 col-md-6 col-lg-3">
+              <img class="imgMob" src="/imgs/logos/logo-loremipsum-black.png" alt="">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="image">
                 <label class="custom-file-label">Choose file...</label>
