@@ -99,11 +99,21 @@
 
                   <!-- SWITCH PARA QUE QUIERO VER -->
                   <div class="container containerSwitch">
-                 {{--    @foreach ($categories as $category) --}}
+                   @foreach ($categories as $category) 
                       <div class="containerUnSwitch col-12">
-                        <h5>{{-- {{$category->name}} --}}</h5>
-                        <label class="switch">
-                          <input type="checkbox" name="categorias[]" value="{{--  $unaCategoria "
+                        <h5>{{$category->name}}</h5>
+                      </div>
+                        
+                      <div class="containerUnSwitch col-12">
+                        @foreach ($subcategories as $subcategory)
+
+                          @if ($subcategory->category_id == $category->id)
+
+
+                          <div class="col-12"> 
+                             <label class="switch">
+                                <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}"> 
+                          {{--<input type="checkbox" name="categorias[]" value="  $unaCategoria 
                              if ($_POST): 
                                if (isset($categoriasInPost)): 
                                  foreach ($categoriasInPost as $unaCatInPost): 
@@ -120,14 +130,21 @@
                                    endif; 
                                  endforeach; 
                                endif; 
-                             endif;  --}}"
-                          >
-                          <span class="slider round"></span>
-                        </label>
-                        <span class="switchText switchTextPerfil">{{--  $unaCategoria  --}}</span>
+                             endif;">--}}
+                      
+                                <span class="slider round"></span>
+                          
+                            </label>
+                          
+                        <span class="switchText switchTextPerfil"> {{$subcategory->name}}</span>
+                        </div>
+                        @endif
+                        @endforeach
                       </div>
-                   {{--  @endforeach; --}}
+                   @endforeach
                   </div>
+
+
                   <!-- SWITCH PARA QUE QUIERO RECIBIR -->
                   <div class="container containerSwitch">
                     {{--  foreach ($notificaciones as $unaNotificacion) :  --}}
