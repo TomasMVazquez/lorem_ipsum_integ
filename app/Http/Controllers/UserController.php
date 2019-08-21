@@ -19,7 +19,7 @@ class UserController extends Controller
     public function update(Request $req){
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
-    	$userToUpdate = \Auth::user();
+    	$userToUpdate = Auth::user();
 
     	if($req->hasfile('avatar')){
 
