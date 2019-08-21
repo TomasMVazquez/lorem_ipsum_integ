@@ -5,7 +5,7 @@
 
 @section('mainContent')
 
-  <div class="" style="display: flex; flex-direction: column;">
+  <div class="editAdminMainConteiner">
     <!-- TITULO DE LA PAG -->
     <div class="col-12 col-md-11 col-xl-10">
       <h1 class="titulo">Editar: </h1>
@@ -15,15 +15,14 @@
     <!-- FIN TITULO DE LA PAG -->
 
     {{-- Comienzo del formulario --}}
-    <div class="col-12"
-    style="display: flex; flex-direction: row; justify-content: center;">
-      <form class="col-10" method="POST" enctype="multipart/form-data" action="/admin/{{$productToEdit->id}}" style="padding: 10px;">
+    <div class="col-12 editAdminConteiner">
+      <form class="theEditForm col-12 col-md-10" method="POST" enctype="multipart/form-data" action="/admin/{{$productToEdit->id}}">
         @csrf
         {{ method_field('put') }}
 
         <div class="row">
-          <label class="col-2 text-right">Categoria:</label>
-          <div class="col-4">
+          <label class="col-4 col-md-2 text-right mrgMob">Categoria:</label>
+          <div class="col-8 col-md-4 mrgMob">
 						<select class="form-control" name="category">
 							@foreach ($categories as $category)
                 @if ($productToEdit->subcategory->category->id == $category->id)
@@ -38,8 +37,8 @@
 						@enderror
 					</div>
 
-          <label class="col-2 text-right">Subcategoria:</label>
-          <div class="col-4">
+          <label class="col-4 col-md-2 text-right mrgMob">Subcategoria:</label>
+          <div class="col-8 col-md-4 mrgMob">
 						<select class="form-control" name="subcategory_id">
 							@foreach ($subcategories as $subcategory)
                 @if ($productToEdit->subcategory_id == $subcategory->id)
@@ -59,10 +58,10 @@
         <div class="row">
           @if (count($images)>0)
             @foreach ($images as $image)
-              <div class="col-3">
-                <img src="/storage/items/{{ $image->route }}" alt="" style="width: 260px; height: 250px;">
+              <div class="col-10 col-md-6 col-lg-3 imgFormGroup">
+                <img class="imgMob" src="/storage/items/{{ $image->route }}" alt="">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" name="image"><code>{{ old('image') }}</code>
+                  <input type="file" class="custom-file-input" name="image">
                   <label class="custom-file-label">Choose file...</label>
                 </div>
                 @error ('image')
@@ -71,8 +70,8 @@
               </div>
             @endforeach
           @else
-            <div class="col-3">
-              <img src="/imgs/logos/logo-loremipsum-black.png" alt="" style="width: 260px; height: 250px;">
+            <div class="col-10 col-md-6 col-lg-3 imgFormGroup">
+              <img class="imgMob" src="/imgs/logos/logo-loremipsum-black.png" alt="">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="image">
                 <label class="custom-file-label">Choose file...</label>
@@ -86,7 +85,7 @@
         </div>
         <br>
         <div class="row">
-          <div class="col-6">
+          <div class="col-10 col-md-6">
   					<div class="form-group">
   						<label>Nombre:</label>
               <textarea rows='2' name="name" class="form-control" value="">{{ old('name', $productToEdit->name) }}</textarea>
@@ -96,7 +95,7 @@
   					</div>
   				</div>
 
-          <div class="col-6">
+          <div class="col-10 col-md-6">
             <div class="form-group">
               <label>Detalle:</label>
               <textarea rows='2' name="brief" class="form-control" value="">{{ old('brief', $productToEdit->brief) }}</textarea>
@@ -108,7 +107,7 @@
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-10 col-md-6">
             <div class="form-group">
               <label>Descripcion:</label>
               <textarea rows='6' name="description" class="form-control" value="">{{ old('description', $productToEdit->description) }}</textarea>
@@ -118,7 +117,7 @@
             </div>
           </div>
 
-          <div class="col-6">
+          <div class="col-10 col-md-6">
             <div class="form-group">
               <label>Usos:</label>
               <textarea rows='6' name="uses" class="form-control" value="">{{ old('uses', $productToEdit->uses) }}</textarea>
@@ -130,7 +129,7 @@
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-10 col-md-6">
             <div class="form-group">
               <label>Beneficios:</label>
               <textarea rows='3' name="benefits" class="form-control" value="">{{ old('benefits', $productToEdit->benefits) }}</textarea>
@@ -140,7 +139,7 @@
             </div>
           </div>
 
-          <div class="col-6">
+          <div class="col-10 col-md-6">
             <div class="form-group">
              <label for="presentationType">Presentaciones:</label>
              <select multiple name="presentation[]" class="form-control" id="presentationType">
@@ -162,7 +161,7 @@
         </div>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-10 col-md-6">
             <div class="form-group">
               <label>Rating:</label>
               <input type="text" name="rating" class="form-control" value="{{ old('rating', $productToEdit->rating) }}">
@@ -175,8 +174,8 @@
         </div>
 
         <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary">
+          <div class="col-12 text-right">
+            <button type="submit" class="col-12 col-md-3 btn btn-primary">
               EDITAR
             </button>
           </div>
