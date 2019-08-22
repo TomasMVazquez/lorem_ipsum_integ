@@ -17,11 +17,11 @@
   </div>
 
 
-  {{-- @if ($errors)
+@if ($errors)
     @foreach ($errors->all() as $error)
       <p>{{ $error }}</p>
     @endforeach
-  @endif --}}
+  @endif 
 
 
 <div class="mainContainer">

@@ -62,7 +62,6 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'country' => ['required'],
-            'province' => ['required'],
             'avatar' => ['image'],
             'password' => ['required', 'min:5', 'confirmed', 'regex:/DH/'],
         ], [
@@ -73,7 +72,6 @@ class RegisterController extends Controller
             'email.required' => 'Por favor, ingresá tu email',
             'email.unique' => 'Ya existe une usuarie con ese email',
             'country.required' => 'Por favor, seleccioná tu país',
-            'province.required' => 'Por favor, seleccioná tu provincia',
             'image' => 'El archivo seleccionado no es una imagen',
             'password.required' => 'Por favor, ingresá una contraseña',
             'password.min' => 'Tu conraseña debe tener al menos 5 caracteres'
@@ -92,7 +90,7 @@ class RegisterController extends Controller
       $request = app('request');
 
       // Imagen de perfil
-      if ($data["avatar"]) {
+      if (isset($data["avatar"])) {
         // Recupero
         $image = $data["avatar"];
 
@@ -148,14 +146,14 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'country' => $data['country'],
-            //'avatar' => isset($finalImage) ? $finalImage : 'img_avatar4.png',
+            'avatar' => isset($finalImage) ? $finalImage : 'img_avatar4.png',
             'notifications'=> $data['notifications'],
             'password' => Hash::make($data['password']),
         ]);
 
-        if (isset($finalImage)) {
-          $user->avatar = $finalImage;
-        }
+        // if (isset($finalImage)) {
+        //   $user->avatar = $finalImage;
+        // }
 
         // Subcategorias
         if($request->has('subcategories')){
