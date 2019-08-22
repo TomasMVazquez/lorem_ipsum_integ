@@ -62,18 +62,20 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'country' => ['required'],
+            //'province' => ['required'],
             'avatar' => ['image'],
             'password' => ['required', 'min:5', 'confirmed', 'regex:/DH/'],
         ], [
-            'user.required' => 'Debes ingresar un nombre de usuarie',
+            'user.required' => 'Por favor, ingresá un nombre de usuarie',
             'user.unique' => 'Ya existe une usuarie con ese nombre',
-            'first_name.required' => 'Debes ingresar tu nombre',
-            'last_name.required' => 'Debes ingresar tu apellido',
-            'email.required' => 'Debes ingresar tu email',
+            'first_name.required' => 'Por favor, ingresá tu nombre',
+            'last_name.required' => 'Por favor, ingresá tu apellido',
+            'email.required' => 'Por favor, ingresá tu email',
             'email.unique' => 'Ya existe une usuarie con ese email',
-            'country.required' => 'Debes seleccionar tu país',
+            'country.required' => 'Por favor, seleccioná tu país',
+            //'provincia.required' => 'Por favor, seleccioná tu provincia',
             'image' => 'El archivo seleccionado no es una imagen',
-            'password.required' => 'Debes ingresar una contraseña',
+            'password.required' => 'Por favor, ingresá una contraseña',
             'password.min' => 'Tu conraseña debe tener al menos 5 caracteres'
 
         ]);
@@ -90,6 +92,21 @@ class RegisterController extends Controller
       $request = app('request');
 
       // Imagen de perfil
+      if ($data["avatar"]) {
+        // Recupero
+        $image = $data["avatar"];
+
+        // Armo un nombre único para este archivo
+        $finalImage = uniqid("img_") . "." . $image->extension();
+
+        // Subo el archivo en la carpeta elegida
+        $image->storePubliclyAs("/public/avatars", $finalImage);
+      }
+
+
+
+
+/*
       if($request->hasfile('avatar')){
 
         // Recupero
@@ -104,7 +121,7 @@ class RegisterController extends Controller
       } else {
         $finalImage = 'img_avatar4.png';
       }
-
+*/
 /*
         return User::create([
             'user' => $data['user'],
@@ -131,10 +148,14 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'country' => $data['country'],
-            'avatar' => $finalImage,
+            //'avatar' => isset($finalImage) ? $finalImage : 'img_avatar4.png',
             'notifications'=> $data['notifications'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if (isset($finalImage)) {
+          $user->avatar = $finalImage;
+        }
 
         // Subcategorias
         if($request->has('subcategories')){

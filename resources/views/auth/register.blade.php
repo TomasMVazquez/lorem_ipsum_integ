@@ -24,8 +24,16 @@
     <!-- FIN TITULO DE LA PAG -->
   </div>
 
+  @if ($errors)
+    @foreach ($errors->all() as $error)
+      <p>{{ $error }}</p>
+    @endforeach
+  @endif
+
 
 <div class="mainContainer">
+
+
 
     <form class="col-12 col-md-11 col-xl-10" method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
       @csrf
@@ -114,7 +122,8 @@
                   <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
                     <option value="">Seleccionar país</option>
                     @foreach ($arrayPaises as $pais)
-                        <option value="{{$pais["alpha2Code"]}}"> {{$pais["name"]}} </option>
+                        <option value="{{$pais["alpha2Code"]}}" {{ old('country') == $pais["alpha2Code"] ? 'selected' : null }}
+      								> {{$pais["name"]}} </option>
                     @endforeach
                   </select>
                 @error('country')
@@ -122,6 +131,31 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <label for="country" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('País') }}</label>
+
+
+            <div class="col-md-8 col-xl-10">
+                  <select class="form-control @error('country') is-invalid @enderror custom-select" name="country2">
+
+                    <option value="">Seleccionar país</option>
+
+                  </select>
+
+            </div>
+        </div>
+        <div class="selectProvince form-group row" style="display:none">
+            <label for="province" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('Provincia') }}</label>
+
+
+            <div class="col-md-8 col-xl-10">
+                  <select class="form-control @error('province') is-invalid @enderror custom-select"  name="province">
+                    <option value="">Seleccionar provincia</option>
+                  </select>
+
             </div>
         </div>
 
@@ -144,7 +178,7 @@
                   <input type="checkbox" name="categories[]">
                   <span class="slider round"></span>
                 </label> --}}
-                <span class="switchText">{{$oneCategory->name}}</span>
+                <span class="switchText"> <strong>{{$oneCategory->name}}</strong></span>
               </div>
 
               <label for="subcategories"></label>
@@ -156,7 +190,8 @@
 
                     <div class="containerUnSwitchCat col-6 col-md-4 col-xl-4">
                       <label class="switch">
-                        <input type="checkbox" name="subcategories[]" value="{{$oneSubcategory->id}}">
+                        <input type="checkbox" name="subcategories[]" value="{{$oneSubcategory->id}}" {{ old("subcategories[]") == $oneSubcategory->id ? 'checked' : null }}
+      								>
                         <span class="slider round"></span>
                       </label>
                       <span class="switchText">{{$oneSubcategory->name}}</span>
@@ -252,4 +287,7 @@
   </form>
 
 </div>
+<script type="text/javascript" src="/js/countries.js"></script>
+<script type="text/javascript" src="/js/provinces.js"></script>
+
 @endsection
