@@ -38,7 +38,17 @@
               </h5>
               <div>
                 <ul class="corazon">
-                  <li style="width:20%"><i class="far fa-heart"></i></li>
+                  <li style="width:20%">
+                    <form class="" action="/products" method="post" style="margin:0;">
+                      @csrf
+                      {{ method_field('put') }}
+                      <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
+                      <input class="form-control" type="text" name="user-id" readonly value="{{ Auth::user()->id }}" style="display:none;">
+                      <button type="submit" name="button" style="background: none;border: none;padding:0;">
+                        <i class="far fa-heart"></i>
+                      </button>
+                    </form>
+                  </li>
                 </ul>
               </div>
             </div>

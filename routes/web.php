@@ -26,6 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/faqs', function () {return view('faqs');});
 
 Route::get('/products', 'ProductController@index')->name('index');
+Route::put('/products', 'ProductController@fav')->middleware('auth');
 
 Route::get('/products/{id}', 'ProductController@show')->name('show');
 

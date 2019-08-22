@@ -63,7 +63,17 @@ class CreateRelationalsTablesDb extends Migration
           array('product_id' => '3','route' => '3.jpg'),
           array('product_id' => '4','route' => '4.jpg'),
           array('product_id' => '5','route' => '5.jpg'),
-          array('product_id' => '6','route' => '6.jpg')
+          array('product_id' => '6','route' => '6.jpg'),
+          array('product_id' => '7','route' => '6.jpg'),
+          array('product_id' => '8','route' => '6.jpg'),
+          array('product_id' => '9','route' => '6.jpg'),
+          array('product_id' => '10','route' => '6.jpg'),
+          array('product_id' => '11','route' => '6.jpg'),
+          array('product_id' => '12','route' => '6.jpg'),
+          array('product_id' => '13','route' => '6.jpg'),
+          array('product_id' => '14','route' => '6.jpg'),
+          array('product_id' => '15','route' => '6.jpg'),
+          array('product_id' => '16','route' => '6.jpg')
       ));
 
     }
