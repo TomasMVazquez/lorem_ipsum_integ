@@ -6,7 +6,7 @@
 
   {{--REVISAR CODIGO - UBICACIÓN Y LOGICA - HACER ROUTE Y CONTROLLER?? --}}
 
-  <div class="mainContainer">
+  {{--}}<div class="mainContainer">
     <!-- TITULO DE LA PAG -->
     <div class="col-12 col-md-11 col-xl-10">
       <h1 class="titulo">Cambiar Contraseña</h1>

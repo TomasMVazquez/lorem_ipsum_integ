@@ -27,10 +27,14 @@ Route::get('/faqs', function () {return view('faqs');});
 
 //ruta para todos los productos
 Route::get('/products', 'ProductController@index')->name('index');
+<<<<<<< Updated upstream
 
 //Rutas para ir por categoria
 Route::get('/products/categoria/{category_id}', 'ProductController@categoria')->name('index');
 Route::put('/products/categoria/{category_id}', 'ProductController@fav')->middleware('auth');
+=======
+Route::put('/products', 'ProductController@fav')->middleware('auth');
+>>>>>>> Stashed changes
 
 //Ruta para el buscador
 Route::any('/search', 'ProductController@search');
@@ -41,6 +45,13 @@ Route::get('/products/{id}', 'ProductController@show')->name('show');
 Route::get('/profile', 'UserController@show')->name('profile');
 
 Route::put('/profile', 'UserController@update')->name('update');
+
+
+//ChangePass
+
+//Route::get('/changePass', 'UserController@showChangePassForm');
+
+
 
 // Administrador index
 Route::get('/admin', 'AdminController@index')->middleware('isAdmin');
