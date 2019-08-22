@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Subcategory;
 use App\Product;
+use App\Image;
 
 class UserController extends Controller
 {
@@ -13,7 +14,8 @@ class UserController extends Controller
     	$categories = Category::all();
     	$products = Product::all();
     	$subcategories = Subcategory::all();
-    	return view('profile', compact('products','subcategories', 'categories'));
+      $images = Image::all();
+    	return view('profile', compact('products','subcategories', 'categories','images'));
     }
 
     public function update(Request $req){
@@ -47,7 +49,7 @@ class UserController extends Controller
 	    // $subcategories = $req['subcategories'];
         // $userToUpdate->$req['subcategories'];
 
-    	
+
     	// $userToUpdate->user = $req['user'];
         $userToUpdate->avatar = (isset($finalImage))?$finalImage:'img_avatar4.png';
 		$userToUpdate->first_name = $req['first_name'];
@@ -61,5 +63,5 @@ class UserController extends Controller
 
     }
 
-   
+
 }

@@ -9,7 +9,7 @@
   $countries = file_get_contents('https://restcountries.eu/rest/v2/all');
   //Los pasamos a un array
   $arrayCountries = json_decode($countries,true);
-  
+
    ?>
 
 <div class="containerProfile">
@@ -38,9 +38,9 @@
 
                   </label>
                   <input id="avatar" type="file" name="avatar" class="custom-file-input">
-                  {{--  if ( isset($errorsRegister['inAvatar']) ) : 
+                  {{--  if ( isset($errorsRegister['inAvatar']) ) :
                     <div class="alert alert-danger">
-                       $errorsInRegister['inAvatar'] 
+                       $errorsInRegister['inAvatar']
                     </div>
                   endif;  --}}
                 </div>
@@ -64,7 +64,7 @@
 
                   <label for="lastName"><b>Apellido</b></label>
                   <input type="text" placeholder="Ingresar Apellido" id="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{Auth::user()->last_name}}">
-                  
+
                   @error('last_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -83,13 +83,13 @@
 
                   <label for="country"><b>País</b></label>
                   <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
-                   @foreach ($arrayCountries as $country): 
-                      @if (Auth::user()->country == $country["alpha2Code"]): 
+                   @foreach ($arrayCountries as $country):
+                      @if (Auth::user()->country == $country["alpha2Code"]):
                         <option value="{{$country["alpha2Code"]}}" selected > {{$country["name"]}} </option>
-                       @else: 
+                       @else:
                         <option value="{{$country["alpha2Code"]}} "> {{$country["name"]}} </option>
                        @endif
-                    @endforeach; 
+                    @endforeach;
                   </select>
                   @error('country')
                     <span class="invalid-feedback" role="alert">
@@ -99,7 +99,7 @@
 
                   <!-- SWITCH PARA QUE QUIERO VER -->
                   <div class="container containerSwitch">
-                   @foreach ($categories as $category) 
+                   @foreach ($categories as $category)
                       <div class="containerUnSwitch col-12">
 
                         <h5 class="m-3"> {{$category->name}}</h5>
@@ -121,7 +121,7 @@
                                         @else
                                           @if (isset(Auth::user()->subcategories))
                                             @foreach (Auth::user()->subcategories as $userSubcategory)
-                                           
+
                                                @if ($userSubcategory->id == $subcategory->id) checked
                                                 @endif
                                             @endforeach
@@ -129,17 +129,17 @@
                                         @endif >
 
 
-                                       
+
                                     <span class="slider round"></span>
                                   </label>
                                   <span class="switchText switchTextPerfil"> {{$subcategory->name}}</span>
                                 </div>
                             @endif
                           @endforeach
-                         
+
                       </div>
-                        
-                      
+
+
                    @endforeach
                   </div>
 
@@ -150,16 +150,16 @@
                       <div class="containerUnSwitch col-12">
                         <label class="switch">
                           <input type="checkbox" name="notificaciones[]" value="{{--  $unaNotificacion  --}}"
-                            {{--  if ($_POST): 
-                               if (isset($categoriasInPost)): 
-                                 foreach ($categoriasInPost as $unaCatInPost): 
-                                   if ($unaCatInPost == $unaCategoria): 
+                            {{--  if ($_POST):
+                               if (isset($categoriasInPost)):
+                                 foreach ($categoriasInPost as $unaCatInPost):
+                                   if ($unaCatInPost == $unaCategoria):
                                     checked
-                                   endif; 
-                                 endforeach; 
-                               endif; 
-                             else: 
-                               if (isset($user['notificaciones'])) :  checked  endif; 
+                                   endif;
+                                 endforeach;
+                               endif;
+                             else:
+                               if (isset($user['notificaciones'])) :  checked  endif;
                              endif;  --}}
                           >
                           <span class="slider round"></span>
@@ -195,7 +195,7 @@
               @foreach ($products as $product)
                 @foreach (Auth::user()->products as $userProduct)
                   @if($userProduct->id == $product->id)
-                    
+
                     <div class="col-12 justify-content-center">
                     <div class="card">
                       <div class="tituloCardFav">
@@ -206,25 +206,25 @@
                       </div>
                       <div class="row no-gutters">
                         <div class="col-4">
-                          <img src="imgs/items/1.jpg" class="fav-img" alt="...">
+                          <img src="/storage/items/{{ $userProduct->images->first()->route }}" class="fav-img" alt="...">
                         </div>
                         <div class="col-8">
                           <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="buttonsCard">
+                            <p class="card-text">{{$userProduct->brief}}</p>
+                            {{-- <div class="buttonsCard">
                               <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
 
-                            </div>
+                            </div> --}}
                           </div>
                         </div>
                       </div>
                     </div>
                 </div>
                 @endif
-              
+
                 @endforeach
               @endforeach
-              
+
               <!--FIN TARJETAS FAVORITOS -->
             </div>
           </main>
@@ -236,4 +236,3 @@
 
 
 @endsection
-
