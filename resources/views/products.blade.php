@@ -43,7 +43,11 @@
                       @csrf
                       {{ method_field('put') }}
                       <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
-                      <input class="form-control" type="text" name="user-id" readonly value="{{ Auth::user()->id }}" style="display:none;">
+                      <input class="form-control" type="text" name="user-id" readonly value="
+                      @auth
+                        {{ Auth::user()->id }}
+                      @endauth
+                      " style="display:none;">
                       <button type="submit" name="button" style="background: none;border: none;padding:0;">
                         <i class="far fa-heart"></i>
                       </button>
