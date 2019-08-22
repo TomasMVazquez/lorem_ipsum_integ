@@ -361,21 +361,23 @@ form button{
 img.avatar {
   width: 80%;
   border-radius: 50%;
-  border: 3px solid black;
 }
 
 .imgtexto {
   color: #000;
-  text-transform: uppercase;
   background-color: rgba(255,255,255,0.5);
   display: inline-block;
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 60%;
-  left: 50%;
+}
+
+.imgError {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+
 }
 /* ------------------  Style Switch ------------------  */
 
@@ -424,6 +426,25 @@ img.avatar {
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+}
+
+.switchTextCat{
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: 0.8em;
+  padding: 2px 10px;
+
+}
+
+.switchTextNoticias{
+  margin-left: 10px;
+  line-height: 3em;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.8em;
+  transform: translateY(-10%);
 }
 
 .slider:before {
@@ -922,18 +943,14 @@ footer a:hover{
     line-height: 2em;
   }
 
+
+
   .imgtexto {
     color: #000;
-    text-transform: uppercase;
-    background-color: rgba(255,255,255,0.5);
     display: inline-block;
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 40%;
-    left: 50%;
   }
 
   /* --------------------------------------------------------------------------------- Perfil */
@@ -969,6 +986,7 @@ footer a:hover{
   .imgContainerProfile img.avatar{
     width: 40%;
   }
+
   img.avatar {
       width: 100%;
   }
@@ -1125,17 +1143,14 @@ form button.volver{
 /* --------------------------------------------------------------------------------- Register */
 .imgtexto {
   color: #000;
-  text-transform: uppercase;
-  background-color: rgba(255,255,255,0.5);
   display: inline-block;
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 60%;
-  left: 50%;
 }
+
+
+
 /* --------------------------------------------------------------------------------- HEADER */
 
 .mainHeader {

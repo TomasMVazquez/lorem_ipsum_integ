@@ -4,14 +4,6 @@
 
 @section('mainContent')
 
-  <?php //Buscamos los paises en la API
-  $paises = file_get_contents('https://restcountries.eu/rest/v2/all');
-  //Los pasamos a un array
-  $arrayPaises = json_decode($paises,true);
-
-?>
-
-
 
   <div class="mainContainer">
     <!-- TITULO DE LA PAG -->
@@ -24,11 +16,12 @@
     <!-- FIN TITULO DE LA PAG -->
   </div>
 
-  @if ($errors)
+
+  {{-- @if ($errors)
     @foreach ($errors->all() as $error)
       <p>{{ $error }}</p>
     @endforeach
-  @endif
+  @endif --}}
 
 
 <div class="mainContainer">
@@ -44,17 +37,19 @@
       <div class="imgcontainer col-12 col-md-5 col-xl-4">
         <label for="avatar">
           <img src="/imgs/img_avatar4.png" alt="Avatar" class="avatar" style="cursor:pointer">
-          <span class="imgtexto">Foto de Perfil</span>
+          <span class="imgtexto">Hacé click en la imagen <br> para agregar tu foto</span>
+          @error('avatar')
+              <span class="invalid-feedback imgError" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
         </label>
         <input id="avatar" type="file" name="avatar" class="custom-file-input">
-        <!-- Manejo de errores en la imagen -->
-        @error('avatar')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
 
       </div>
+
+      <!-- Manejo de errores en la imagen -->
+
       <!-- FIN CONTENEDOR IMAGEN AVATAR -->
 
       <!-- CONTENEDOR USUARIO NOMBRE APELLIDO EMAIL PAIS -->
@@ -115,35 +110,22 @@
             </div>
         </div>
 
+
         <div class="form-group row">
             <label for="country" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('País') }}</label>
+
 
             <div class="col-md-8 col-xl-10">
                   <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
-                    <option value="">Seleccionar país</option>
-                    @foreach ($arrayPaises as $pais)
-                        <option value="{{$pais["alpha2Code"]}}" {{ old('country') == $pais["alpha2Code"] ? 'selected' : null }}
-      								> {{$pais["name"]}} </option>
-                    @endforeach
-                  </select>
-                @error('country')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-        </div>
-        <div class="form-group row">
-            <label for="country" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('País') }}</label>
-
-
-            <div class="col-md-8 col-xl-10">
-                  <select class="form-control @error('country') is-invalid @enderror custom-select" name="country2">
 
                     <option value="">Seleccionar país</option>
 
                   </select>
+                  @error('country')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
 
             </div>
         </div>
@@ -155,6 +137,11 @@
                   <select class="form-control @error('province') is-invalid @enderror custom-select"  name="province">
                     <option value="">Seleccionar provincia</option>
                   </select>
+                  @error('province')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
 
             </div>
         </div>
@@ -170,7 +157,7 @@
     <div>
       <div class="col-12">
         <!-- SWITCH PARA QUE QUIERO VER -->
-        <label for="categories"><b>Categorías</b></label>
+        <label for="categories"><b>¿Qué te interesa?</b></label>
         <div class="container containerSwitch">
             @foreach ($categories as $oneCategory)
               <div class="containerUnSwitchCat col-6 col-md-4 col-xl-4">
@@ -178,7 +165,7 @@
                   <input type="checkbox" name="categories[]">
                   <span class="slider round"></span>
                 </label> --}}
-                <span class="switchText"> <strong>{{$oneCategory->name}}</strong></span>
+                <span class="switchTextCat"> <strong>{{$oneCategory->name}}</strong></span>
               </div>
 
               <label for="subcategories"></label>
@@ -203,11 +190,7 @@
 
               </div>
             @endforeach
-            @error('subcategories[]')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+
         </div>
         <!-- FIN SWITCH PARA QUE QUIERO VER -->
         <!-- SWITCH PARA QUE QUIERO RECIBIR -->
@@ -226,7 +209,7 @@
                  >
                 <span class="slider round"></span>
               </label>
-              <em class="switchText">Quiero recibir noticias </em>
+              <strong class="switchTextNoticias">Quiero recibir noticias!</strong>
             </div>
         </div>
         <!-- FIN SWITCH PARA QUE QUIERO RECIBIR -->
@@ -268,8 +251,8 @@
     </div>
 
     <div>
-        Al crearse una cuenta, usted acepta nuestros
-        <a href="#" style="color:dodgerblue">Terminos & Condiciones</a>.
+        Al crear una cuenta, aceptás nuestros
+        <a href="#" style="color:dodgerblue">Términos & Condiciones</a>.
     </div>
 
       </div>
