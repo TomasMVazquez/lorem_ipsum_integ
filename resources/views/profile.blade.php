@@ -101,46 +101,45 @@
                   <div class="container containerSwitch">
                    @foreach ($categories as $category) 
                       <div class="containerUnSwitch col-12">
-                        <h5>{{$category->name}}</h5>
-                      </div>
-                        
-                      <div class="containerUnSwitch col-12">
+
+                        <h5 class="m-3"> {{$category->name}}</h5>
+
                         @foreach ($subcategories as $subcategory)
 
-                          @if ($subcategory->category_id == $category->id)
+                            @if ($subcategory->category_id == $category->id)
+                                <div class="col-12">
+                                  <label class="switch">
+                                    <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}"
+                                      @if ($_POST)
+                                        @if (isset($categoriesInPost))
+                                          @foreach ($categoriesInPost as $categoryInPost)
+                                            @if ($categoryInPost == $subcategory->id) checked
+                                            @endif
+                                          @endforeach
+                                        @endif
+
+                                        @else
+                                          @if (isset(Auth::user()->subcategories))
+                                            @foreach (Auth::user()->subcategories as $userSubcategory)
+                                           
+                                               @if ($userSubcategory->id == $subcategory->id) checked
+                                                @endif
+                                            @endforeach
+                                          @endif
+                                        @endif >
 
 
-                          <div class="col-12"> 
-                             <label class="switch">
-                                <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}"> 
-                          {{--<input type="checkbox" name="categorias[]" value="  $unaCategoria 
-                             if ($_POST): 
-                               if (isset($categoriasInPost)): 
-                                 foreach ($categoriasInPost as $unaCatInPost): 
-                                   if ($unaCatInPost == $unaCategoria): 
-                                    checked
-                                   endif; 
-                                 endforeach; 
-                               endif; 
-                             else: 
-                               if (isset($user['categorias'])) : 
-                                 foreach ($user['categorias'] as $categoria) : 
-                                   if ($categoria == $unaCategoria) : 
-                                    checked
-                                   endif; 
-                                 endforeach; 
-                               endif; 
-                             endif;">--}}
-                      
-                                <span class="slider round"></span>
-                          
-                            </label>
-                          
-                        <span class="switchText switchTextPerfil"> {{$subcategory->name}}</span>
-                        </div>
-                        @endif
-                        @endforeach
+                                       
+                                    <span class="slider round"></span>
+                                  </label>
+                                  <span class="switchText switchTextPerfil"> {{$subcategory->name}}</span>
+                                </div>
+                            @endif
+                          @endforeach
+                         
                       </div>
+                        
+                      
                    @endforeach
                   </div>
 
@@ -174,7 +173,7 @@
                   </div>
                   <hr>
                   <div class="btnForm">
-                    <a class="btn btn-secondary" href="change_pass.php">Modificar Contraseña</a>
+                    <a class="btn btn-secondary" href="">Modificar Contraseña</a>
                   </div>
                   <hr>
                   <div class="btnForm btnLogOut">
@@ -189,34 +188,43 @@
             <div class="main">
               <hr>
               <div class="container">
-                <h2>Estos son tus favoritos</h2>
+                <h5>Estos son tus favoritos</h5>
               </div>
               <hr>
               <!-- TARJETAS FAVORITOS -->
-              <div class="col-12 justify-content-center">
-                <div class="card">
-                  <div class="tituloCardFav">
-                    <h3 class="card-title">Card title</h3>
-                    <div class="corazon">
-                      <i class="far fa-heart"></i>
-                    </div>
-                  </div>
-                  <div class="row no-gutters">
-                    <div class="col-4">
-                      <img src="imgs/items/1.jpg" class="card-img" alt="...">
-                    </div>
-                    <div class="col-8">
-                      <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="buttonsCard">
-                          <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
+              @foreach ($products as $product)
+                @foreach (Auth::user()->products as $userProduct)
+                  @if($userProduct->id == $product->id)
+                    
+                    <div class="col-12 justify-content-center">
+                    <div class="card">
+                      <div class="tituloCardFav">
+                        <h5 class="card-title">{{$userProduct->name}}</h5>
+                        <div class="corazon">
+                          <i class="far fa-heart"></i>
+                        </div>
+                      </div>
+                      <div class="row no-gutters">
+                        <div class="col-4">
+                          <img src="imgs/items/1.jpg" class="fav-img" alt="...">
+                        </div>
+                        <div class="col-8">
+                          <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="buttonsCard">
+                              <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
 
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+                @endif
+              
+                @endforeach
+              @endforeach
+              
               <!--FIN TARJETAS FAVORITOS -->
             </div>
           </main>

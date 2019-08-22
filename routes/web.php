@@ -21,6 +21,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 Route::get('/faqs', function () {return view('faqs');});
 
 Route::get('/products', 'ProductController@index')->name('index');

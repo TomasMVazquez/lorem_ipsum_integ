@@ -19,38 +19,41 @@ class UserController extends Controller
     public function update(Request $req){
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
-    	$userToUpdate = Auth::user();
+    	$userToUpdate = \Auth::user();
 
-    	if($req->hasfile('avatar')){
+    	if(ISSET($req['avatar'])){
 
-	    $image = $req["avatar"];
+            // Recupero
+            $image = $req["avatar"];
 
-	    $finalImage = uniqid("img_") . "." . $image->extension();
+            // Armo un nombre único para este archivo
+            $finalImage = uniqid("img_") . "." . $image->extension();
 
-	    $image->storePubliclyAs("public/avatars", $finalImage);
+            // Subo el archivo en la carpeta elegida
+            $image->storePubliclyAs("public/avatars", $finalImage);
 
-        $userToUpdate->avatar = $finalImage;
-
-	    }  
-
-        if($req->has('subcategories')){
-
-          $subcategories = $req['subcategories'];
-          $userToUpdate->subcategories()->attach($subcategories);
+      }
+        if(isset($req['subcategories'])){
+            $subcategories = $req['subcategories'];
+            $userToUpdate->subcategories()->sync($subcategories);
         }
+
+        // if($req->has('subcategories')){
+
+        //   $subcategories = $req['subcategories'];
+        //   $userToUpdate->subcategories()->attach($subcategories);
+        // }
 
 	    // $subcategories = $req['subcategories'];
         // $userToUpdate->$req['subcategories'];
 
     	
     	// $userToUpdate->user = $req['user'];
+        $userToUpdate->avatar = (isset($finalImage))?$finalImage:'img_avatar4.png';
 		$userToUpdate->first_name = $req['first_name'];
 		$userToUpdate->last_name = $req['last_name'];
 		$userToUpdate->email = $req['email'];
 		$userToUpdate->country = $req['country'];
-
-
-
 
 		$userToUpdate->save();
 
