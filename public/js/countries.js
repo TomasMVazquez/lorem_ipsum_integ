@@ -1,4 +1,4 @@
-var selectCountries = document.querySelector('select[name=country2]');
+var selectCountries = document.querySelector('select[name=country]');
 var divSelectProvince = document.querySelector('.selectProvince');
 
 

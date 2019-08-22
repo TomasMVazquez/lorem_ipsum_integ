@@ -62,7 +62,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'country' => ['required'],
-            //'province' => ['required'],
+            'province' => ['required'],
             'avatar' => ['image'],
             'password' => ['required', 'min:5', 'confirmed', 'regex:/DH/'],
         ], [
@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'email.required' => 'Por favor, ingresá tu email',
             'email.unique' => 'Ya existe une usuarie con ese email',
             'country.required' => 'Por favor, seleccioná tu país',
-            //'provincia.required' => 'Por favor, seleccioná tu provincia',
+            'province.required' => 'Por favor, seleccioná tu provincia',
             'image' => 'El archivo seleccionado no es una imagen',
             'password.required' => 'Por favor, ingresá una contraseña',
             'password.min' => 'Tu conraseña debe tener al menos 5 caracteres'
