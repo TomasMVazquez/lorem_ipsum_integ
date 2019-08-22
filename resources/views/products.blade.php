@@ -12,7 +12,11 @@
 <!--encabezado-->
 
         <div>
-          <h1 class="tit-productos">Productos</h1>
+          @if ($title!=null)
+            <h1 class="tit-productos">{{ $title->name }}</h1>
+          @else
+            <h1 class="tit-productos">Productos</h1>
+          @endif
           <section class="banner-seccion-producto">
             <img class="img-fluid imgbanner" src="imgs/banner-seccion-producto.png" alt="banner">
             <h2 class="titseccion"> Cabello</h2>

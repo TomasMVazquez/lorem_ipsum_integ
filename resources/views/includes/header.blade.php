@@ -70,8 +70,9 @@
             Productos
           </a>
           <div class="dropdown-menu  text-center">
+            <a class="dropdown-item" href="/products">Todes</a>
             @foreach ($categories as $category)
-              <a class="dropdown-item" href="/products">{{ $category->name }}</a>
+              <a class="dropdown-item" href="/products/categoria/{{ $category->id }}">{{ $category->name }}</a>
             @endforeach
           </div>
         </li>
