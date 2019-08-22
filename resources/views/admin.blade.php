@@ -6,11 +6,11 @@
 
 {{-- {{Auth::User()}} --}}
 {{-- Conetnedor del admin --}}
-  <div class="adminConteiner" style="margin: 20px;display: flex;flex-direction: column;">
+  <div class="adminConteiner">
 {{-- titulo --}}
     <h1 class="tit-productos">Administrador de Productos</h1>
 {{-- boton agregar producto --}}
-    <a class="btn btn-success"  href="/admin/add" role="button" style="align-self: flex-end; color: white;"> Add </a>
+    <a class="btn btn-success btnAddProd"  href="/admin/add" role="button"> Add </a>
 
       @foreach ($categories as $category)
         <hr>
@@ -26,7 +26,7 @@
               @if ($subcategory->category_id == $category->id)
                 <div class="card-header" id="{{ $subcategory->name }}">
                   <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ str_replace(' ','',$subcategory->name) }}" aria-expanded="true" aria-controls="collapse{{ str_replace(' ','',$subcategory->name) }}" style="width: 100%;text-align: left;">
+                    <button class="btn btn-link btnSubCat" type="button" data-toggle="collapse" data-target="#collapse{{ str_replace(' ','',$subcategory->name) }}" aria-expanded="true" aria-controls="collapse{{ str_replace(' ','',$subcategory->name) }}">
                       {{ $subcategory->name }}
                     </button>
                   </h2>
@@ -39,7 +39,7 @@
                       <thead>
                         <tr>
                           <th scope="col">Product</th>
-                          <th scope="col">Biref</th>
+                          <th class="adminBrief" scope="col">Biref</th>
                           <th scope="col">Rating</th>
                           <th scope="col"></th>
                           <th scope="col"></th>
@@ -50,11 +50,11 @@
                           @if ($product->subcategory_id == $subcategory->id)
                             <tr>
                               <th scope="row">{{ $product->name }}</th>
-                              <td>{{$product->brief}}</td>
+                              <td class="adminBrief">{{$product->brief}}</td>
                               <td style="text-align: center;">{{$product->rating}}</td>
                               <td><a href="{{ route('edit', $product->id) }}" class="btn btn-outline-info">Edit</a></td>
                               <td>
-                                <form action="/admin/{{ $product->id }}" method="post" style="border: none; margin: 0px;">
+                                <form class="theDeleteBtn" action="/admin/{{ $product->id }}" method="post">
                         					@csrf
                         					{{ method_field('delete') }}
                         					<button type="submit" class="btn btn-danger">Delete</button>

@@ -752,6 +752,70 @@ footer a:hover{
   text-decoration: none;
 }
 
+/* ---------------------------------------------------------------------------------  ADMIN VIEWS */
+/* Index admin */
+.adminConteiner{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.btnAddProd{
+  align-self: flex-end;
+  color: white;
+}
+.btnSubCat{
+  width: 100%;
+  text-align: left;
+}
+.theDeleteBtn{
+  border: none;
+  margin: 0px;
+}
+.adminBrief{
+  display: none;
+}
+
+
+/* Edit admin */
+.editAdminMainConteiner{
+  display: flex;
+  flex-direction: column;
+}
+.editAdminConteiner{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.theEditForm{
+  padding: 10px;
+}
+.imgFormGroup{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.form-group{
+  width: 100%;
+}
+.mrgMob{
+  margin-bottom: 10px;
+}
+.imgMob{
+  display: none;
+  width: 260px;
+  height: 250px;
+}
+
+/* ADD admin */
+.ButtonsAdd{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mobileAddPop{
+  width: 95vw;
+}
+
 /* --------------------------------------------------------------------------------- MEDIA QUERYs */
 /* Phones Landscape */
 @media (min-width:480px){
@@ -823,6 +887,12 @@ footer a:hover{
   }
 /*hasta aca va el estilo del index*/
   /* --------------------------------------------------------------------------------- FOOTER */
+
+  /* ---------------------------------------------------------------------------------  ADMIN VIEWS */
+  /* Add admin */
+  .mobileAddPop{
+    width: none;
+  }
 
 /* Tablets */
 @media (min-width:768px){
@@ -1235,6 +1305,26 @@ form button.volver{
       width: 100%;
       font-size: 0.9rem;
     }
+/* ---------------------------------------------------------------------------------  ADMIN VIEWS */
+/* Index admin */
+    .adminBrief{
+      display: table-cell;
+    }
+    /* Edit admin */
+    .mrgMob{
+      margin-bottom: 0px;
+    }
+    .imgMob{
+      display: block;
+    }
+
+/* ADD admin */
+    .conteinerButtonsAdd{
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+    }
+
 }
 /* Widescreen */
 @media (min-width:1200px){

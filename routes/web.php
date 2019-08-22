@@ -1,6 +1,5 @@
 <?php
 use App\Http\Middleware\isAdmin;
-use App\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +12,7 @@ use App\Category;
 */
 
 Route::get('/', function () {
-    $categories = Category::All();
-    return view('index',compact('categories'));
+    return view('index');
 });
 
 Auth::routes();
