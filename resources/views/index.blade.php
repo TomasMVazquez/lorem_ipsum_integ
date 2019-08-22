@@ -18,21 +18,21 @@
 
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="imgs/imagen7.jpg" alt="img 7" width="500" height="500">
+          <img src="imgs/imagen7.jpg" alt="img 7" width="500" {{--height="500"--}}>
           <div class="carousel-caption">
             <h3 class="textmob">Cosmetica Natural</h3>
             <p class="textsl">Productos elaborados con activos naturales.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="imgs/imagen1.jpg" alt="img 1" width="500" height="500">
+          <img src="imgs/imagen1.jpg" alt="img 1" width="500" {{--height="500"--}}>
           <div class="carousel-caption">
             <h3 class="textmob">Cruelty Free</h3>
             <p class="textsl">Testeos dermatológicos sin crueldad.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="imgs/items/5.jpg" alt="img 3" width="500" height="500">
+          <img src="imgs/items/5.jpg" alt="img 3" width="500" {{--height="500"--}}>
           <div class="carousel-caption">
             <h3 class="textmob">Cuidado capilar</h3>
             <p class="textsl">Probá nuestra nueva línea de cuidado capilar</p>
@@ -65,21 +65,21 @@
 
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="imgs/slides/cosmetica_naturalok.jpg" alt="img 1" width="500" height="500">
+          <img src="imgs/slides/cosmetica_naturalok.jpg" alt="img 1" width="500" {{--height="500"--}}>
           <div class="carousel-caption">
             <h3 class="titulo-interno">Cosmetica Natural</h3>
             <p class="texto-interno">Productos elaborados con activos naturales.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="imgs/slides/banner2.jpg" alt="img 2" width="500" height="500">
+          <img src="imgs/slides/banner2.jpg" alt="img 2" width="500" {{--height="500"--}} >
           <div class="carousel-caption">
             <h3 class="titulo-interno">Cruelty Free</h3>
             <p class="texto-interno">Testeos dermatológicos sin crueldad.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="imgs/slides/hair-banner.jpg" alt="img 3" width="500" height="500">
+          <img src="imgs/slides/hair-banner.jpg" alt="img 3" width="500" {{--height="500"--}}>
           <div class="carousel-caption">
             <h3 class="titulo-interno">Cuidado capilar</h3>
             <p class="texto-interno">Probá nuestra nueva línea de cuidado capilar</p>
