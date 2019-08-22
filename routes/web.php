@@ -21,6 +21,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 Route::get('/faqs', function () {return view('faqs');});
 
 Route::get('/products', 'ProductController@index')->name('index');
@@ -28,6 +30,8 @@ Route::get('/products', 'ProductController@index')->name('index');
 Route::get('/products/{id}', 'ProductController@show')->name('show');
 
 Route::get('/profile', 'UserController@show')->name('profile');
+
+Route::put('/profile', 'UserController@update')->name('update');
 
 // Administrador index
 Route::get('/admin', 'AdminController@index')->middleware('isAdmin');

@@ -1,10 +1,16 @@
 @extends('template')
 
 {{-- Agregar el nombre del producto --}}
-@section('title',"Lorem ipsum | Bienvenido $user")
+@section('title',"Lorem ipsum | Bienvenid@")
 
 @section('mainContent')
 
+<?php //Buscamos los paises en la API
+  $countries = file_get_contents('https://restcountries.eu/rest/v2/all');
+  //Los pasamos a un array
+  $arrayCountries = json_decode($countries,true);
+  
+   ?>
 
 <div class="containerProfile">
       <div class="col-12 col-md-11 col-lg-10">
@@ -14,16 +20,20 @@
           <aside class="containerAside col-12 col-md-6 col-lg-4">
             <div class="aside">
               <br>
-              <h2>Bienvenid@ {{-- {{$user->name}} --}}</h2>
+              <h2>Bienvenid@ {{ Auth::user()->first_name }}</h2>
 
               <!-- PONEMOS UN FORMULARIO AUTOCOMPLETADO PARA QUE SI QUIERE LO PUEDA EDITAR -->
               <form class="profile" method="post" enctype="multipart/form-data">
+
+                 @csrf
+
+                 {{method_field('put')}}
 
                 <!-- CONTENEDOR IMAGEN AVATAR -->
                 <div class="imgContainerProfile">
                   <label for="avatar"><b>Imagen de Perfil</b>
                     <div class="imgPerfil">
-                      <img src="{{-- {{$user['avatar']}} --}}" alt="Avatar"  style="cursor:pointer">
+                      <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="Avatar"  style="cursor:pointer">
                     </div>
 
                   </label>
@@ -39,81 +49,101 @@
                 <div class="container">
 
                   <label for="user"><b>Usuario</b></label>
-                  <input type="text" placeholder="Ingresar Usuario" name="user" value="{{--  $user["user"] --}}"
+                  <input type="text" placeholder="Ingresar Usuario" name="user" value="{{Auth::user()->user}}"
                    disabled>
 
                   <label for="name"><b>Nombre</b></label>
-                  <input type="text" placeholder="Ingresar Nombre" name="name" value="{{--  $user["name"]  --}}"
-                  style="{{-- isset($errorsUpdate['inName']) ? 'border: solid 1.5px #BD3131;' : ''  --}}">
+                   <input id="first_name" type="text" placeholder="Ingresar Nombre" name="first_name" class="form-control @error('first_name') is-invalid @enderror"  value="{{Auth::user()->first_name}}">
 
-                  <!-- Manejo de errores usuario -->
-                  {{-- if ( isset($errorsUpdate['inName']) ) : --}}
-                  <div class="alert alert-danger">
-                    {{--$errorsUpdate['inName'] --}}
-                  </div>
-                  {{-- endif --}}
+                  @error('first_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+
 
                   <label for="lastName"><b>Apellido</b></label>
-                  <input type="text" placeholder="Ingresar Apellido" name="lastName" value="{{-- $user["lastName"] --}}"
-                  style="{{-- isset($errorsUpdate['inLastName']) ? 'border: solid 1.5px #BD3131;' : ''  --}}">
-                  <!-- Manejo de errores usuario -->
-                  {{-- if ( isset($errorsUpdate['inLastName']) ) : --}}
-                  <div class="alert alert-danger">
-                    {{-- $errorsUpdate['inLastName'] --}}
-                  </div>
-                  {{-- endif; --}}
+                  <input type="text" placeholder="Ingresar Apellido" id="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{Auth::user()->last_name}}">
+                  
+                  @error('last_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
 
                   <label for="email"><b>Email</b></label>
-                  <input type="email" placeholder="Ingresar Email" name="email" value="{{--  $user["email"]  --}}"
-                  style="{{--  isset($errorsUpdate['inEmail']) ? 'border: solid 1.5px #BD3131;' : ''  --}}">
-                  <!-- Manejo de errores usuario -->
-                  {{--  if ( isset($errorsUpdate['inEmail']) ) :  --}}
-                  <div class="alert alert-danger">
-                    {{--  $errorsUpdate['inEmail']  --}}
-                  </div>
-                  {{--  endif;  --}}
+                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Ingresar Email" value="{{Auth::user()->email}}">
 
-                  <label for="pais"><b>País</b></label>
-                  <select class="custom-select" name="pais">
-                   {{--   foreach ($arrayPaises as $pais): 
-                       if ($user["pais"] == $pais["alpha2Code"]): 
-                        <option value=" $pais["alpha2Code"] " selected > $pais["name"] </option>
-                       else: 
-                        <option value=" $pais["alpha2Code"] "> $pais["name"] </option>
-                       endif; 
-                     endforeach;  --}}
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+
+
+                  <label for="country"><b>País</b></label>
+                  <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
+                   @foreach ($arrayCountries as $country): 
+                      @if (Auth::user()->country == $country["alpha2Code"]): 
+                        <option value="{{$country["alpha2Code"]}}" selected > {{$country["name"]}} </option>
+                       @else: 
+                        <option value="{{$country["alpha2Code"]}} "> {{$country["name"]}} </option>
+                       @endif
+                    @endforeach; 
                   </select>
+                  @error('country')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
 
                   <!-- SWITCH PARA QUE QUIERO VER -->
                   <div class="container containerSwitch">
-                    {{--  foreach ($categorias as $unaCategoria) :  --}}
+                   @foreach ($categories as $category) 
                       <div class="containerUnSwitch col-12">
-                        <label class="switch">
-                          <input type="checkbox" name="categorias[]" value="{{--  $unaCategoria "
-                             if ($_POST): 
-                               if (isset($categoriasInPost)): 
-                                 foreach ($categoriasInPost as $unaCatInPost): 
-                                   if ($unaCatInPost == $unaCategoria): 
-                                    checked
-                                   endif; 
-                                 endforeach; 
-                               endif; 
-                             else: 
-                               if (isset($user['categorias'])) : 
-                                 foreach ($user['categorias'] as $categoria) : 
-                                   if ($categoria == $unaCategoria) : 
-                                    checked
-                                   endif; 
-                                 endforeach; 
-                               endif; 
-                             endif;  --}}
-                          >
-                          <span class="slider round"></span>
-                        </label>
-                        <span class="switchText switchTextPerfil">{{--  $unaCategoria  --}}</span>
+
+                        <h5 class="m-3"> {{$category->name}}</h5>
+
+                        @foreach ($subcategories as $subcategory)
+
+                            @if ($subcategory->category_id == $category->id)
+                                <div class="col-12">
+                                  <label class="switch">
+                                    <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}"
+                                      @if ($_POST)
+                                        @if (isset($categoriesInPost))
+                                          @foreach ($categoriesInPost as $categoryInPost)
+                                            @if ($categoryInPost == $subcategory->id) checked
+                                            @endif
+                                          @endforeach
+                                        @endif
+
+                                        @else
+                                          @if (isset(Auth::user()->subcategories))
+                                            @foreach (Auth::user()->subcategories as $userSubcategory)
+                                           
+                                               @if ($userSubcategory->id == $subcategory->id) checked
+                                                @endif
+                                            @endforeach
+                                          @endif
+                                        @endif >
+
+
+                                       
+                                    <span class="slider round"></span>
+                                  </label>
+                                  <span class="switchText switchTextPerfil"> {{$subcategory->name}}</span>
+                                </div>
+                            @endif
+                          @endforeach
+                         
                       </div>
-                    {{--  endforeach;  --}}
+                        
+                      
+                   @endforeach
                   </div>
+
+
                   <!-- SWITCH PARA QUE QUIERO RECIBIR -->
                   <div class="container containerSwitch">
                     {{--  foreach ($notificaciones as $unaNotificacion) :  --}}
@@ -143,7 +173,7 @@
                   </div>
                   <hr>
                   <div class="btnForm">
-                    <a class="btn btn-secondary" href="change_pass.php">Modificar Contraseña</a>
+                    <a class="btn btn-secondary" href="">Modificar Contraseña</a>
                   </div>
                   <hr>
                   <div class="btnForm btnLogOut">
@@ -158,34 +188,43 @@
             <div class="main">
               <hr>
               <div class="container">
-                <h2>Estos son tus favoritos</h2>
+                <h5>Estos son tus favoritos</h5>
               </div>
               <hr>
               <!-- TARJETAS FAVORITOS -->
-              <div class="col-12 justify-content-center">
-                <div class="card">
-                  <div class="tituloCardFav">
-                    <h3 class="card-title">Card title</h3>
-                    <div class="corazon">
-                      <i class="far fa-heart"></i>
-                    </div>
-                  </div>
-                  <div class="row no-gutters">
-                    <div class="col-4">
-                      <img src="imgs/items/1.jpg" class="card-img" alt="...">
-                    </div>
-                    <div class="col-8">
-                      <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="buttonsCard">
-                          <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
+              @foreach ($products as $product)
+                @foreach (Auth::user()->products as $userProduct)
+                  @if($userProduct->id == $product->id)
+                    
+                    <div class="col-12 justify-content-center">
+                    <div class="card">
+                      <div class="tituloCardFav">
+                        <h5 class="card-title">{{$userProduct->name}}</h5>
+                        <div class="corazon">
+                          <i class="far fa-heart"></i>
+                        </div>
+                      </div>
+                      <div class="row no-gutters">
+                        <div class="col-4">
+                          <img src="imgs/items/1.jpg" class="fav-img" alt="...">
+                        </div>
+                        <div class="col-8">
+                          <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="buttonsCard">
+                              <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
 
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+                @endif
+              
+                @endforeach
+              @endforeach
+              
               <!--FIN TARJETAS FAVORITOS -->
             </div>
           </main>
@@ -197,3 +236,4 @@
 
 
 @endsection
+
