@@ -22,8 +22,10 @@
 
     {{-- Buscador --}}
     <div class="clmPerfil col-12 col-sm-7 col-md-4 col-lg-3" style="margin-top:20px">
-      <form class="searchHeader" action="/products">
-        <input class="col-lg-11 form-control mr-sm-2" type="text" placeholder="¡Quiero encontrarlo!">
+      <form class="searchHeader" action="/search">
+        @csrf
+        {{ method_field('put') }}
+        <input class="col-lg-11 form-control mr-sm-2" type="text" placeholder="¡Quiero encontrarlo!" name="search">
         <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
       </form>
     </div>

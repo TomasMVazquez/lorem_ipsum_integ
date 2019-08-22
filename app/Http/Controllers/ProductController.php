@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use App\Product;
 use App\Category;
 use App\Image;
@@ -39,6 +40,29 @@ class ProductController extends Controller
       return view('products', compact('products','images','title'));
     }
 
+    public function search()
+    {
+      
+      $search = Input::get('search');
+      $products = Product::where('name','LIKE','%'.$search.'%')
+                  ->orWhere('brief','LIKE','%'.$search.'%')
+                  ->orWhere('description','LIKE','%'.$search.'%')
+                  ->orWhere('benefits','LIKE','%'.$search.'%')
+                  ->orWhere('uses','LIKE','%'.$search.'%')
+                  ->get();
+
+      if (count($products) > 0){
+
+        $images = Image::all();
+        $title = "Encontrado!";
+        return view('products', compact('products','images','title'))->withQuery($search);;
+
+      }else {
+
+        return view ('index');
+      }
+
+    }
 
     public function fav(Request $request)
     {

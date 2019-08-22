@@ -25,11 +25,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/faqs', function () {return view('faqs');});
 
+//ruta para todos los productos
 Route::get('/products', 'ProductController@index')->name('index');
 
+//Rutas para ir por categoria
 Route::get('/products/categoria/{category_id}', 'ProductController@categoria')->name('index');
 Route::put('/products/categoria/{category_id}', 'ProductController@fav')->middleware('auth');
 
+//Ruta para el buscador
+Route::any('/search', 'ProductController@search');
+
+//ruta para detalle producto
 Route::get('/products/{id}', 'ProductController@show')->name('show');
 
 Route::get('/profile', 'UserController@show')->name('profile');
