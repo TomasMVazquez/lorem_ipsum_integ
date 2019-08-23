@@ -275,8 +275,18 @@ margin-bottom: 0em;
   color:#BD3131;
   background-color: #F7DFDC;
   font-weight: bold;
-
 }
+
+.invalid {
+  border-radius: 0;
+  color:#BD3131;
+  background-color: #F7DFDC;
+  font-weight: bold;
+  padding: 5px 12px;
+  display:none;
+}
+
+
 
 /* --------------------------------------------------------------------------------- LOGIN */
 .container {
@@ -363,6 +373,14 @@ img.avatar {
   border-radius: 50%;
 }
 
+/* .imgtexto {
+  color: #000;
+  background-color: rgba(255,255,255,0.5);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+} */
+
 .imgtexto {
   color: #000;
   background-color: rgba(255,255,255,0.5);
@@ -370,6 +388,10 @@ img.avatar {
   width: 100%;
   text-align: center;
   padding: 10px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .imgError {
@@ -377,7 +399,6 @@ img.avatar {
   width: 100%;
   text-align: center;
   padding: 10px 0;
-
 }
 /* ------------------  Style Switch ------------------  */
 
@@ -766,6 +787,7 @@ footer .mainFooter{
   width: 100%;
   font-size: 0.9rem;
   color: #fff;
+  bottom: 0;
 }
 
 footer a{
@@ -955,6 +977,10 @@ footer a:hover{
     width: 100%;
     text-align: center;
     padding: 10px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   /* --------------------------------------------------------------------------------- Perfil */
@@ -1145,13 +1171,13 @@ form button.volver{
 }
 
 /* --------------------------------------------------------------------------------- Register */
-.imgtexto {
+/* .imgtexto {
   color: #000;
   display: inline-block;
   width: 100%;
   text-align: center;
   padding: 10px 0;
-}
+} */
 
 
 
