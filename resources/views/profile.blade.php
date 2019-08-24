@@ -31,18 +31,19 @@
 
                 <!-- CONTENEDOR IMAGEN AVATAR -->
                 <div class="imgContainerProfile">
-                  <label for="avatar"><b>Imagen de Perfil</b>
+                  <label for="avatar">
                     <div class="imgPerfil">
                       <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="Avatar"  style="cursor:pointer">
                     </div>
-
+                  @error('avatar')
+                    <span class="invalid-feedback imgError" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                  <p class="m-3">¡Modifica tu foto clickeando en la imagen!</p>
                   </label>
                   <input id="avatar" type="file" name="avatar" class="custom-file-input">
-                  {{--  if ( isset($errorsRegister['inAvatar']) ) :
-                    <div class="alert alert-danger">
-                       $errorsInRegister['inAvatar']
-                    </div>
-                  endif;  --}}
+
                 </div>
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
 
@@ -182,7 +183,7 @@
                   </div>
                   <hr>
                   <div class="btnForm btnLogOut">
-                    <a class="btn btn-block log-out" href="log_out.php">Cerrar Sesión</a>
+                    <a class="btn btn-block log-out" href="/logout">Cerrar Sesión</a>
                   </div>
                 </div>
               </form>

@@ -43,8 +43,10 @@ class UserController extends Controller
         $userToUpdate->notifications = ($req['notifications']==NULL) ? 0 : 1;
         // $userToUpdate->notifications = (isset($req['notifications'])) ? 1 : 0;
        
-        
-        $userToUpdate->avatar = (isset($finalImage))?$finalImage:'img_avatar4.png';
+        if(isset($req['avatar'])){
+            $userToUpdate->avatar = $finalImage;
+        }
+         
 		$userToUpdate->first_name = $req['first_name'];
 		$userToUpdate->last_name = $req['last_name'];
 		$userToUpdate->email = $req['email'];
