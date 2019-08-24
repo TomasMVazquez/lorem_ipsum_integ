@@ -13,14 +13,14 @@
 
         <div>
           @if ($title!=null)
-            <h1 class="tit-productos">{{ $title->name }}</h1>
+            <h1 class="tit-productos">{{ $title }}</h1>
           @else
             <h1 class="tit-productos">Productos</h1>
           @endif
-          <section class="banner-seccion-producto">
-            <img class="img-fluid imgbanner" src="/imgs/banner-seccion-producto.png" alt="banner">
-            <h2 class="titseccion"> Cabello</h2>
-          </section>
+          @if (isset($subtitle))
+            <h5>{{ $subtitle }}</h5>
+          @endif
+
         </div>
 
 <!--fin encabezado-->

@@ -36,7 +36,7 @@ class ProductController extends Controller
                   ->get();
 
       $images = Image::all();
-      $title = Category::find($id);
+      $title = Category::find($id)->name;
       return view('products', compact('products','images','title'));
     }
 
@@ -45,21 +45,22 @@ class ProductController extends Controller
 
       $search = Input::get('search');
       $products = Product::where('name','LIKE','%'.$search.'%')
-                  ->orWhere('brief','LIKE','%'.$search.'%')
-                  ->orWhere('description','LIKE','%'.$search.'%')
-                  ->orWhere('benefits','LIKE','%'.$search.'%')
-                  ->orWhere('uses','LIKE','%'.$search.'%')
+                  //->orWhere('brief','LIKE','%'.$search.'%')
+                  //->orWhere('description','LIKE','%'.$search.'%')
+                  //->orWhere('benefits','LIKE','%'.$search.'%')
+                  //->orWhere('uses','LIKE','%'.$search.'%')
                   ->get();
 
       if (count($products) > 0){
-
         $images = Image::all();
         $title = "Encontrado!";
-        return view('products', compact('products','images','title'))->withQuery($search);;
+        return view('products', compact('products','images','title'))->withQuery($search);
 
-      }else {
-
-        return view ('index');
+      } else {
+        $title = "No lo encontramos!";
+        $subtitle = "Pero tenemos todos estos productos para vos:";
+        $products = Product::all();
+        return view ('products', compact('products','title', 'subtitle'));
       }
 
     }

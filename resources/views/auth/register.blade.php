@@ -230,7 +230,7 @@
                       checked
                     @endif
                   @else
-                    checked
+                      checked
                   @endif
                    >
                   <span class="slider round"></span>
