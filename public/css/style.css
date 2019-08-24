@@ -52,9 +52,17 @@ tener estas caracteristics col-12 col-md-11 col-xl-10 */
 
 /* ------------------  Titulo principal ------------------  */
 h1{
-    font-size: 5em;
     font-family: 'Reenie Beanie', cursive;
-    line-height: 0.8em;
+    text-align: center;
+
+}
+
+.tit-productos {
+    text-align: center;
+    font-size: 1em;
+    line-height: 0.6em;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
 }
 
 /*------------------  Para titulos y banners especial. Tipografía manuscritos ------------------ */
@@ -901,10 +909,7 @@ margin-bottom: 0em;
 }
 /*productos*/
 .tit-productos {
-  margin-top: 0.2em;
-  margin-bottom: 0em;
   font-size:5em;
-  text-align: left;
   font-family: 'Reenie Beanie', cursive;
 }
 /* --------------------------------------------------------------------------------- EN CONSTRUCCION */
@@ -1017,7 +1022,11 @@ footer a:hover{
 /* --------------------------------------------------------------------------------- MEDIA QUERYs */
 /* Phones Landscape */
 @media (min-width:480px){
+  /* --------------------------------------------------------------------------------- PRODUCTS */
 
+  .tit-productos {
+    text-align: left;
+  }
   /* --------------------------------------------------------------------------------- HEADER */
   .mainHeader {
     display: flex;

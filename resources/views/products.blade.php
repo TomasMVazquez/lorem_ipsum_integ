@@ -13,14 +13,14 @@
 
         <div>
           @if ($title!=null)
-            <h1 class="tit-productos">{{ $title->name }}</h1>
+            <h1 class="tit-productos">{{ $title }}</h1>
           @else
             <h1 class="tit-productos">Productos</h1>
           @endif
-          <section class="banner-seccion-producto">
-            <img class="img-fluid imgbanner" src="/imgs/banner-seccion-producto.png" alt="banner">
-            <h2 class="titseccion"> Cabello</h2>
-          </section>
+          @if (isset($subtitle))
+            <h5>{{ $subtitle }}</h5>
+          @endif
+
         </div>
 
 <!--fin encabezado-->
@@ -30,6 +30,7 @@
 
   <div class="listado-productos">
     @foreach ($products as $product)
+
       <div class="col-md-6 col-lg-4 col-producto">
         <div class="card producto">
           <a href="/product-detail/{{ $product->id }}"><img src="/storage/items/{{ $product->images->first()->route }}" class="card-img-top" alt="{{ $product->name }}"></a>
@@ -47,7 +48,28 @@
                       <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
                       <input class="form-control" type="text" name="user-id" readonly value="@auth{{Auth::user()->id}}@endauth" style="display:none;">
                       <button type="submit" name="button" style="background: none;border: none;padding:0;">
-                        <i class="far fa-heart"></i>
+                        @auth
+                          @php
+                            $var = true;
+                          @endphp
+
+                          @foreach (Auth::user()->products as $oneFav)
+                            @if ($oneFav->id == $product->id)
+                              <i class="fas fa-heart"></i>
+                              @php
+                                $var = false;
+                              @endphp
+                              @continue
+                            @endif
+                          @endforeach
+
+                          @if ($var)
+                            <i class="far fa-heart"></i>
+                          @endif
+                        @endauth
+                        @guest
+                          <i class="far fa-heart"></i>
+                        @endguest
                       </button>
                     </form>
                   </li>
@@ -64,7 +86,7 @@
                 <p class="col-2"><i class="fas fa-share-alt"></i></p>
               </div>
               <div class="boton-detalle">
-                <a class="btn btn-primary btn-block" href="/product-detail/{{ $product->id }}" role="button">Ver detalle</a>
+                <a class="btn btn-primary btn-block" href="/products/{{ $product->id }}" role="button">Ver detalle</a>
               </div>
             </div>
           </div>

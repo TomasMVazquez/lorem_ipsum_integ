@@ -51,7 +51,10 @@ Route::post('/favorito', function(Request $req){
 })->middleware('auth');
 
 //Ruta para el buscador
-Route::any('/search', 'ProductController@search');
+//Route::any('/search', 'ProductController@search');
+Route::get('/products/search', 'ProductController@search');
+
+
 
 //ruta para detalle producto
 Route::get('/products/{id}', 'ProductController@show')->name('show');

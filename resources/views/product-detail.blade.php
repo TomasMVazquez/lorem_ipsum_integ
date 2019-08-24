@@ -4,7 +4,7 @@
 @section('title',"Lorem ipsum | $id")
 
 @section('mainContent')
-
+{{dd($product)}}
 <div class="row justify-content-center" style="margin:5px 0">
   <div class="col-12 col-md-11 col-xl-10">
     <!--Barra de navegacion -->
