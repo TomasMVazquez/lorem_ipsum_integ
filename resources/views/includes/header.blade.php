@@ -37,7 +37,7 @@
         <div class="dropdown">
           {{-- Si estas logeado --}}
           @auth
-          <a class="nav-link dropdown-toggle p-0" href="#" id="navbardrop" data-toggle="dropdown">
+          <a class="nav-link dropdown-toggle p-0" href="#" id="navbardropLogin" data-toggle="dropdown">
             Bienvenide {{Auth::user()->first_name}}
           </a>
           <div class="dropdown-menu ">
