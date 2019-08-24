@@ -103,43 +103,6 @@ class RegisterController extends Controller
 
 
 
-
-/*
-      if($request->hasfile('avatar')){
-
-        // Recupero
-        $image = $data["avatar"];
-
-        // Armo un nombre único para este archivo
-        $finalImage = uniqid("img_") . "." . $image->extension();
-
-        // Subo el archivo en la carpeta elegida
-        $image->storePubliclyAs("public/avatars", $finalImage);
-
-      } else {
-        $finalImage = 'img_avatar4.png';
-      }
-*/
-/*
-        return User::create([
-            'user' => $data['user'],
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'country' => $data['country'],
-<<<<<<< Updated upstream
-            'avatar' => $finalImage,
-            //'subcategories'=> $data['notifications'],
-            'notifications'=> $data['notifications'],
-=======
-
-          //  'avatar' => $data['avatar'],
-          //  'notifications'=> $data['notifications'],
->>>>>>> Stashed changes
-            'password' => Hash::make($data['password']),
-        ]);
-
-*/
         $user = User::create([
             'user' => $data['user'],
             'first_name' => $data['first_name'],
@@ -147,7 +110,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'country' => $data['country'],
             'avatar' => isset($finalImage) ? $finalImage : 'img_avatar4.png',
-            'notifications'=> $data['notifications'],
+            'notifications'=> isset($data['notifications']) ? $data['notifications'] : null,
             'password' => Hash::make($data['password']),
         ]);
 
