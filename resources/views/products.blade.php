@@ -18,7 +18,7 @@
             <h1 class="tit-productos">Productos</h1>
           @endif
           <section class="banner-seccion-producto">
-            <img class="img-fluid imgbanner" src="imgs/banner-seccion-producto.png" alt="banner">
+            <img class="img-fluid imgbanner" src="/imgs/banner-seccion-producto.png" alt="banner">
             <h2 class="titseccion"> Cabello</h2>
           </section>
         </div>
@@ -43,15 +43,9 @@
               <div>
                 <ul class="corazon">
                   <li style="width:20%">
-                    <form class="" action="/products" method="post" style="margin:0;">
-                      @csrf
-                      {{ method_field('put') }}
+                    <form id="theFavForm" method="post" style="margin:0;">
                       <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
-                      <input class="form-control" type="text" name="user-id" readonly value="
-                      @auth
-                        {{ Auth::user()->id }}
-                      @endauth
-                      " style="display:none;">
+                      <input class="form-control" type="text" name="user-id" readonly value="@auth{{Auth::user()->id}}@endauth" style="display:none;">
                       <button type="submit" name="button" style="background: none;border: none;padding:0;">
                         <i class="far fa-heart"></i>
                       </button>
@@ -83,6 +77,7 @@
     </div>
   </div>
 </div>
-
-
+@endsection
+@section('scriptJS')
+    <script src="/js/favorite.js"></script>
 @endsection

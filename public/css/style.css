@@ -1,5 +1,5 @@
 /* Importamos la librería Normalize */
-@import url('normalize.css');
+/* @import url('normalize.css'); */
 /* Importamos la librería bootstrap*/
 @import url('bootstrap.css');
 
@@ -54,6 +54,7 @@ tener estas caracteristics col-12 col-md-11 col-xl-10 */
 h1{
     font-size: 5em;
     font-family: 'Reenie Beanie', cursive;
+    line-height: 0.8em;
 }
 
 /*------------------  Para titulos y banners especial. Tipografía manuscritos ------------------ */
@@ -250,6 +251,12 @@ h4 {
 .wide{
   display: none;
 }
+
+.quienessomos {
+  padding: 20px;
+  margin: 20px;
+}
+
 .about{
 margin-top: 0.2em;
 margin-bottom: 0em;
@@ -1058,19 +1065,16 @@ footer a:hover{
   /*---------------INDEX----------------------------------------------------------------------*/
   .about{
     margin-top: 0.2em;
-    margin-bottom: 0em;
-        font-size:5em;
-        text-align: center;
-        font-family: 'Reenie Beanie', cursive;
+    margin-left: 55px;
+    font-size:5em;
+    text-align: left;
+    font-family: 'Reenie Beanie', cursive;
     }
 
   .aboutp{
     margin-left: 55px;
     margin-right: 55px;
-    margin-top: 0em;
     font-size: 1.2em;
-    text-align: justify;
-    text-align: left;
   }
 
   .wide{
@@ -1273,7 +1277,8 @@ footer a:hover{
     margin-top: 0.2em;
     margin-bottom: 0em;
     font-size:5em;
-    text-align: center;
+    margin-left: 55px;
+    text-align: left;
     font-family: 'Reenie Beanie', cursive;
 }
 
@@ -1283,7 +1288,6 @@ footer a:hover{
     margin-right: 55px;
     margin-top: 0em;
     font-size: 1.2em;
-    text-align: justify;
   }
 
 .wide{
@@ -1300,6 +1304,10 @@ footer a:hover{
     text-transform: uppercase;
     letter-spacing: 0.8em;
   }
+  .quienessomos {
+    margin: 20px 200px;
+    padding: 50px;
+  }
 
   .about{
       margin-top: 0.2em;
@@ -1315,7 +1323,7 @@ footer a:hover{
       margin-right: 55px;
       margin-top: 0em;
       font-size: 1.2em;
-      text-align: justify;
+      text-align: center;
     }
   .wide{
     display: block;
@@ -1552,8 +1560,9 @@ form button.volver{
       margin-right: 55px;
       margin-top: 0em;
       font-size: 1.2em;
-      text-align: justify;
+      text-align: center;
     }
+
     .wide{
       display: block;
     }
