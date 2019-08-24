@@ -40,8 +40,8 @@ class UserController extends Controller
             $userToUpdate->subcategories()->sync($subcategories);
         }
 
-
-        $userToUpdate->notifications = (isset($req['notifications'])) ? 1 : 0;
+        $userToUpdate->notifications = ($req['notifications']==NULL) ? 0 : 1;
+        // $userToUpdate->notifications = (isset($req['notifications'])) ? 1 : 0;
        
         
         $userToUpdate->avatar = (isset($finalImage))?$finalImage:'img_avatar4.png';
