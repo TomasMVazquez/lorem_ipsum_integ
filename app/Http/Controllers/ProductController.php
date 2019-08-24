@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Auth;
 use App\Product;
 use App\Category;
 use App\Image;
 use App\User;
+
 
 class ProductController extends Controller
 {
@@ -24,19 +26,20 @@ class ProductController extends Controller
       $products = Product::all();
       $images = Image::all();
       $title = null;
-    	return view('products', compact('products','images','title'));
+      return view('products', compact('products','images','title'));
     }
 
     public function category($id)
     {
       $products = Product::select('*','products')
-                  ->join('subcategories','subcategories.id','=','subcategory_id')
-                  ->select('products.*')
-                  ->where('subcategories.category_id','=',$id)
-                  ->get();
+      ->join('subcategories','subcategories.id','=','subcategory_id')
+      ->select('products.*')
+      ->where('subcategories.category_id','=',$id)
+      ->get();
 
       $images = Image::all();
       $title = Category::find($id);
+
       return view('products', compact('products','images','title'));
     }
 
