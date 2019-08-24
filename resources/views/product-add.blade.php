@@ -5,106 +5,13 @@
 
 @section('mainContent')
 
-  <div class="">
+  <div class="" style="display: flex; flex-direction: column;">
     <!-- TITULO DE LA PAG -->
-    <div class="col-12 col-md-11 col-xl-10">
-      <h1 class="titulo">Agregar: </h1>
+    <div class="col-12 col-md-11 col-xl-10" style="align-self: center;">
+      <h1 class="tit-productos">Agregar: </h1>
       <p>Completar el formulario para crear producto.</p>
     </div>
     <!-- FIN TITULO DE LA PAG -->
-
-    <div class="col-12 conteinerButtonsAdd">
-      <!-- AGREGAR CATEGORIA  -->
-      <div class="ButtonsAdd">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-cat-modal-sm" style="margin: 10px;">AGREGAR Categoria</button>
-        @error ('nameCat')
-          <i style="color: red;"> {{ $errors->first('nameCat') }}</i>
-        @enderror
-      </div>
-
-      <div class="modal fade bd-cat-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm mobileAddPop">
-          <div class="modal-content">
-            <form class="" method="post"  enctype="multipart/form-data" action="/admin/addCat" style="padding: 10px; border:none;">
-              @csrf
-
-              <div class="form-group">
-                <label>Nueva Categoría:</label>
-                <input type="text" name="nameCat" class="form-control" value="{{ old('nameCat') }}">
-              </div>
-
-              <button type="submit" class="btn btn-primary">
-                AGREGAR
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-      {{-- Agregar subcategoria --}}
-      <!-- AGREGAR CATEGORIA  -->
-      <div class="ButtonsAdd">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-sub-modal-sm" style="margin: 10px;">AGREGAR Sub-Categoria</button>
-        @error ('categorySub')
-          <i style="color: red;"> {{ $errors->first('categorySub') }}</i>
-        @enderror
-        @error ('nameSub')
-          <i style="color: red;"> {{ $errors->first('nameSub') }}</i>
-        @enderror
-      </div>
-
-      <div class="modal fade bd-sub-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm" mobileAddPop>
-          <div class="modal-content">
-            <form class="" method="post"  enctype="multipart/form-data" action="/admin/addSubCat" style="padding: 10px; border:none;">
-              @csrf
-
-  						<select class="form-control" name="categorySub">
-                <option value="" selected>Seleccionar Categoria</option>
-  							@foreach ($categories as $category)
-                  <option value="{{ $category->id }}"> {{ $category->name }}</option>
-  							@endforeach
-  						</select>
-
-              <div class="form-group">
-                <label>Nueva Sub-Categoría:</label>
-                <input type="text" name="nameSub" class="form-control" value="{{ old('name') }}">
-              </div>
-
-              <button type="submit" class="btn btn-primary">
-                AGREGAR
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- AGREGAR Presentacion  -->
-      <div class="ButtonsAdd">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-pre-modal-sm" style="margin: 10px;">AGREGAR Presentacion</button>
-        @error ('typePres')
-          <i style="color: red;"> {{ $errors->first('typePres') }}</i>
-        @enderror
-      </div>
-
-      <div class="modal fade bd-pre-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm mobileAddPop">
-          <div class="modal-content">
-            <form class="" method="post"  enctype="multipart/form-data" action="/admin/addPres" style="padding: 10px; border:none;">
-              @csrf
-
-              <div class="form-group">
-                <label>Nueva Presentacion:</label>
-                <input type="text" name="typePres" class="form-control" value="{{ old('typePres') }}">
-              </div>
-
-              <button type="submit" class="btn btn-primary">
-                AGREGAR
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
     {{-- Comienzo del formulario --}}
     <div class="col-12"
@@ -150,19 +57,17 @@
         </div>
         <br>
         <div class="row">
-          @for ($i = 0; $i < 4; $i++)
             <div class="col-10 col-md-6 col-lg-3 imgFormGroup">
-              <img class="imgMob" src="/imgs/logos/logo-loremipsum-black.png" alt="">
-              <div class="custom-file">
+              <div class="custom-file" id="imgAdd">
                 <input type="file" class="custom-file-input" name="image">
-                <label class="custom-file-label">Choose file...</label>
+                <label class="custom-file-label">Elegir imagen...</label>
               </div>
             </div>
-          @endfor
           @error ('image')
             <i style="color: red;"> {{ $errors->first('image') }}</i>
           @enderror
         </div>
+
         <br>
         <div class="row">
           <div class="col-10 col-md-6">
@@ -257,4 +162,7 @@
     </form>
     {{-- fin del formulario --}}
   </div>
+@endsection
+@section('scriptJS')
+    <script src="/js/adminAdd.js"></script>
 @endsection

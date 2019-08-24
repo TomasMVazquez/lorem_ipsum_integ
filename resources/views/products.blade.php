@@ -86,7 +86,7 @@
                 <p class="col-2"><i class="fas fa-share-alt"></i></p>
               </div>
               <div class="boton-detalle">
-                <a class="btn btn-primary btn-block" href="/product-detail/{{ $product->id }}" role="button">Ver detalle</a>
+                <a class="btn btn-primary btn-block" href="/products/{{ $product->id }}" role="button">Ver detalle</a>
               </div>
             </div>
           </div>

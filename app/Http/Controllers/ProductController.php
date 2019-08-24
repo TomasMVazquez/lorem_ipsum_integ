@@ -17,8 +17,8 @@ class ProductController extends Controller
 {
     public function show($id)
     {
-
-      return view('product-detail', compact('id'));
+      $product = Product::find($id);
+      return view('product-detail', compact('id','product'));
     }
 
     public function index()
@@ -38,7 +38,7 @@ class ProductController extends Controller
       ->get();
 
       $images = Image::all();
-      $title = Category::find($id);
+      $title = Category::find($id)->name;
 
       return view('products', compact('products','images','title'));
     }
