@@ -15,6 +15,8 @@
 <div class="containerProfile">
       <div class="col-12 col-md-11 col-lg-10">
         <!-- COMIENZA EL PROFILE -->
+
+       
         <div class="row">
           <!-- COSTADO CON EL PROFILE -->
           <aside class="containerAside col-12 col-md-6 col-lg-4">
@@ -56,10 +58,10 @@
                   <label for="name"><b>Nombre</b></label>
                    <input id="first_name" type="text" placeholder="Ingresar Nombre" name="first_name" class="form-control @error('first_name') is-invalid @enderror"  value="{{Auth::user()->first_name}}">
 
-                  @error('first_name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                   @error('first_name')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
                   @enderror
 
 

@@ -18,10 +18,30 @@ class UserController extends Controller
     	return view('profile', compact('products','subcategories', 'categories','images'));
     }
 
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $req
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    
+
     public function update(Request $req){
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
     	$userToUpdate = \Auth::user();
+
+        $req->validate([
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email,'.$userToUpdate->id,
+            'country' => 'required',
+            
+        ], [
+            'first_name.required' => 'Por favor, ingresá tu nombre',
+            'last_name.required' => 'Por favor, ingresá tu apellido',
+            'email.required' => 'Por favor, ingresá tu email',
+        ]);
 
     	if(ISSET($req['avatar'])){
 
