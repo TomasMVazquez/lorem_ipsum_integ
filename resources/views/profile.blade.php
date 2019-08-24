@@ -143,35 +143,40 @@
                    @endforeach
                   </div>
 
-
                   <!-- SWITCH PARA QUE QUIERO RECIBIR -->
                   <div class="container containerSwitch">
                     {{--  foreach ($notificaciones as $unaNotificacion) :  --}}
                       <div class="containerUnSwitch col-12">
                         <label class="switch">
-                          <input type="checkbox" name="notificaciones[]" value="{{--  $unaNotificacion  --}}"
-                            {{--  if ($_POST):
-                               if (isset($categoriasInPost)):
-                                 foreach ($categoriasInPost as $unaCatInPost):
-                                   if ($unaCatInPost == $unaCategoria):
-                                    checked
-                                   endif;
-                                 endforeach;
-                               endif;
-                             else:
-                               if (isset($user['notificaciones'])) :  checked  endif;
-                             endif;  --}}
+                          <input type="checkbox" name="notifications" value="
+                            1"
+
+                          @if ($_POST)
+                            @if (isset(Auth::user()->notifications))
+                              checked
+                            @endif
+                          @endif
+  
+ 
+                          @if(Auth::user()->notifications == 1 )
+                              checked
+                          @endif
                           >
+                          
+                          
                           <span class="slider round"></span>
                         </label>
-                        <em class="switchText">Quiero recibir {{--  $unaNotificacion  --}}</em>
+
+                        <em class="switchText">Quiero recibir </em>
                       </div>
-                    {{--  endforeach;  --}}
+                    
                   </div>
+
                   <div class="btnForm" style="margin-top:20px">
                     <button class="btn-primary" type="submit">Actualizar</button>
                   </div>
                   <hr>
+                 
                   <div class="btnForm">
                     <a class="btn btn-secondary" href="">Modificar Contraseña</a>
                   </div>

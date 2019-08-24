@@ -40,22 +40,16 @@ class UserController extends Controller
             $userToUpdate->subcategories()->sync($subcategories);
         }
 
-        // if($req->has('subcategories')){
 
-        //   $subcategories = $req['subcategories'];
-        //   $userToUpdate->subcategories()->attach($subcategories);
-        // }
-
-	    // $subcategories = $req['subcategories'];
-        // $userToUpdate->$req['subcategories'];
-
-
-    	// $userToUpdate->user = $req['user'];
+        $userToUpdate->notifications = (isset($req['notifications'])) ? 1 : 0;
+       
+        
         $userToUpdate->avatar = (isset($finalImage))?$finalImage:'img_avatar4.png';
 		$userToUpdate->first_name = $req['first_name'];
 		$userToUpdate->last_name = $req['last_name'];
 		$userToUpdate->email = $req['email'];
 		$userToUpdate->country = $req['country'];
+        $userToUpdate->notifications = $req['notifications'];
 
 		$userToUpdate->save();
 
