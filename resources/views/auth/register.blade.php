@@ -303,9 +303,10 @@
     </form>
 
   </div>
+
+@endsection
+@section('scriptJS')
   <script type="text/javascript" src="/js/countries.js"></script>
   <script type="text/javascript" src="/js/provinces.js"></script>
   <script src="/js/registerValidate.js"></script>
-
-
 @endsection

@@ -27,7 +27,7 @@ class ProductController extends Controller
     	return view('products', compact('products','images','title'));
     }
 
-    public function categoria($id)
+    public function category($id)
     {
       $products = Product::select('*','products')
                   ->join('subcategories','subcategories.id','=','subcategory_id')
@@ -42,7 +42,7 @@ class ProductController extends Controller
 
     public function search()
     {
-      
+
       $search = Input::get('search');
       $products = Product::where('name','LIKE','%'.$search.'%')
                   ->orWhere('brief','LIKE','%'.$search.'%')
@@ -63,16 +63,5 @@ class ProductController extends Controller
       }
 
     }
-
-    public function fav(Request $request)
-    {
-      $myUser = User::find($request['user-id']);
-      $myUser->products()->attach($request['fav-id']);
-
-      $products = Product::all();
-      $images = Image::all();
-      return view('products', compact('products','images'));
-    }
-
 
 }

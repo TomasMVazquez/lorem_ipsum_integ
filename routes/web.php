@@ -1,5 +1,7 @@
 <?php
 use App\Http\Middleware\isAdmin;
+use Illuminate\Http\Request;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,11 +29,26 @@ Route::get('/faqs', function () {return view('faqs');});
 Route::get('/products', 'ProductController@index')->name('index');
 
 //Rutas para ir por categoria
-Route::get('/products/categoria/{category_id}', 'ProductController@categoria')->name('index');
-Route::put('/products/categoria/{category_id}', 'ProductController@fav')->middleware('auth');
+Route::get('/products/category/{category_id}', 'ProductController@category')->name('index');
+Route::put('/products/category/{category_id}', 'ProductController@fav')->middleware('auth');
 
 //agregar favoritoss
-Route::put('/products', 'ProductController@fav')->middleware('auth');
+Route::post('/favorito', function(Request $req){
+  //Le pedimos el input dentro del fromJS al request que fue enviado con el datatosend
+  $data = json_decode($req->input('fromJS'),true);
+  //buscamos el usuario por el id
+  $myUser = User::find($data['user_id']);
+  //validamos si el usuario ya tiene como fav ese product
+  if (!$myUser->products()->find($data['product_id'])) {
+    //sino lo tiene lo agregamos
+    $myUser->products()->attach($data['product_id']);
+    return ['status' => 'Added'];
+  }else {
+    //si lo tiene lo sacamos
+    $myUser->products()->detach($data['product_id']);
+    return ['status' => 'taken out'];
+  }
+})->middleware('auth');
 
 //Ruta para el buscador
 Route::any('/search', 'ProductController@search');
