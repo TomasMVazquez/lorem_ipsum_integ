@@ -31,18 +31,19 @@
 
                 <!-- CONTENEDOR IMAGEN AVATAR -->
                 <div class="imgContainerProfile">
-                  <label for="avatar"><b>Imagen de Perfil</b>
+                  <label for="avatar">
                     <div class="imgPerfil">
                       <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="Avatar"  style="cursor:pointer">
                     </div>
-
+                  @error('avatar')
+                    <span class="invalid-feedback imgError" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                  <p class="m-3">¡Modifica tu foto clickeando en la imagen!</p>
                   </label>
                   <input id="avatar" type="file" name="avatar" class="custom-file-input">
-                  {{--  if ( isset($errorsRegister['inAvatar']) ) :
-                    <div class="alert alert-danger">
-                       $errorsInRegister['inAvatar']
-                    </div>
-                  endif;  --}}
+
                 </div>
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
 
@@ -143,41 +144,46 @@
                    @endforeach
                   </div>
 
-
                   <!-- SWITCH PARA QUE QUIERO RECIBIR -->
                   <div class="container containerSwitch">
                     {{--  foreach ($notificaciones as $unaNotificacion) :  --}}
                       <div class="containerUnSwitch col-12">
                         <label class="switch">
-                          <input type="checkbox" name="notificaciones[]" value="{{--  $unaNotificacion  --}}"
-                            {{--  if ($_POST):
-                               if (isset($categoriasInPost)):
-                                 foreach ($categoriasInPost as $unaCatInPost):
-                                   if ($unaCatInPost == $unaCategoria):
-                                    checked
-                                   endif;
-                                 endforeach;
-                               endif;
-                             else:
-                               if (isset($user['notificaciones'])) :  checked  endif;
-                             endif;  --}}
+                          <input type="checkbox" name="notifications" value="
+                            1"
+
+                          @if ($_POST)
+                            @if (isset(Auth::user()->notifications))
+                              checked
+                            @endif
+                          @endif
+  
+ 
+                          @if(Auth::user()->notifications == 1 )
+                              checked
+                          @endif
                           >
+                          
+                          
                           <span class="slider round"></span>
                         </label>
-                        <em class="switchText">Quiero recibir {{--  $unaNotificacion  --}}</em>
+
+                        <em class="switchText">Quiero recibir </em>
                       </div>
-                    {{--  endforeach;  --}}
+                    
                   </div>
+
                   <div class="btnForm" style="margin-top:20px">
                     <button class="btn-primary" type="submit">Actualizar</button>
                   </div>
                   <hr>
+                 
                   <div class="btnForm">
                     <a class="btn btn-secondary" href="">Modificar Contraseña</a>
                   </div>
                   <hr>
                   <div class="btnForm btnLogOut">
-                    <a class="btn btn-block log-out" href="log_out.php">Cerrar Sesión</a>
+                    <a class="btn btn-block log-out" href="/logout">Cerrar Sesión</a>
                   </div>
                 </div>
               </form>
