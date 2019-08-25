@@ -18,6 +18,7 @@ class UserController extends Controller
     	return view('profile', compact('products','subcategories', 'categories','images'));
     }
 
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -31,6 +32,8 @@ class UserController extends Controller
     	$subcategories = Subcategory::all();
     	$userToUpdate = \Auth::user();
 
+        // Valide los campos modificables que son requeridos. En el caso del email tengo que aclarar que el mail, que es único, salvo que el mail que viene en el form es el mismo ya registrado por ese usuario. Ya que daba el error de no poder modificar el mail del usuario.
+
         $req->validate([
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
@@ -43,35 +46,36 @@ class UserController extends Controller
             'email.required' => 'Por favor, ingresá tu email',
         ]);
 
-    	if(ISSET($req['avatar'])){
+        // Si viene una imagen, se guarda y reemplaza lo que hay en la base. Si no, simplemente deja lo que está ya guardado.
 
-            // Recupero
+    	if(isset($req['avatar'])){
+
+         
             $image = $req["avatar"];
-
-            // Armo un nombre único para este archivo
             $finalImage = uniqid("img_") . "." . $image->extension();
-
-            // Subo el archivo en la carpeta elegida
             $image->storePubliclyAs("public/avatars", $finalImage);
+            $userToUpdate->avatar = $finalImage;
 
       }
+        //Actualizo las subcategorias seleccionadas por el usuario con sync
+
         if(isset($req['subcategories'])){
             $subcategories = $req['subcategories'];
             $userToUpdate->subcategories()->sync($subcategories);
         }
 
+        // Actualizo si el usuario desea recibir notificaciones. Si del form  llega NULO es 0 sino 1. 
+
         $userToUpdate->notifications = ($req['notifications']==NULL) ? 0 : 1;
-        // $userToUpdate->notifications = (isset($req['notifications'])) ? 1 : 0;
+        
        
-        if(isset($req['avatar'])){
-            $userToUpdate->avatar = $finalImage;
-        }
+        // Guardo nombre, apellido, email, país.
          
 		$userToUpdate->first_name = $req['first_name'];
 		$userToUpdate->last_name = $req['last_name'];
 		$userToUpdate->email = $req['email'];
 		$userToUpdate->country = $req['country'];
-        $userToUpdate->notifications = $req['notifications'];
+        
 
 		$userToUpdate->save();
 

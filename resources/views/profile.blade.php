@@ -49,10 +49,10 @@
                 </div>
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
 
-                <div class="container">
+                <div class="container form-group">
 
                   <label for="user"><b>Usuario</b></label>
-                  <input type="text" placeholder="Ingresar Usuario" name="user" value="{{Auth::user()->user}}"
+                  <input class="form-control" type="text" placeholder="Ingresar Usuario" name="user" value="{{Auth::user()->user}}"
                    disabled>
 
                   <label for="name"><b>Nombre</b></label>
