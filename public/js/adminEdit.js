@@ -15,10 +15,15 @@ trashImg.forEach(function (unTrash) {
   unTrash.addEventListener('click',function(){
     unTrash.previousElementSibling.children[0].style.border = "thick solid red";
     var id = unTrash.previousElementSibling.children[0].getAttribute('id');
-    
+    console.log(id);
+    window.fetch('http://localhost:8000/removeImg/' + id, {
+      method: 'get'
+    })
+      .then(response => response.json())
+      .then(rta => console.log(rta))
+      .catch(error => console.log(error));
   });
 });
-
 // Objeto que acumula los errores
 var errores = {};
 
