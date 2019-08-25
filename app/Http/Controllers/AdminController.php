@@ -79,7 +79,6 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-
       $request->validate([
   			'category' => 'required',
         'subcategory' => 'required',
@@ -104,19 +103,43 @@ class AdminController extends Controller
   		]);
 
       $productToCreate = new Product;
+      $productToCreate->name            = $request['name'];
+      $productToCreate->brief           = $request['brief'];
+      $productToCreate->description     = $request['description'];
+      $productToCreate->rating          = $request['rating'];
+      $productToCreate->benefits        = $request['benefits'];
+      $productToCreate->uses            = $request['uses'];
+      $productToCreate->subcategory_id  = $request['subcategory'];
+
+      $productToCreate->save();
 
       // Imagen
       if($request->hasfile('image')){
 
         // Recupero
-        $images = $request["image"];
+        $image = $request["image"];
+        // Armo un nombre único para este archivo
+        $finalImage = uniqid("$productToCreate->id _") . "." . $image->extension();
 
-        foreach ($images as $image) {
+        // Subo el archivo en la carpeta elegida
+        $image->storePubliclyAs("public/items", $finalImage);
+
+        $newProdImage = new image(['product_id' => $productToCreate->id,'route' => $finalImage]);
+
+        $productToCreate->images()->save($newProdImage);
+
+      }
+
+      if ($request->files->count()>1) {
+        for ($i=1; $i < $request->files->count(); $i++) {
+          // Recupero
+          $newImage = $request["image" . $i];
+          $ext = $newImage->extension();
+
           // Armo un nombre único para este archivo
-          $finalImage = uniqid("$productToCreate->id _") . "." . $image->extension();
-
+          $finalImage = uniqid("$productToCreate->id _") . "." . $ext;
           // Subo el archivo en la carpeta elegida
-          $image->storePubliclyAs("public/items", $finalImage);
+          $newImage->storePubliclyAs("public/items", $finalImage);
 
           $newProdImage = new image(['product_id' => $productToCreate->id,'route' => $finalImage]);
 
@@ -124,18 +147,7 @@ class AdminController extends Controller
         }
       }
 
-
       $productToCreate->presentation()->attach($request['presentation']);
-
-      $productToCreate->name            = $request['name'];
-  		$productToCreate->brief           = $request['brief'];
-  		$productToCreate->description     = $request['description'];
-  		$productToCreate->rating          = $request['rating'];
-  		$productToCreate->benefits        = $request['benefits'];
-      $productToCreate->uses            = $request['uses'];
-  		$productToCreate->subcategory_id  = $request['subcategory'];
-
-  		$productToCreate->save();
 
   		return redirect('/admin');
     }
@@ -192,7 +204,6 @@ class AdminController extends Controller
 
         // Recupero
         $image = $request["image"];
-
         // Armo un nombre único para este archivo
         $finalImage = uniqid("$productToUpdate->id _") . "." . $image->extension();
 
@@ -200,7 +211,26 @@ class AdminController extends Controller
         $image->storePubliclyAs("public/items", $finalImage);
 
         $newProdImage = new image(['product_id' => $productToUpdate->id,'route' => $finalImage]);
+
         $productToUpdate->images()->save($newProdImage);
+
+      }
+
+      if ($request->files->count()>1) {
+        for ($i=1; $i < $request->files->count(); $i++) {
+          // Recupero
+          $newImage = $request["image" . $i];
+          $ext = $newImage->extension();
+
+          // Armo un nombre único para este archivo
+          $finalImage = uniqid("$productToUpdate->id _") . "." . $ext;
+          // Subo el archivo en la carpeta elegida
+          $newImage->storePubliclyAs("public/items", $finalImage);
+
+          $newProdImage = new image(['product_id' => $productToUpdate->id,'route' => $finalImage]);
+
+          $productToUpdate->images()->save($newProdImage);
+        }
       }
 
       $productToUpdate->presentation()->sync($request['presentation']);
