@@ -14,6 +14,8 @@ let trashImg = document.querySelectorAll('#trash');
 trashImg.forEach(function (unTrash) {
   unTrash.addEventListener('click',function(){
     unTrash.previousElementSibling.children[0].style.border = "thick solid red";
+    var id = unTrash.previousElementSibling.children[0].getAttribute('id');
+    
   });
 });
 

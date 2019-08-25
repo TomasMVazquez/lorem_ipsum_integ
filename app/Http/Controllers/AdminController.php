@@ -103,6 +103,15 @@ class AdminController extends Controller
   		]);
 
       $productToCreate = new Product;
+      $productToCreate->name            = $request['name'];
+      $productToCreate->brief           = $request['brief'];
+      $productToCreate->description     = $request['description'];
+      $productToCreate->rating          = $request['rating'];
+      $productToCreate->benefits        = $request['benefits'];
+      $productToCreate->uses            = $request['uses'];
+      $productToCreate->subcategory_id  = $request['subcategory'];
+
+      $productToCreate->save();
 
       // Imagen
       if($request->hasfile('image')){
@@ -123,36 +132,22 @@ class AdminController extends Controller
 
       if ($request->files->count()>1) {
         for ($i=1; $i < $request->files->count(); $i++) {
-          // Imagen
-          if($request->hasfile('image' . $i)){
-            // Recupero
-            $image = $request["image" . $i];
+          // Recupero
+          $newImage = $request["image" . $i];
+          $ext = $newImage->extension();
 
-            // Armo un nombre único para este archivo
-            $finalImage = uniqid("$productToCreate->id _") . "." . $image->extension();
+          // Armo un nombre único para este archivo
+          $finalImage = uniqid("$productToCreate->id _") . "." . $ext;
+          // Subo el archivo en la carpeta elegida
+          $newImage->storePubliclyAs("public/items", $finalImage);
 
-            // Subo el archivo en la carpeta elegida
-            $image->storePubliclyAs("public/items", $finalImage);
+          $newProdImage = new image(['product_id' => $productToCreate->id,'route' => $finalImage]);
 
-            $newProdImage = new image(['product_id' => $productToCreate->id,'route' => $finalImage]);
-
-            $productToCreate->images()->save($newProdImage);
-
-          }
+          $productToCreate->images()->save($newProdImage);
         }
       }
 
       $productToCreate->presentation()->attach($request['presentation']);
-
-      $productToCreate->name            = $request['name'];
-  		$productToCreate->brief           = $request['brief'];
-  		$productToCreate->description     = $request['description'];
-  		$productToCreate->rating          = $request['rating'];
-  		$productToCreate->benefits        = $request['benefits'];
-      $productToCreate->uses            = $request['uses'];
-  		$productToCreate->subcategory_id  = $request['subcategory'];
-
-  		$productToCreate->save();
 
   		return redirect('/admin');
     }

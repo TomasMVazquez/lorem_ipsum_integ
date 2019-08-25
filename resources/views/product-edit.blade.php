@@ -66,7 +66,7 @@
             @foreach ($images as $image)
               <div class="" style="display:flex; flex-direction:row; justify-content:space-between;">
                 <div class="col-10 col-md-6 col-lg-3 imgFormGroup">
-                  <img class="imgMob" src="/storage/items/{{ $image->route }}" alt="" style="">
+                  <img id="{{$image->id}}" class="imgMob" src="/storage/items/{{ $image->route }}" alt="" style="">
                 </div>
                 <i id="trash" class="fas fa-trash-alt" style="font-size:2em; align-self:flex-end;"></i>
               </div>
