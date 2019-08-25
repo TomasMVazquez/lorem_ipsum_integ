@@ -16,7 +16,7 @@
     {{-- Comienzo del formulario --}}
     <div class="col-12"
     style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap;">
-      <form class="col-12 col-md-10" method="POST" enctype="multipart/form-data" action="/admin/add" style="padding: 10px;">
+      <form id="newAdd" class="col-12 col-md-10" method="POST" enctype="multipart/form-data" action="/admin/add" style="padding: 10px;">
         @csrf
 
         <div class="row">
@@ -56,16 +56,22 @@
 
         </div>
         <br>
-        <div class="row">
-            <div class="col-10 col-md-6 col-lg-3 imgFormGroup">
-              <div class="custom-file" id="imgAdd">
-                <input type="file" class="custom-file-input" name="image">
-                <label class="custom-file-label">Elegir imagen...</label>
-              </div>
+        <div class="row" id="rowImg">
+          <button type="button" id="btnImgAdd" style="background: none;border: none;padding:0;">
+            <i class="fas fa-plus-circle" style="color: green;font-size:2em;"></i>
+          </button>
+          <div class="col-10 col-md-6 col-lg-3 imgFormGroup">
+            <div class="custom-file" id="imgAdd">
+              <input type="file" class="custom-file-input" name="image">
+              <label class="custom-file-label">Elegir imagen...</label>
             </div>
-          @error ('image')
-            <i style="color: red;"> {{ $errors->first('image') }}</i>
-          @enderror
+            <div class="invalid">
+              <!-- Mensaje de error -->
+            </div>
+            @error ('image')
+              <i style="color: red;"> {{ $errors->first('image') }}</i>
+            @enderror
+          </div>
         </div>
 
         <br>
@@ -74,6 +80,9 @@
   					<div class="form-group">
   						<label>Nombre:</label>
               <textarea rows='2' name="name" class="form-control" value="">{{ old('name') }}</textarea>
+              <div class="invalid">
+  							<!-- Mensaje de error -->
+  						</div>
   						@error ('name')
   							<i style="color: red;"> {{ $errors->first('name') }}</i>
   						@enderror
@@ -84,6 +93,9 @@
             <div class="form-group">
               <label>Detalle:</label>
               <textarea rows='2' name="brief" class="form-control" value="">{{ old('brief') }}</textarea>
+              <div class="invalid">
+  							<!-- Mensaje de error -->
+  						</div>
               @error ('brief')
                 <i style="color: red;"> {{ $errors->first('brief') }}</i>
               @enderror
@@ -96,6 +108,9 @@
             <div class="form-group">
               <label>Descripcion:</label>
               <textarea rows='6' name="description" class="form-control" value="">{{ old('description') }}</textarea>
+              <div class="invalid">
+  							<!-- Mensaje de error -->
+  						</div>
               @error ('description')
                 <i style="color: red;"> {{ $errors->first('description') }}</i>
               @enderror
@@ -106,6 +121,9 @@
             <div class="form-group">
               <label>Usos:</label>
               <textarea rows='6' name="uses" class="form-control" value="">{{ old('uses') }}</textarea>
+              <div class="invalid">
+  							<!-- Mensaje de error -->
+  						</div>
               @error ('uses')
                 <i style="color: red;"> {{ $errors->first('uses') }}</i>
               @enderror
@@ -118,6 +136,9 @@
             <div class="form-group">
               <label>Beneficios:</label>
               <textarea rows='2' name="benefits" class="form-control" value="">{{ old('benefits') }}</textarea>
+              <div class="invalid">
+  							<!-- Mensaje de error -->
+  						</div>
               @error ('benefits')
                 <i style="color: red;"> {{ $errors->first('benefits') }}</i>
               @enderror
@@ -132,6 +153,9 @@
                  <option value="{{ $presentation->id }}">{{$presentation->type}}</option>
                @endforeach
              </select>
+             <div class="invalid">
+ 							<!-- Mensaje de error -->
+ 						</div>
            </div>
            @error ('presentation')
              <i style="color: red;"> {{ $errors->first('presentation') }}</i>
@@ -144,6 +168,9 @@
             <div class="form-group">
               <label>Rating:</label>
               <input type="text" name="rating" class="form-control" value="{{ old('rating') }}">
+              <div class="invalid">
+  							<!-- Mensaje de error -->
+  						</div>
   						@error ('rating')
   							<i style="color: red;"> {{ $errors->first('rating') }}</i>
   						@enderror
