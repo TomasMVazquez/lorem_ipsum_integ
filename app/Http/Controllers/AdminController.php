@@ -79,7 +79,6 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-
       $request->validate([
   			'category' => 'required',
         'subcategory' => 'required',
@@ -109,21 +108,39 @@ class AdminController extends Controller
       if($request->hasfile('image')){
 
         // Recupero
-        $images = $request["image"];
+        $image = $request["image"];
+        // Armo un nombre único para este archivo
+        $finalImage = uniqid("$productToCreate->id _") . "." . $image->extension();
 
-        foreach ($images as $image) {
-          // Armo un nombre único para este archivo
-          $finalImage = uniqid("$productToCreate->id _") . "." . $image->extension();
+        // Subo el archivo en la carpeta elegida
+        $image->storePubliclyAs("public/items", $finalImage);
 
-          // Subo el archivo en la carpeta elegida
-          $image->storePubliclyAs("public/items", $finalImage);
+        $newProdImage = new image(['product_id' => $productToCreate->id,'route' => $finalImage]);
 
-          $newProdImage = new image(['product_id' => $productToCreate->id,'route' => $finalImage]);
+        $productToCreate->images()->save($newProdImage);
 
-          $productToCreate->images()->save($newProdImage);
-        }
       }
 
+      if ($request->files->count()>1) {
+        for ($i=1; $i < $request->files->count(); $i++) {
+          // Imagen
+          if($request->hasfile('image' . $i)){
+            // Recupero
+            $image = $request["image" . $i];
+
+            // Armo un nombre único para este archivo
+            $finalImage = uniqid("$productToCreate->id _") . "." . $image->extension();
+
+            // Subo el archivo en la carpeta elegida
+            $image->storePubliclyAs("public/items", $finalImage);
+
+            $newProdImage = new image(['product_id' => $productToCreate->id,'route' => $finalImage]);
+
+            $productToCreate->images()->save($newProdImage);
+
+          }
+        }
+      }
 
       $productToCreate->presentation()->attach($request['presentation']);
 
@@ -192,7 +209,6 @@ class AdminController extends Controller
 
         // Recupero
         $image = $request["image"];
-
         // Armo un nombre único para este archivo
         $finalImage = uniqid("$productToUpdate->id _") . "." . $image->extension();
 
@@ -200,7 +216,26 @@ class AdminController extends Controller
         $image->storePubliclyAs("public/items", $finalImage);
 
         $newProdImage = new image(['product_id' => $productToUpdate->id,'route' => $finalImage]);
+
         $productToUpdate->images()->save($newProdImage);
+
+      }
+
+      if ($request->files->count()>1) {
+        for ($i=1; $i < $request->files->count(); $i++) {
+          // Recupero
+          $newImage = $request["image" . $i];
+          $ext = $newImage->extension();
+
+          // Armo un nombre único para este archivo
+          $finalImage = uniqid("$productToUpdate->id _") . "." . $ext;
+          // Subo el archivo en la carpeta elegida
+          $newImage->storePubliclyAs("public/items", $finalImage);
+
+          $newProdImage = new image(['product_id' => $productToUpdate->id,'route' => $finalImage]);
+
+          $productToUpdate->images()->save($newProdImage);
+        }
       }
 
       $productToUpdate->presentation()->sync($request['presentation']);

@@ -1,5 +1,5 @@
 // Capturo el formulario
-var elFormu = document.querySelector('#newAdd');
+var elFormu = document.querySelector('#editForm');
 
 var losCampos2 = getElements();
 
@@ -9,13 +9,20 @@ let rowImg = document.querySelector('#rowImg');
 
 let divImg = document.querySelectorAll('.imgFormGroup');
 
+let trashImg = document.querySelectorAll('#trash');
+
+trashImg.forEach(function (unTrash) {
+  unTrash.addEventListener('click',function(){
+    unTrash.previousElementSibling.children[0].style.border = "thick solid red";
+  });
+});
+
 // Objeto que acumula los errores
 var errores = {};
 
 recorrer();
-var i = 0;
+var i = 1;
 btnImgAdd.addEventListener('click',function () {
-  i++;
   console.log('hiciste click ' + i);
   var div = document.createElement('div');
   div.setAttribute('class','col-10 col-md-6 col-lg-3 imgFormGroup');
@@ -137,7 +144,7 @@ function recorrer() {
           // Elimino la key al objeto de errores
           delete errores[this.name];
         }
-      })
+      });
     }
   });
 }
@@ -145,7 +152,7 @@ function recorrer() {
 // Valido cuando se envíe el formulario
 elFormu.addEventListener('submit', function (event) {
   var camposFinal = getElements();
-	camposFinal.forEach(function (unCampo) {
+  camposFinal.forEach(function (unCampo) {
 		var valorFinalDelCampo = unCampo.value.trim();
 
 		if (valorFinalDelCampo === '') {

@@ -32,6 +32,9 @@
                 @endif
 							@endforeach
 						</select>
+            <div class="invalid">
+              <!-- Mensaje de error -->
+            </div>
 						@error ('category')
 							<i style="color: red;"> {{ $errors->first('category') }}</i>
 						@enderror
@@ -49,6 +52,9 @@
                 @endif
 							@endforeach
 						</select>
+            <div class="invalid">
+              <!-- Mensaje de error -->
+            </div>
 						@error ('subcategory')
 							<i style="color: red;"> {{ $errors->first('subcategory') }}</i>
 						@enderror
