@@ -32,6 +32,9 @@ Route::get('/products', 'ProductController@index')->name('index');
 Route::get('/products/category/{category_id}', 'ProductController@category')->name('index');
 Route::put('/products/category/{category_id}', 'ProductController@fav')->middleware('auth');
 
+//Rutas para ir por subcategoria
+Route::get('/products/subcategory/{subcategory_id}', 'ProductController@subcategory')->name('index');
+
 //agregar favoritoss
 Route::post('/favorito', function(Request $req){
   //Le pedimos el input dentro del fromJS al request que fue enviado con el datatosend
@@ -51,7 +54,6 @@ Route::post('/favorito', function(Request $req){
 })->middleware('auth');
 
 //Ruta para el buscador
-//Route::any('/search', 'ProductController@search');
 Route::get('/products/search', 'ProductController@search');
 
 

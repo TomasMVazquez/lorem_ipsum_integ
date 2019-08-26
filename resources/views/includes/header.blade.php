@@ -1,6 +1,8 @@
 @php
-  use App\Category;
-  $categories = Category::all();
+use App\Category;
+$categories = Category::all();
+use App\Subcategory;
+$subcategories = Subcategory::all();
 @endphp
 
 {{-- Comienzo del header --}}
@@ -27,17 +29,6 @@
         <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
       </form>
     </div>
-
-    {{-- Buscador
-    <div class="clmPerfil col-12 col-sm-7 col-md-4 col-lg-3" style="margin-top:20px">
-      <form class="searchHeader" action="/search">
-        @csrf
-        {{ method_field('put') }}
-        <input class="col-lg-11 form-control mr-sm-2" type="text" placeholder="¡Quiero encontrarlo!" name="search">
-        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-    </div>
-    --}}
 
     {{-- comienzo del perfil o del guest --}}
     {{-- en mobile desaparece --}}
@@ -80,12 +71,38 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             Productos
           </a>
-          <div class="dropdown-menu  text-center">
-            <a class="dropdown-item" href="/products">Todes</a>
+          <ul class="dropdown-menu menu-categorias" aria-labelledby="navbarDropdownMenuLink">
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-item-cat" href="/products">Todos</a>
+            </li>
             @foreach ($categories as $category)
-              <a class="dropdown-item" href="/products/category/{{ $category->id }}">{{ $category->name }}</a>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle dropdown-item-cat" href="/products/category/{{ $category->id }}">{{ $category->name }}</a>
+                <ul class="dropdown-menu menu-subcategorias">
+                  <li><a class="dropdown-item-sub" style="text-transform:uppercase" href="/products/category/{{ $category->id}}">Todos</a></li>
+                  @foreach ($subcategories as $subcategory)
+                  @if ($subcategory->category_id == $category->id)
+                    <li><a class="dropdown-item-sub" href="/products/subcategory/{{ $subcategory->id }}">{{ $subcategory->name }}</a></li>
+                  @endif
+                @endforeach
+              </ul>
+              </li>
             @endforeach
-          </div>
+          </ul>
+
+          {{-- <div class="dropdown-menu menu-products">
+            <a class="dropdown-item" href="/products">Todos</a>
+            @foreach ($categories as $category)
+              <a tabindex="-1" href="/products/category/{{ $category->id }}">{{ $category->name }}</a>
+              <div>
+              @foreach ($subcategories as $subcategory)
+                @if ($subcategory->category_id == $category->id)
+                  <a class="dropdown-item" href="/products/subcategory/{{ $subcategory->id }}">{{ $subcategory->name }}</a>
+                @endif
+              @endforeach
+            </div>
+            @endforeach
+          </div> --}}
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/faqs">Faqs</a>

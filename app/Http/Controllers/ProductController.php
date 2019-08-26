@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use Auth;
 use App\Product;
 use App\Category;
+use App\Subcategory;
 use App\Image;
 use App\User;
 
@@ -39,8 +40,28 @@ class ProductController extends Controller
 
       $images = Image::all();
       $title = Category::find($id)->name;
+      $categories = Category::all();
+      $subcategories = Subcategory::all();
 
-      return view('products', compact('products','images','title'));
+      return view('products', compact('products','categories', 'subcategories', 'images','title'));
+    }
+
+    public function subcategory($id)
+    {
+      $products = Product::select('*','products')
+      ->join('subcategories','subcategories.id','=','subcategory_id')
+      ->select('products.*')
+      ->where('subcategory_id','=',$id)
+      ->get();
+
+      $images = Image::all();
+      $fromCategory = Subcategory::find($id)->category->name;
+      $title =  Subcategory::find($id)->name;
+      $categoryId =  Subcategory::find($id)->category->id;
+      $categories = Category::all();
+      $subcategories = Subcategory::all();
+
+      return view('products', compact('products', 'categoryId', 'fromCategory', 'categories','subcategories','images','title'));
     }
 
     public function search()

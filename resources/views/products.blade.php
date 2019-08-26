@@ -12,8 +12,11 @@
 <!--encabezado-->
 
         <div>
-          @if ($title!=null)
-            <h1 class="tit-productos">{{ $title }}</h1>
+          @if (isset($fromCategory))
+            <h1 class="tit-productos-cat"><a href="/products/category/{{ $categoryId  }}">{{ $fromCategory }}</a></h1>
+            <h1 class="tit-productos-subcat"><span class="punto">{{ "·" }}</span>{{ $title }}</h1>
+          @elseif ($title!=null)
+            <h1 class="tit-productos"> {{ $title }}</h1>
           @else
             <h1 class="tit-productos">Productos</h1>
           @endif
