@@ -5,12 +5,7 @@
 
 @section('mainContent')
 
-<?php //Buscamos los paises en la API
-  $countries = file_get_contents('https://restcountries.eu/rest/v2/all');
-  //Los pasamos a un array
-  $arrayCountries = json_decode($countries,true);
 
-   ?>
 
 <div class="containerProfile">
       <div class="col-12 col-md-11 col-lg-10">
@@ -19,13 +14,13 @@
        
         <div class="row">
           <!-- COSTADO CON EL PROFILE -->
-          <aside class="containerAside col-12 col-md-6 col-lg-4">
+          <aside class="containerAside col-12  col-lg-5">
             <div class="aside">
               <br>
               <h2>Bienvenid@ {{ Auth::user()->first_name }}</h2>
 
               <!-- PONEMOS UN FORMULARIO AUTOCOMPLETADO PARA QUE SI QUIERE LO PUEDA EDITAR -->
-              <form class="profile" method="post" enctype="multipart/form-data">
+              <form class="profile theForm" method="post" enctype="multipart/form-data">
 
                  @csrf
 
@@ -34,6 +29,7 @@
                 <!-- CONTENEDOR IMAGEN AVATAR -->
                 <div class="imgContainerProfile">
                   <label for="avatar">
+                    <input id="avatar" type="file" name="avatar" class="custom-file-input">
                     <div class="imgPerfil">
                       <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="Avatar"  style="cursor:pointer">
                     </div>
@@ -44,7 +40,7 @@
                   @enderror
                   <p class="m-3">¡Modifica tu foto clickeando en la imagen!</p>
                   </label>
-                  <input id="avatar" type="file" name="avatar" class="custom-file-input">
+                  
 
                 </div>
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
@@ -52,27 +48,33 @@
                 <div class="container form-group">
 
                   <label for="user"><b>Usuario</b></label>
-                  <input class="form-control" type="text" placeholder="Ingresar Usuario" name="user" value="{{Auth::user()->user}}"
+                  <input id="name" class="form-control" type="text" placeholder="Ingresar Usuario" name="user" value="{{Auth::user()->user}}"
                    disabled>
 
                   <label for="name"><b>Nombre</b></label>
-                   <input id="first_name" type="text" placeholder="Ingresar Nombre" name="first_name" class="form-control @error('first_name') is-invalid @enderror"  value="{{Auth::user()->first_name}}">
+                   <input id="first_name" type="text" placeholder="Ingresar Nombre" name="first_name" class="form-control @error('first_name') is-invalid @enderror"  value="{{Auth::user()->first_name}}" autocomplete="first_name" autofocus>
 
                    @error('first_name')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
                   @enderror
+                  <div class="invalid">
+                    <!-- Mensaje de error -->
+                  </div>
 
 
                   <label for="lastName"><b>Apellido</b></label>
-                  <input type="text" placeholder="Ingresar Apellido" id="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{Auth::user()->last_name}}">
+                  <input type="text" placeholder="Ingresar Apellido" id="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{Auth::user()->last_name}}" autocomplete="last_name" autofocus>
 
                   @error('last_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                   @enderror
+                   <div class="invalid">
+                    <!-- Mensaje de error -->
+                  </div>
 
                   <label for="email"><b>Email</b></label>
                   <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Ingresar Email" value="{{Auth::user()->email}}">
@@ -83,34 +85,60 @@
                     </span>
                   @enderror
 
+                   <div class="invalid">
+                    <!-- Mensaje de error -->
+                  </div>
 
-                  <label for="country"><b>País</b></label>
+                  <label for="country"><b>{{ __('País') }}</b></label>
                   <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
-                   @foreach ($arrayCountries as $country):
-                      @if (Auth::user()->country == $country["alpha2Code"]):
-                        <option value="{{$country["alpha2Code"]}}" selected > {{$country["name"]}} </option>
-                       @else:
-                        <option value="{{$country["alpha2Code"]}} "> {{$country["name"]}} </option>
-                       @endif
-                    @endforeach;
-                  </select>
-                  @error('country')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
+
+                      <option value="">Seleccionar país</option>
+
+                   </select>
+
+                   @error('country')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
+                    <div class="selectProvince form-group row" style="display:none">
+                      <label for="province" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('Provincia') }}</label>
+
+
+                      <div class="col-md-8 col-xl-10">
+                            <select class="form-control @error('province') is-invalid @enderror custom-select"  name="province">
+                              <option value="">Seleccionar provincia</option>
+                            </select>
+                            @error('province')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                      </div>
+                  </div>
+
+                  <hr>
+
+                  <div>
+                    
 
                   <!-- SWITCH PARA QUE QUIERO VER -->
-                  <div class="container containerSwitch">
+                  <label for="categories"><b>¿Qué te interesa?</b></label>
+                  <div class="container containerSwitch p-0">
                    @foreach ($categories as $category)
-                      <div class="containerUnSwitch col-12">
+                      <div class="containerUnSwitchProfile col-12 p-0">
 
-                        <h5 class="m-3"> {{$category->name}}</h5>
+                        <div class="w-100 mb-3">
+                          <span class="switchTextCat"> <strong>{{$category->name}}</strong></span>
+                        </div>
+
 
                         @foreach ($subcategories as $subcategory)
 
                             @if ($subcategory->category_id == $category->id)
-                                <div class="col-12">
+                                <div class="col-8 col-md-6 p-0 mb-3">
                                   <label class="switch">
                                     <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}"
                                       @if ($_POST)
@@ -144,12 +172,15 @@
 
 
                    @endforeach
-                  </div>
+                  
+                </div>
+              </div>
 
+              <hr>
                   <!-- SWITCH PARA QUE QUIERO RECIBIR -->
-                  <div class="container containerSwitch">
+                  <div class="container containerSwitch p-0">
                     {{--  foreach ($notificaciones as $unaNotificacion) :  --}}
-                      <div class="containerUnSwitch col-12">
+                      <div class="containerUnSwitch col-12 p-0">
                         <label class="switch">
                           <input type="checkbox" name="notifications" value="
                             1"
@@ -170,7 +201,7 @@
                           <span class="slider round"></span>
                         </label>
 
-                        <em class="switchText">Quiero recibir </em>
+                        <strong class="switchTextNoticias">Quiero recibir noticias!</strong>
                       </div>
                     
                   </div>
@@ -192,44 +223,65 @@
             </div>
           </aside>
           <!-- MAIN CON LOS FAVORITOS -->
-          <main class="containerMain col-12 col-md-6 col-lg-8">
+          <main class="containerMain col-12 col-lg-7">
             <div class="main">
+
               <hr>
+
               <div class="container">
                 <h5>Estos son tus favoritos</h5>
               </div>
+
               <hr>
               <!-- TARJETAS FAVORITOS -->
               @foreach ($products as $product)
                 @foreach (Auth::user()->products as $userProduct)
                   @if($userProduct->id == $product->id)
 
-                    <div class="col-12 justify-content-center">
-                    <div class="card">
-                      <div class="tituloCardFav">
-                        <h5 class="card-title">{{$userProduct->name}}</h5>
-                        <div class="corazon">
-                          <i class="far fa-heart"></i>
-                        </div>
-                      </div>
-                      <div class="row no-gutters">
-                        <div class="col-4">
-                          <img src="/storage/items/{{ $userProduct->images->first()->route }}" class="fav-img" alt="...">
-                        </div>
-                        <div class="col-8">
-                          <div class="card-body">
-                            <p class="card-text">{{$userProduct->brief}}</p>
-                            {{-- <div class="buttonsCard">
-                              <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                    <div class="col-12 favProduct">
+                      
 
-                            </div> --}}
-                          </div>
+                      <div class="col-12 col-md-4 col-lg-3 p-0">
+                         <img src="/storage/items/{{ $userProduct->images->first()->route }}" class="fav-img" alt="...">
+                      </div>
+
+                      <div class="col-12 col-md-8 col-lg-9 p-0">
+                        
+                        <h5 class="fav-title">{{$userProduct->name}}</h5>
+                        <p style="font-size: 14px;">{{$userProduct->brief}}</p>
+
+                        <div class="d-flex justify-content-between">
+                          
+                          <div class="btn btn-secondary" href="#">Ver Producto</div>
+
+                          <form id="theFavForm" method="post" class="corazon " style="margin:0;">
+                            <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
+                            <input class="form-control" type="text" name="user-id" readonly value="@auth{{Auth::user()->id}}@endauth" style="display:none;">
+                            <button type="submit" name="button" style="background: none;border: none;padding:0;">
+                               @auth
+                                  @php $var = true; @endphp
+
+                                  @foreach (Auth::user()->products as $oneFav)
+                                    @if ($oneFav->id == $product->id)
+                                      <i class="fas fa-heart"></i>
+                                      @php $var = false; @endphp
+                                      @continue
+                                    @endif
+                                  @endforeach
+
+                                  @if ($var) 
+                                    <i class="far fa-heart"></i>
+                                  @endif
+                                @endauth
+                                @guest
+                                    <i class="far fa-heart"></i>
+                                @endguest
+                            </button>
+                          </form>
                         </div>
                       </div>
                     </div>
-                </div>
-                @endif
-
+                  @endif
                 @endforeach
               @endforeach
 
@@ -243,4 +295,11 @@
     </div>
 
 
+@endsection
+
+@section('scriptJS')
+  <script type="text/javascript" src="/js/countries.js"></script>
+  <script type="text/javascript" src="/js/provinces.js"></script>
+  <script src="/js/registerValidate.js"></script>
+  <script src="/js/favorite.js"></script>
 @endsection

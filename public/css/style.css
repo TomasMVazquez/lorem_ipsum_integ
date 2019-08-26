@@ -665,7 +665,8 @@ input:checked + .slider:before {
 /* --------------------------------------------------------------------------------- PROFILE */
 .imgContainerProfile {
   text-align: center;
-  margin: 12px 0 12px 0;
+  /*margin: 12px 0 12px 0;*/
+  margin:0;
 }
 
 
@@ -707,7 +708,7 @@ input:checked + .slider:before {
   justify-content: center;
 }
 
-.containerUnSwitch{
+.containerUnSwitchProfile, .containerUnSwitch{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -715,6 +716,8 @@ input:checked + .slider:before {
   justify-content: flex-start;
   font-size: 18px;
 }
+
+
 
 .profile .btnForm button{
   padding: 14px 20px;
@@ -729,7 +732,11 @@ input:checked + .slider:before {
 }
 
 .fav-img {
-  width: 50%;
+  width: 100%;
+}
+
+.fav-title{
+  font-size: 17px;
 }
 .buttonsCard{
 }
@@ -749,7 +756,27 @@ input:checked + .slider:before {
   border-color: #CCC;
 }
 
+.favProfile{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 
+.favProduct{
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.favProduct div{
+  text-align: center;
+}
+
+.favProduct img{
+  width: 60%;
+}
+ 
 /* --------------------------------------------------------------------------------- HEADER */
 
 header{
@@ -1163,8 +1190,8 @@ footer a:hover{
   }
 
   .imgContainerProfile .imgPerfil{
-  width: 250px;
-  min-height: 250px;
+  width: 150px;
+  min-height: 150px;
   position: relative;
   overflow: hidden;
   border-radius: 100%;
@@ -1193,6 +1220,23 @@ footer a:hover{
     display: flex;
     justify-content: flex-end;
   }
+
+
+.favProduct{
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.favProduct div{
+  text-align: left;
+}
+
+.favProduct img{
+  width: 60%;
+}
+ 
 
   /* --------------------------------------------------------------------------------- HEADER */
 
@@ -1360,7 +1404,39 @@ form button.volver{
 } */
 
 
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
 
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+}
+
+.switchTextPerfil{
+  margin-left: 11px!important;
+}
+
+.containerUnSwitchProfile{
+  
+  font-size: 14px;
+}
 /* --------------------------------------------------------------------------------- HEADER */
 
 .mainHeader {
@@ -1578,4 +1654,9 @@ form button.volver{
     .mobile{
       display: none;
     }
+
+    .favProduct img{
+  width: 90%;
+}
+ 
 }
