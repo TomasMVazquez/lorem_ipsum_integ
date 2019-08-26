@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title',"Lorem ipsum | Register")
+@section('title',"Lorem ipsum | Registro")
 
 @section('mainContent')
 
@@ -17,11 +17,11 @@
   </div>
 
 
-@if ($errors)
+{{-- @if ($errors)
     @foreach ($errors->all() as $error)
       <p>{{ $error }}</p>
     @endforeach
-  @endif
+  @endif --}}
 
 
   <div class="mainContainer">
