@@ -1,7 +1,7 @@
 @extends('template')
 
 {{-- Agregar el nombre del categoría --}}
-@section('title',"Lorem ipsum | categoria")
+@section('title',"Lorem ipsum | Productos")
 
 @section('mainContent')
 

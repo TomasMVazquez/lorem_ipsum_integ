@@ -81,8 +81,8 @@
         <div class="carousel-item">
           <img src="/imgs/slides/slide1.jpg" alt="img 3" width="500" {{--height="500"--}}>
           <div class="carousel-caption">
-            <h3 class="titulo-interno">Cuidado capilar</h3>
-            <p class="texto-interno">Probá nuestra nueva línea de cuidado capilar</p>
+            <h3 class="titulo-interno">Cuidado facial</h3>
+            <p class="texto-interno">Probá nuestra nueva línea de cuidado facial</p>
           </div>
         </div>
       </div>
