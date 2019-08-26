@@ -83,3 +83,9 @@ Route::get('/admin/{id}', 'AdminController@edit')->middleware('isAdmin')->name('
 Route::put('/admin/{id}', 'AdminController@update')->middleware('isAdmin');
 // Administrador Eliminar Producto
 Route::delete('/admin/{id}', 'AdminController@destroy')->middleware('isAdmin');
+//Eliminar imagenes en el Edit
+use App\Image;
+Route::get('/removeImg/{id}', function($id){
+    Image::find($id)->delete();
+    return ['status' => 'taken out'];
+})->middleware('isAdmin');;
