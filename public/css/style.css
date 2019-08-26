@@ -36,10 +36,18 @@ ul, ol {
 
 body{
   font-family: 'Muli','Titillium Web', sans-serif;
+  display:flex;
+  min-height:100vh;
+  flex-direction:column;
+}
+
+.content {
+  flex:1;
 }
 
 /* El contenedor que no va a ir al borde y contiene información tiene que
 tener estas caracteristics col-12 col-md-11 col-xl-10 */
+
 .mainContainer{
 
 }
