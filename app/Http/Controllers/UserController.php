@@ -25,7 +25,7 @@ class UserController extends Controller
      * @param  array  $req
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    
+
 
     public function update(Request $req){
     	$categories = Category::all();
@@ -39,7 +39,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email,'.$userToUpdate->id,
             'country' => 'required',
-            
+
         ], [
             'first_name.required' => 'Por favor, ingresá tu nombre',
             'last_name.required' => 'Por favor, ingresá tu apellido',
@@ -50,7 +50,7 @@ class UserController extends Controller
 
     	if(isset($req['avatar'])){
 
-         
+
             $image = $req["avatar"];
             $finalImage = uniqid("img_") . "." . $image->extension();
             $image->storePubliclyAs("public/avatars", $finalImage);
@@ -64,18 +64,18 @@ class UserController extends Controller
             $userToUpdate->subcategories()->sync($subcategories);
         }
 
-        // Actualizo si el usuario desea recibir notificaciones. Si del form  llega NULO es 0 sino 1. 
+        // Actualizo si el usuario desea recibir notificaciones. Si del form  llega NULO es 0 sino 1.
 
         $userToUpdate->notifications = ($req['notifications']==NULL) ? 0 : 1;
-        
-       
+
+
         // Guardo nombre, apellido, email, país.
-         
+
 		$userToUpdate->first_name = $req['first_name'];
 		$userToUpdate->last_name = $req['last_name'];
 		$userToUpdate->email = $req['email'];
 		$userToUpdate->country = $req['country'];
-        
+
 
 		$userToUpdate->save();
 
@@ -84,4 +84,6 @@ class UserController extends Controller
     }
 
 
-}
+
+
+    }
