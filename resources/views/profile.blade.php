@@ -89,33 +89,46 @@
                     <!-- Mensaje de error -->
                   </div>
 
-                  <label for="country"><b>{{ __('País') }}</b></label>
-                  <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
-                      <option value="">Seleccionar país</option>
-                   </select>
+                  <div class="form-group row">
+              <label for="country" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('País') }}</label>
 
-                   @error('country')
+
+              <div class="col-md-8 col-xl-10">
+                    <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
+
+                      <option value="">Seleccionar país</option>
+
+                    </select>
+                    @error('country')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="invalid">
+                      <!-- Mensaje de error -->
+                    </div>
+
+              </div>
+          </div>
+          <div class="selectProvince form-group row" style="display: none;">
+              <label for="province" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('Provincia') }}</label>
+
+
+              <div class="col-md-8 col-xl-10">
+                    <select class="form-control @error('province') is-invalid @enderror custom-select"  name="province">
+                      <option value="">Seleccionar provincia</option>
+                    </select>
+                    @error('province')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
 
-                    <div class="selectProvince form-group ">
-                      <label for="province" class="w-100">{{ __('Provincia') }}</label>
+              </div>
+          </div>
+                  
 
-
-                      <div class="w-100">
-                            <select class="form-control @error('province') is-invalid @enderror custom-select"  name="province">
-                              <option value="">Seleccionar provincia</option>
-                            </select>
-                            @error('province')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-
-                      </div>
-                  </div>
+                    
 
                   <hr>
 
@@ -248,7 +261,7 @@
                         <h5 class="fav-title">{{$userProduct->name}}</h5>
                         <p style="font-size: 14px;">{{$userProduct->brief}}</p>
 
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between align-items-center">
                           
                           <div class="btn btn-secondary"><a href="products/{{ $userProduct->id }}">Ver Producto</a></div>
 
@@ -296,7 +309,7 @@
 @endsection
 
 @section('scriptJS')
-  <script type="text/javascript" src="/js/countries2.js"></script>
+  <script type="text/javascript" src="/js/countries.js"></script>
   <script type="text/javascript" src="/js/provinces.js"></script>
   <script src="/js/registerValidate.js"></script>
   <script src="/js/favorite.js"></script>

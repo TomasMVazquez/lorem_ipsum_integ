@@ -1553,6 +1553,11 @@ footer a:hover{
   .mobile{
     display: none;
   }
+
+   .modal-lg,
+  .modal-xl {
+    max-width: 600px;
+  }
 /* --------------------------------------------------------------------------------- LOG IN */
 
 form button{
@@ -1632,6 +1637,7 @@ input:checked + .slider:before {
   align-items: center;
   color: #fff;
   justify-content: flex-end!important;
+  padding: 0;
 }
 
 .clmPerfil {
