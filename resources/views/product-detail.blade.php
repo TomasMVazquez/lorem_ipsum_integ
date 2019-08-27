@@ -159,3 +159,6 @@
   </div>
 </div>
 @endsection
+@section('scriptJS')
+    <script src="/js/favorite.js"></script>
+@endsection

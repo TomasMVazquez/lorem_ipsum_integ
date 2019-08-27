@@ -82,12 +82,7 @@
             <p class="card-text">
               {{str_limit($product->brief, $limit = 100, $end= '...')}} </p>
 
-              <div class="row">
-                <p class="card-text col-10">
-                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                </p>
-                <p class="col-2"><i class="fas fa-share-alt"></i></p>
-              </div>
+
               <div class="boton-detalle">
                 <a class="btn btn-primary btn-block" href="/products/{{ $product->id }}" role="button">Ver detalle</a>
               </div>

@@ -10,6 +10,10 @@
 /* Importamos los iconos */
 @import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 
+.form-control:focus {
+  border-color: grey;
+  box-shadow: 0 0 0 0.2rem #E0B9E3;
+}
 
 /* --------------------------------------------------------------------------------- GENERALES */
 * {
@@ -484,7 +488,7 @@ h2.titseccion {
 /* --------------------------------------------------------------------------------- LOGIN */
 .container {
   padding: 20px;
-  
+
 }
 .mainContainer{
   display: flex;
@@ -811,7 +815,7 @@ input:checked + .slider:before {
 .favProduct img{
   width: 60%;
 }
- 
+
 /* --------------------------------------------------------------------------------- HEADER */
 
 header{
@@ -1335,7 +1339,7 @@ footer a:hover{
 .favProduct img{
   width: 60%;
 }
- 
+
 
   /* --------------------------------------------------------------------------------- HEADER */
 
@@ -1608,7 +1612,7 @@ input:checked + .slider:before {
 }
 
 .containerUnSwitchProfile{
-  
+
   font-size: 14px;
 }
 /* --------------------------------------------------------------------------------- HEADER */
@@ -1833,5 +1837,5 @@ input:checked + .slider:before {
     .favProduct img{
   width: 90%;
 }
- 
+
 }
