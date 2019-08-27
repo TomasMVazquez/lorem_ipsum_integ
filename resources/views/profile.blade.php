@@ -91,9 +91,7 @@
 
                   <label for="country"><b>{{ __('País') }}</b></label>
                   <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
-
                       <option value="">Seleccionar país</option>
-
                    </select>
 
                    @error('country')
@@ -298,7 +296,7 @@
 @endsection
 
 @section('scriptJS')
-  <script type="text/javascript" src="/js/countries.js"></script>
+  <script type="text/javascript" src="/js/countries2.js"></script>
   <script type="text/javascript" src="/js/provinces.js"></script>
   <script src="/js/registerValidate.js"></script>
   <script src="/js/favorite.js"></script>

@@ -22,17 +22,17 @@ $subcategories = Subcategory::all();
     </div>
     {{-- fin logo --}}
 
-    
+    <div class="clmPerfil col-12 col-sm-7 col-md-4 col-lg-3" style="margin-top:20px">
+      <form class="searchHeader" action="/products/search" method="get">
+        @csrf
+        <input class="col-lg-11 form-control mr-sm-2" type="text" placeholder="¡Quiero encontrarlo!" name="search">
+        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
 
     {{-- comienzo del perfil o del guest --}}
     {{-- en mobile desaparece --}}
-    <div class="clmPerfilOrig col-12 col-sm-7 col-md-5 col-lg-9">
-      <form class="searchHeader" action="/products/search" method="get">
-        @csrf
-        <input class="col-lg-8 form-control mr-sm-2" type="text" placeholder="¡Quiero encontrarlo!" name="search">
-        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-
+    <div class="clmPerfilOrig col-12 col-sm-7 col-md-5 col-lg-6">
       <div class="clmPerfil perfilHeader">
         <div class="dropdown">
           {{-- Si estas logeado --}}
