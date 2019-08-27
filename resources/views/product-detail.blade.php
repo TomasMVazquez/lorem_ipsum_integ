@@ -50,8 +50,40 @@
                 <h5 class="card-title nombre-producto-detalle" style="text-align:left;">
                   {{ $product->name }}
                 </h5>
-                <div class="corazon">
-                  <i class="far fa-heart"></i>
+                <div>
+                  <ul class="corazon">
+                    <li style="width:20%">
+                      <form id="theFavForm" method="post" style="margin:0;">
+                        <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
+                        <input class="form-control" type="text" name="user-id" readonly value="@auth{{Auth::user()->id}}@endauth" style="display:none;">
+                        <button type="submit" name="button" style="background: none;border: none;padding:0;">
+                          @auth
+                            @php
+                              $var = true;
+                            @endphp
+
+                            @foreach (Auth::user()->products as $oneFav)
+                              @if ($oneFav->id == $product->id)
+                                <i class="fas fa-heart"></i>
+                                @php
+                                  $var = false;
+                                @endphp
+                                @continue
+                              @endif
+                            @endforeach
+
+                            @if ($var)
+                              <i class="far fa-heart"></i>
+                            @endif
+                          @endauth
+                          @guest
+                            <i class="far fa-heart"></i>
+                          @endguest
+                        </button>
+                      </form>
+                    </li>
+                  </ul>
+
                 </div>
               </div>
               <hr>
@@ -70,12 +102,6 @@
                 </ul>
               </div>
               <hr>
-              <div class="row">
-                <p class="card-text col-10">
-                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                </p>
-                <p class="col-2" style="text-align:center;"><i class="fas fa-share-alt"></i></p>
-              </div>
               <br>
               <!-- Acordeon con info -->
               <div class="accordion" id="accordionExample">
