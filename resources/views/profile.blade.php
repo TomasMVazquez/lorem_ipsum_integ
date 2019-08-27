@@ -102,11 +102,11 @@
                         </span>
                     @enderror
 
-                    <div class="selectProvince form-group row" style="display:none">
-                      <label for="province" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('Provincia') }}</label>
+                    <div class="selectProvince form-group ">
+                      <label for="province" class="w-100">{{ __('Provincia') }}</label>
 
 
-                      <div class="col-md-8 col-xl-10">
+                      <div class="w-100">
                             <select class="form-control @error('province') is-invalid @enderror custom-select"  name="province">
                               <option value="">Seleccionar provincia</option>
                             </select>
