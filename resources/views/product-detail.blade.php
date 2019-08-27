@@ -5,14 +5,15 @@
 
 @section('mainContent')
 
+
 <div class="row justify-content-center" style="margin:5px 0">
   <div class="col-12 col-md-11 col-xl-10">
     <!--Barra de navegacion -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="productos.php">Productos</a></li>
+        <li class="breadcrumb-item"><a href="/products/">Productos</a></li>
         <li class="breadcrumb-item active" aria-current="page">
-            {{ $productoDetallado["nombre"] }}
+            {{ $product->name }}
         </li>
       </ol>
     </nav>
@@ -22,17 +23,24 @@
       <div class="card">
         <div class="row">
           <div class="img-producto col-md-5">
-            <img class="card-img-top" src="
-              {{-- // $productoDetallado["imagen-principal"] --}}
-              " alt="Imagen Producto 1">
+            <img class="card-img-top" src="/storage/items/{{ $product->images->first()->route}}"
+            alt="Imagen Producto 1">
             <div class="img-min">
-             @foreach ($productoDetallado["imagenes-secundarias"] as $unaImagen):
-              <img src="
-                  {{-- // $unaImagen --}}
-                  " alt="
-                  {{-- $productoDetallado["nombre"] --}}
-                  ">
-              @endforeach;
+             @foreach ($product->images as $prodImg)
+               <!-- Large modal -->
+            <button type="button" class="" data-toggle="modal" data-target=".bd-example-modal-lg">
+              <img src="/storage/items/{{$prodImg->route}}" alt="{{ $product->name }}" style="width:50px;">
+            </button>
+
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <img src="/storage/items/{{$prodImg->route}}" alt="{{ $product->name }}" style="width:300px;">
+                </div>
+              </div>
+            </div>
+
+              @endforeach
             </div>
           </div>
 
@@ -40,7 +48,7 @@
             <div class="card-body">
               <div class="encabezado-producto">
                 <h5 class="card-title nombre-producto-detalle" style="text-align:left;">
-                  {{-- $productoDetallado["nombre"] --}}
+                  {{ $product->name }}
                 </h5>
                 <div class="corazon">
                   <i class="far fa-heart"></i>
@@ -48,17 +56,17 @@
               </div>
               <hr>
               <p class="card-text">
-              {{-- // $productoDetallado["copete"] --}}
+              {{ $product->brief }}
               </p>
               <hr>
               <div class="presentaciones">
                 <p style="text-transform:uppercase;"><strong>Presentaciones</strong></p>
                 <ul>
-                {{-- // foreach ($productoDetallado["presentacion"] as $unaPresentacion): --}}
+              @foreach ($product->presentation as $presentation)
                   <li class="presentacion">
-                  {{-- // $unaPresentacion --}}
+                  {{ $presentation->type }}
                   </li>
-              {{-- // endforeach; --}}
+              @endforeach
                 </ul>
               </div>
               <hr>
@@ -82,7 +90,7 @@
 
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
-                      {{-- // $productoDetallado["descripcion"] --}}
+                      {{ $product->description }}
                     </div>
                   </div>
                 </div>
@@ -96,7 +104,7 @@
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                      {{-- // $productoDetallado["beneficios"] --}}
+                      {{ $product->benefits }}
                     </div>
                   </div>
                 </div>
@@ -110,7 +118,7 @@
                   </div>
                   <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
-                      {{-- // $productoDetallado["modo-de-uso"] --}}
+                      {{ $product->uses }}
                     </div>
                   </div>
                 </div>
