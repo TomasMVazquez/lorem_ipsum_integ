@@ -10,6 +10,10 @@
 /* Importamos los iconos */
 @import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 
+.form-control:focus {
+  border-color: grey;
+  box-shadow: 0 0 0 0.2rem #E0B9E3;
+}
 
 /* --------------------------------------------------------------------------------- GENERALES */
 * {
@@ -484,7 +488,7 @@ h2.titseccion {
 /* --------------------------------------------------------------------------------- LOGIN */
 .container {
   padding: 20px;
-  
+
 }
 .mainContainer{
   display: flex;
@@ -811,7 +815,7 @@ input:checked + .slider:before {
 .favProduct img{
   width: 60%;
 }
- 
+
 /* --------------------------------------------------------------------------------- HEADER */
 
 header{
@@ -1335,7 +1339,7 @@ footer a:hover{
 .favProduct img{
   width: 60%;
 }
- 
+
 
   /* --------------------------------------------------------------------------------- HEADER */
 
@@ -1346,7 +1350,7 @@ footer a:hover{
     .clmPerfilOrig{
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
       color: #fff;
       justify-content: space-between!important;
     }
@@ -1414,7 +1418,7 @@ footer a:hover{
 
     .navbar-expand-md .navbar-collapse {
         justify-content: flex-end;
-        transform: translateY(-25px);
+       
     }
 
     .navbar-toggler{
@@ -1603,7 +1607,7 @@ input:checked + .slider:before {
 }
 
 .containerUnSwitchProfile{
-  
+
   font-size: 14px;
 }
 /* --------------------------------------------------------------------------------- HEADER */
@@ -1629,7 +1633,7 @@ input:checked + .slider:before {
 .clmPerfilOrig{
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   color: #fff;
   justify-content: flex-end!important;
 }
@@ -1642,7 +1646,7 @@ input:checked + .slider:before {
  }
 
 .perfilHeader {
-  padding: 0 8px;
+  padding: 2px 8px;
 }
 
 .perfilHeader .avatar{
@@ -1688,8 +1692,7 @@ input:checked + .slider:before {
 
  .searchHeader {
       display: flex;
-      align-self: flex-start;
-      margin-top: 7px;
+      
     }
 
 .navbar-expand-md .navbar-collapse {
@@ -1828,5 +1831,5 @@ input:checked + .slider:before {
     .favProduct img{
   width: 90%;
 }
- 
+
 }

@@ -250,7 +250,7 @@
 
                         <div class="d-flex justify-content-between">
                           
-                          <div class="btn btn-secondary" href="/product-detail/{{ $userProduct->id }}">Ver Producto</div>
+                          <div class="btn btn-secondary"><a href="products/{{ $userProduct->id }}">Ver Producto</a></div>
 
                           <form id="theFavForm" method="post" class="corazon " style="margin:0;">
                             <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
