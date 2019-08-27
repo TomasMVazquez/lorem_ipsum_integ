@@ -22,40 +22,39 @@ $subcategories = Subcategory::all();
     </div>
     {{-- fin logo --}}
 
-    
+    <div class="clmPerfil col-12 col-sm-7 col-md-4 col-lg-3" style="margin-top:20px">
+      <form class="searchHeader" action="/products/search" method="get">
+        @csrf
+        <input class="col-lg-11 form-control mr-sm-2" type="text" placeholder="¡Quiero encontrarlo!" name="search">
+        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
 
     {{-- comienzo del perfil o del guest --}}
     {{-- en mobile desaparece --}}
-    <div class="clmPerfilOrig col-12 col-sm-7 col-md-5 col-lg-9">
-      <form class="searchHeader" action="/products/search" method="get">
-        @csrf
-        <input class="col-lg-8 form-control mr-sm-2" type="text" placeholder="¡Quiero encontrarlo!" name="search">
-        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-
+    <div class="clmPerfilOrig col-12 col-sm-7 col-md-5 col-lg-6">
       <div class="clmPerfil perfilHeader">
-        
-          @auth
-          <div class="dropdown">
+        <div class="dropdown">
           {{-- Si estas logeado --}}
-            <a class="nav-link dropdown-toggle p-0" href="#" id="navbardropLogin" data-toggle="dropdown">
+          @auth
+          <a class="nav-link dropdown-toggle p-0" href="#" id="navbardropLogin" data-toggle="dropdown">
             Bienvenide {{Auth::user()->first_name}}
-            </a>
-            <div class="dropdown-menu ">
-              <a class="dropdown-item" href="/profile">Mi cuenta</a>
-              <a class="dropdown-item" href="/profile">Ver Favoritos</a>
-              <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
-            </div>
+          </a>
+          <div class="dropdown-menu ">
+            <a class="dropdown-item" href="/profile">Mi cuenta</a>
+            <a class="dropdown-item" href="/profile">Ver Favoritos</a>
+            <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
           </div>
+        </div>
 
-          <div class="img">
-            <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="imagen de perfil del usuario logeado">
-          </div>
-          @endauth
+        <div class="img">
+          <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="imagen de perfil del usuario logeado">
+        </div>
+        @endauth
         {{-- Si no estas logeado --}}
         @guest
         <div style="text-align: right;">
-          <p><i class="fas fa-sign-in-alt mr-2"></i><a href="/login">¡Ingresá al sistema!</a></p>
+          Bienvenide<p><i class="fas fa-sign-in-alt mr-2"></i><a href="/login">¡Ingresá al sistema!</a></p>
         </div>
         @endguest
       </div>

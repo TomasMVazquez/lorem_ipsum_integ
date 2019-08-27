@@ -91,9 +91,7 @@
 
                   <label for="country"><b>{{ __('País') }}</b></label>
                   <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
-
                       <option value="">Seleccionar país</option>
-
                    </select>
 
                    @error('country')
@@ -252,7 +250,7 @@
 
                         <div class="d-flex justify-content-between">
                           
-                          <div class="btn btn-secondary" href="#">Ver Producto</div>
+                          <div class="btn btn-secondary"><a href="products/{{ $userProduct->id }}">Ver Producto</a></div>
 
                           <form id="theFavForm" method="post" class="corazon " style="margin:0;">
                             <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
@@ -298,7 +296,7 @@
 @endsection
 
 @section('scriptJS')
-  <script type="text/javascript" src="/js/countries.js"></script>
+  <script type="text/javascript" src="/js/countries2.js"></script>
   <script type="text/javascript" src="/js/provinces.js"></script>
   <script src="/js/registerValidate.js"></script>
   <script src="/js/favorite.js"></script>
