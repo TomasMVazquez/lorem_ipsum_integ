@@ -49,7 +49,10 @@ body{
 tener estas caracteristics col-12 col-md-11 col-xl-10 */
 
 .mainContainer{
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
 }
 
 .form-control {
@@ -480,7 +483,8 @@ h2.titseccion {
 
 /* --------------------------------------------------------------------------------- LOGIN */
 .container {
-  padding: 8px;
+  padding: 20px;
+  
 }
 .mainContainer{
   display: flex;
@@ -863,6 +867,12 @@ header{
   color: #fff;
   justify-content: space-between!important;
   padding: 15px 20px;
+}
+
+.buscador {
+  display: fixed;
+  bottom: 0;
+  left:0;
 }
 
 .perfilHeader .img img{
