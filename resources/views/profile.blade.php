@@ -11,7 +11,7 @@
       <div class="col-12 col-md-11 col-lg-10">
         <!-- COMIENZA EL PROFILE -->
 
-       
+
         <div class="row">
           <!-- COSTADO CON EL PROFILE -->
           <aside class="containerAside col-12  col-lg-5">
@@ -40,7 +40,7 @@
                   @enderror
                   <p class="m-3">¡Modifica tu foto clickeando en la imagen!</p>
                   </label>
-                  
+
 
                 </div>
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
@@ -94,6 +94,7 @@
 
 
               <div class="col-md-8 col-xl-10">
+                    <input type="hidden" name="pais_del_usuario" value="{{ Auth::user()->country }}">
                     <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
 
                       <option value="">Seleccionar país</option>
@@ -126,14 +127,14 @@
 
               </div>
           </div>
-                  
 
-                    
+
+
 
                   <hr>
 
                   <div>
-                    
+
 
                   <!-- SWITCH PARA QUE QUIERO VER -->
                   <label for="categories"><b>¿Qué te interesa?</b></label>
@@ -183,7 +184,7 @@
 
 
                    @endforeach
-                  
+
                 </div>
               </div>
 
@@ -201,27 +202,27 @@
                               checked
                             @endif
                           @endif
-  
- 
+
+
                           @if(Auth::user()->notifications == 1 )
                               checked
                           @endif
                           >
-                          
-                          
+
+
                           <span class="slider round"></span>
                         </label>
 
                         <strong class="switchTextNoticias">Quiero recibir noticias!</strong>
                       </div>
-                    
+
                   </div>
 
                   <div class="btnForm" style="margin-top:20px">
                     <button class="btn-primary" type="submit">Actualizar</button>
                   </div>
                   <hr>
-                 
+
                   <div class="btnForm">
                     <a class="btn btn-secondary" href="">Modificar Contraseña</a>
                   </div>
@@ -250,19 +251,19 @@
                   @if($userProduct->id == $product->id)
 
                     <div class="col-12 favProduct">
-                      
+
 
                       <div class="col-12 col-md-4 col-lg-3 p-0">
                          <img src="/storage/items/{{ $userProduct->images->first()->route }}" class="fav-img" alt="...">
                       </div>
 
                       <div class="col-12 col-md-8 col-lg-9 p-0">
-                        
+
                         <h5 class="fav-title">{{$userProduct->name}}</h5>
                         <p style="font-size: 14px;">{{$userProduct->brief}}</p>
 
                         <div class="d-flex justify-content-between align-items-center">
-                          
+
                           <div class="btn btn-secondary"><a href="products/{{ $userProduct->id }}">Ver Producto</a></div>
 
                           <form id="theFavForm" method="post" class="corazon " style="margin:0;">
@@ -280,7 +281,7 @@
                                     @endif
                                   @endforeach
 
-                                  @if ($var) 
+                                  @if ($var)
                                     <i class="far fa-heart"></i>
                                   @endif
                                 @endauth

@@ -134,9 +134,8 @@
                     <table class="table table-hover table-sm">
                       <thead>
                         <tr>
-                          <th scope="col">Product</th>
-                          <th class="adminBrief" scope="col">Biref</th>
-                          <th scope="col">Rating</th>
+                          <th scope="col">Producto</th>
+                          <th class="adminBrief" scope="col">Detalle</th>
                           <th scope="col"></th>
                           <th scope="col"></th>
                         </tr>
@@ -147,13 +146,12 @@
                             <tr>
                               <th scope="row">{{ $product->name }}</th>
                               <td class="adminBrief">{{$product->brief}}</td>
-                              <td style="text-align: center;">{{$product->rating}}</td>
-                              <td><a href="{{ route('edit', $product->id) }}" class="btn btn-outline-info">Edit</a></td>
+                              <td><a href="{{ route('edit', $product->id) }}" class="btn btn-outline-info">Editar</a></td>
                               <td>
                                 <form class="theDeleteBtn" action="/admin/{{ $product->id }}" method="post">
                         					@csrf
                         					{{ method_field('delete') }}
-                        					<button type="submit" class="btn btn-danger">Delete</button>
+                        					<button type="submit" class="btn btn-danger">Borrar</button>
                         				</form>
                               </td>
                             </tr>

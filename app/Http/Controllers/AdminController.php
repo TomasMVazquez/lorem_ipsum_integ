@@ -41,7 +41,7 @@ class AdminController extends Controller
       $categoryToSave->name = $request['nameCat'];
       $categoryToSave->save();
 
-  		return redirect('/admin/add');
+  		return redirect('/admin');
     }
 
     public function storeSubCategory(Request $request)
@@ -59,7 +59,7 @@ class AdminController extends Controller
       $subcategoryToSave->category_id = $request['categorySub'];
       $subcategoryToSave->save();
 
-  		return redirect('/admin/add');
+  		return redirect('/admin');
     }
 
     public function storePresentation(Request $request)
@@ -74,7 +74,7 @@ class AdminController extends Controller
       $presentationToSave->type = $request['typePres'];
       $presentationToSave->save();
 
-  		return redirect('/admin/add');
+  		return redirect('/admin');
     }
 
     public function store(Request $request)

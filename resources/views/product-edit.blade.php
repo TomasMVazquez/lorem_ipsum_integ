@@ -8,7 +8,7 @@
   <div class="editAdminMainConteiner" style="display: flex; flex-direction: column;">
     <!-- TITULO DE LA PAG -->
     <div class="col-12 col-md-11 col-xl-10" style="align-self: center;">
-      <h1 class="tit-productos">Editar: </h1>
+      <h1 class="tit-productos">Editar producto </h1>
       <p>Edita el formulario para crear actualizar.</p>
       <h2>{{ $productToEdit->name }}</h2>
     </div>
@@ -190,26 +190,12 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-10 col-md-6">
-            <div class="form-group">
-              <label>Rating:</label>
-              <input type="text" name="rating" class="form-control" value="{{ old('rating', $productToEdit->rating) }}">
-              <div class="invalid">
-  							<!-- Mensaje de error -->
-  						</div>
-  						@error ('rating')
-  							<i style="color: red;"> {{ $errors->first('rating') }}</i>
-  						@enderror
-            </div>
-          </div>
 
-        </div>
 
         <div class="row">
           <div class="col-12 text-right">
             <button type="submit" class="col-12 col-md-3 btn btn-primary">
-              EDITAR
+              GUARDAR CAMBIOS
             </button>
           </div>
         </div>
