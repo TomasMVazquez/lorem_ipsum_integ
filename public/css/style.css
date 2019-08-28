@@ -1104,7 +1104,7 @@ footer a:hover{
   text-decoration: none;
 }
 
-/* ---------------------------------------------------------------------------------  ADMIN VIEWS */
+/* ---------------------------------------------------------------------------------  ADMIN VIEWS MOBile*/
 /* Index admin */
 .adminConteiner{
   margin: 20px;
@@ -1126,12 +1126,17 @@ footer a:hover{
 .adminBrief{
   display: none;
 }
+.modal form{
+  padding: 10px;
+  border:none;
+}
 
 
 /* Edit admin */
 .editAdminMainConteiner{
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 .editAdminConteiner{
   display: flex;
@@ -1160,22 +1165,65 @@ footer a:hover{
 #trash {
   align-self:flex-end;
   font-size: 1.2em;
+  position: relative;
+  top: -20px;
+  right: -5px;
+}
+.imgToDelete{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+}
+#btnImgAdd{
+  background: none;
+  border: none;
+  padding:0;
+}
+.row{
+  justify-content: center;
+}
+.rowImg{
+  justify-content: center;
 }
 
+
 /* ADD admin */
+.conteinerAdd{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-self: center;
+}
+.conteinerAdd form{
+  padding: 10px;
+}
 .ButtonsAdd{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 10px;
 }
 .mobileAddPop{
   width: 95vw;
 }
-
+.btnDiv{
+  display: flex;
+  justify-content:flex-end;
+}
 #rowImg {
   display:flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
+}
+#btnImgAdd{
+  background: none;
+  border: none;
+  padding:0;
+  width: auto;
+}
+#btnImgAdd i{
+  font-size:2em;
 }
 /* --------------------------------------------------------------------------------- MEDIA QUERYs */
 /* Phones Landscape */
@@ -1248,7 +1296,7 @@ footer a:hover{
 /*hasta aca va el estilo del index*/
   /* --------------------------------------------------------------------------------- FOOTER */
 
-  /* ---------------------------------------------------------------------------------  ADMIN VIEWS */
+  /* ---------------------------------------------------------------------------------  ADMIN VIEWS phone lands */
   /* Add admin */
   .mobileAddPop{
     width: none;
@@ -1558,6 +1606,15 @@ footer a:hover{
 .wide{
   display: none;
 }
+
+.row div button{
+  width: -webkit-fill-available;
+}
+.rowImg{
+  justify-content: flex-start;
+}
+
+
 /*----------------------INDEX--------------------------------------------/*
 
 
@@ -1824,7 +1881,7 @@ input:checked + .slider:before {
       width: 100%;
       font-size: 0.9rem;
     }
-/* ---------------------------------------------------------------------------------  ADMIN VIEWS */
+/* ---------------------------------------------------------------------------------  ADMIN VIEWS DESKTOPS */
 /* Index admin */
     .adminBrief{
       display: table-cell;
@@ -1835,6 +1892,9 @@ input:checked + .slider:before {
     }
     .imgMob{
       display: block;
+    }
+    .ButtonsAdd{
+      margin-right: 10px;
     }
 
 /* ADD admin */

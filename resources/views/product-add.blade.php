@@ -5,18 +5,17 @@
 
 @section('mainContent')
 
-  <div class="" style="display: flex; flex-direction: column;">
+  <div class="col-12 editAdminMainConteiner">
     <!-- TITULO DE LA PAG -->
-    <div class="col-12 col-md-11 col-xl-10" style="align-self: center;">
+    <div class="col-12 col-md-11 col-xl-10 align-self-center">
       <h1 class="tit-productos">Agregar producto </h1>
-      <p>Completar el formulario para crear producto.</p>
+      <p class="tit-productos">Completar el formulario para crear producto.</p>
     </div>
     <!-- FIN TITULO DE LA PAG -->
 
     {{-- Comienzo del formulario --}}
-    <div class="col-12"
-    style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap;">
-      <form id="newAdd" class="col-12 col-md-10" method="POST" enctype="multipart/form-data" action="/admin/add" style="padding: 10px;">
+    <div class="col-12 conteinerAdd">
+      <form id="newAdd" class="col-12 col-md-10" method="POST" enctype="multipart/form-data" action="/admin/add">
         @csrf
 
         <div class="row">
@@ -36,7 +35,7 @@
               <!-- Mensaje de error -->
             </div>
 						@error ('category')
-							<i style="color: red;"> {{ $errors->first('category') }}</i>
+							<i class="text-danger"> {{ $errors->first('category') }}</i>
 						@enderror
 					</div>
 
@@ -56,15 +55,15 @@
               <!-- Mensaje de error -->
             </div>
 						@error ('subcategory')
-							<i style="color: red;"> {{ $errors->first('subcategory') }}</i>
+							<i class="text-danger"> {{ $errors->first('subcategory') }}</i>
 						@enderror
 					</div>
 
         </div>
         <br>
         <div class="row" id="rowImg">
-          <button type="button" id="btnImgAdd" style="background: none;border: none;padding:0;">
-            <i class="fas fa-plus-circle" style="color: green;font-size:2em;"></i>
+          <button type="button" id="btnImgAdd">
+            <i class="fas fa-plus-circle text-success"></i>
           </button>
           <div class="col-10 col-md-6 col-lg-3 imgFormGroup">
             <div class="custom-file" id="imgAdd">
@@ -75,7 +74,7 @@
               <!-- Mensaje de error -->
             </div>
             @error ('image')
-              <i style="color: red;"> {{ $errors->first('image') }}</i>
+              <i class="text-danger"> {{ $errors->first('image') }}</i>
             @enderror
           </div>
         </div>
@@ -90,7 +89,7 @@
   							<!-- Mensaje de error -->
   						</div>
   						@error ('name')
-  							<i style="color: red;"> {{ $errors->first('name') }}</i>
+  							<i class="text-danger"> {{ $errors->first('name') }}</i>
   						@enderror
   					</div>
   				</div>
@@ -103,7 +102,7 @@
   							<!-- Mensaje de error -->
   						</div>
               @error ('brief')
-                <i style="color: red;"> {{ $errors->first('brief') }}</i>
+                <i class="text-danger"> {{ $errors->first('brief') }}</i>
               @enderror
             </div>
           </div>
@@ -118,7 +117,7 @@
   							<!-- Mensaje de error -->
   						</div>
               @error ('description')
-                <i style="color: red;"> {{ $errors->first('description') }}</i>
+                <i class="text-danger"> {{ $errors->first('description') }}</i>
               @enderror
             </div>
           </div>
@@ -131,7 +130,7 @@
   							<!-- Mensaje de error -->
   						</div>
               @error ('uses')
-                <i style="color: red;"> {{ $errors->first('uses') }}</i>
+                <i class="text-danger"> {{ $errors->first('uses') }}</i>
               @enderror
             </div>
           </div>
@@ -146,7 +145,7 @@
   							<!-- Mensaje de error -->
   						</div>
               @error ('benefits')
-                <i style="color: red;"> {{ $errors->first('benefits') }}</i>
+                <i class="text-danger"> {{ $errors->first('benefits') }}</i>
               @enderror
             </div>
           </div>
@@ -164,7 +163,7 @@
  						</div>
            </div>
            @error ('presentation')
-             <i style="color: red;"> {{ $errors->first('presentation') }}</i>
+             <i class="text-danger"> {{ $errors->first('presentation') }}</i>
            @enderror
           </div>
         </div>
@@ -172,7 +171,7 @@
 
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 btnDiv">
           <button type="submit" class="btn btn-primary">
             AGREGAR PRODUCTO
           </button>
