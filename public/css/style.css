@@ -356,6 +356,13 @@ margin-bottom: 0em;
   margin-right: 0;
 }
 
+.btnHeart{
+  background: none;
+  border: none;
+  padding:0;
+  width: auto;
+}
+
 
 .encabezado {
   background-color: #F9F7F7;
@@ -1607,9 +1614,6 @@ footer a:hover{
   display: none;
 }
 
-.row div button{
-  width: -webkit-fill-available;
-}
 .rowImg{
   justify-content: flex-start;
 }

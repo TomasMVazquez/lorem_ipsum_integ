@@ -50,7 +50,7 @@
                     <form id="theFavForm" method="post" style="margin:0;">
                       <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
                       <input class="form-control" type="text" name="user-id" readonly value="@auth{{Auth::user()->id}}@endauth" style="display:none;">
-                      <button type="submit" name="button" style="background: none;border: none;padding:0;">
+                      <button class="btnHeart" type="submit" name="button">
                         @auth
                           @php
                             $var = true;
