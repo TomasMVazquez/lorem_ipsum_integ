@@ -30,51 +30,6 @@ class CreateRelationalsTablesDb extends Migration
           $table->timestamps();
       });
 
-      // Insert subcategories
-      DB::table('presentation_product')->insert(
-        array(
-          array('presentation_id' => '3','product_id' => '1'),
-          array('presentation_id' => '4','product_id' => '1'),
-          array('presentation_id' => '5','product_id' => '1'),
-          array('presentation_id' => '6','product_id' => '2'),
-          array('presentation_id' => '1','product_id' => '3'),
-          array('presentation_id' => '2','product_id' => '3'),
-          array('presentation_id' => '7','product_id' => '4'),
-          array('presentation_id' => '8','product_id' => '4'),
-          array('presentation_id' => '9','product_id' => '5'),
-          array('presentation_id' => '10','product_id' => '5'),
-          array('presentation_id' => '11','product_id' => '6'),
-          array('presentation_id' => '10','product_id' => '7'),
-          array('presentation_id' => '9','product_id' => '8'),
-          array('presentation_id' => '8','product_id' => '9'),
-          array('presentation_id' => '2','product_id' => '10'),
-          array('presentation_id' => '1','product_id' => '11'),
-          array('presentation_id' => '3','product_id' => '12'),
-          array('presentation_id' => '4','product_id' => '13'),
-          array('presentation_id' => '5','product_id' => '14'),
-          array('presentation_id' => '11','product_id' => '15')
-      ));
-
-      //Insert images
-      DB::table('images')->insert(
-        array(
-          array('product_id' => '1','route' => '1.jpg'),
-          array('product_id' => '2','route' => '2.jpg'),
-          array('product_id' => '3','route' => '3.jpg'),
-          array('product_id' => '4','route' => '4.jpg'),
-          array('product_id' => '5','route' => '5.jpg'),
-          array('product_id' => '6','route' => '6.jpg'),
-          array('product_id' => '7','route' => '6.jpg'),
-          array('product_id' => '8','route' => '6.jpg'),
-          array('product_id' => '9','route' => '6.jpg'),
-          array('product_id' => '10','route' => '6.jpg'),
-          array('product_id' => '11','route' => '6.jpg'),
-          array('product_id' => '12','route' => '6.jpg'),
-          array('product_id' => '13','route' => '6.jpg'),
-          array('product_id' => '14','route' => '6.jpg'),
-          array('product_id' => '15','route' => '6.jpg'),
-          array('product_id' => '16','route' => '6.jpg')
-      ));
 
     }
 
