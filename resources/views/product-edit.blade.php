@@ -68,7 +68,7 @@
                 <div class="col-10 col-md-6 col-lg-3 imgFormGroup">
                   <img id="{{$image->id}}" class="imgMob" src="/storage/items/{{ $image->route }}" alt="" style="">
                 </div>
-                <i id="trash" class="fas fa-trash-alt" style="font-size:2em; align-self:flex-end;"></i>
+                <i id="trash" class="fas fa-trash-alt"></i>
               </div>
             @endforeach
           @endif

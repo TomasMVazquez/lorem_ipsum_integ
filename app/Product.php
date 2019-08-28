@@ -9,9 +9,9 @@ class Product extends Model
 {
     // Agergamos esta linea para permitir el sofdelete
     use SoftDeletes;
-    
+
     // Especificamos las columnas que podemos escribir
-    protected $fillable = ['name', 'brief', 'description', 'rating', 'benefits', 'uses', 'subcategory_id'];
+    protected $fillable = ['name', 'brief', 'description', 'benefits', 'uses', 'subcategory_id'];
 
     // Especificamos las columnas que están protegidas
   	protected $guarded = ['id'];

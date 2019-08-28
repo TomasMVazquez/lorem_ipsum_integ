@@ -8,7 +8,7 @@
   <div class="" style="display: flex; flex-direction: column;">
     <!-- TITULO DE LA PAG -->
     <div class="col-12 col-md-11 col-xl-10" style="align-self: center;">
-      <h1 class="tit-productos">Agregar: </h1>
+      <h1 class="tit-productos">Agregar producto </h1>
       <p>Completar el formulario para crear producto.</p>
     </div>
     <!-- FIN TITULO DE LA PAG -->
@@ -20,10 +20,10 @@
         @csrf
 
         <div class="row">
-          <label class="col-4 col-md-2 text-right mrgMob">Categoria:</label>
+          <label class="col-4 col-md-2 text-right mrgMob">Categoría:</label>
           <div class="col-8 col-md-4 mrgMob">
 						<select class="form-control" name="category">
-              <option value="" selected>Seleccionar Categoria</option>
+              <option value="" selected>Seleccionar Categoría</option>
 							@foreach ($categories as $category)
                 @if (old('category') == $category->id)
                   <option selected value="{{ $category->id }}"> {{ $category->name }}</option>
@@ -40,10 +40,10 @@
 						@enderror
 					</div>
 
-          <label class="col-4 col-md-2 text-right mrgMob">Subcategoria:</label>
+          <label class="col-4 col-md-2 text-right mrgMob">SubCategoría:</label>
           <div class="col-8 col-md-4 mrgMob">
 						<select class="form-control" name="subcategory">
-              <option value="" selected>Seleccionar Sub-Categoria</option>
+              <option value="" selected>Seleccionar Sub-Categoría</option>
 							@foreach ($subcategories as $subcategory)
                 @if (old('subcategory') == $subcategory->id)
                   <option selected value="{{ $subcategory->id }}"> {{ $subcategory->name }}</option>
@@ -169,21 +169,7 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-10 col-md-6">
-            <div class="form-group">
-              <label>Rating:</label>
-              <input type="text" name="rating" class="form-control" value="{{ old('rating') }}">
-              <div class="invalid">
-  							<!-- Mensaje de error -->
-  						</div>
-  						@error ('rating')
-  							<i style="color: red;"> {{ $errors->first('rating') }}</i>
-  						@enderror
-            </div>
-          </div>
 
-        </div>
 
       <div class="row">
         <div class="col-12">

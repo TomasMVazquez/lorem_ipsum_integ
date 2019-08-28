@@ -103,7 +103,8 @@
 
       <div class="ButtonsAdd">
       {{-- boton agregar producto --}}
-      <a class="btn btn-success btnAddProd"  href="/admin/add" role="button"> AGREGAR PRODUCTO </a>
+      
+      <a class="btn btn-success"  href="/admin/add" role="button"> AGREGAR PRODUCTO </a>
       </div>
     </div>
 

@@ -89,7 +89,6 @@ class AdminController extends Controller
         'uses' => 'required',
         'benefits' => 'required',
   			'presentation' => 'required',
-  			'rating' => 'required | numeric | between:0,10'
   		], [
   			'name.required' => 'El nombre es obligatorio',
         'brief.required' => 'El resumen es obligatorio',
@@ -97,16 +96,12 @@ class AdminController extends Controller
         'uses.required' => 'Los usos son obligatorio',
         'benefits.required' => 'Los beneficios son obligatorio',
         'presentation.required' => 'Los tipos de presentaciones son obligatorio',
-        'rating.required' => 'El rating es obligatorio',
-        'rating.numeric' => 'El rating debe ser un numero del 1 al 10',
-        'rating.between' => 'El rating debe ser un numero del 1 al 10'
   		]);
 
       $productToCreate = new Product;
       $productToCreate->name            = $request['name'];
       $productToCreate->brief           = $request['brief'];
       $productToCreate->description     = $request['description'];
-      $productToCreate->rating          = $request['rating'];
       $productToCreate->benefits        = $request['benefits'];
       $productToCreate->uses            = $request['uses'];
       $productToCreate->subcategory_id  = $request['subcategory'];
@@ -184,7 +179,6 @@ class AdminController extends Controller
         'uses' => 'required',
         'benefits' => 'required',
   			'presentation' => 'required',
-  			'rating' => 'required | numeric | between:0,10'
   		], [
   			'name.required' => 'El nombre es obligatorio',
         'brief.required' => 'El resumen es obligatorio',
@@ -192,9 +186,6 @@ class AdminController extends Controller
         'uses.required' => 'Los usos son obligatorio',
         'benefits.required' => 'Los beneficios son obligatorio',
         'presentation.required' => 'Los tipos de presentaciones son obligatorio',
-        'rating.required' => 'El rating es obligatorio',
-        'rating.numeric' => 'El rating debe ser un numero del 1 al 10',
-        'rating.between' => 'El rating debe ser un numero del 1 al 10'
   		]);
 
       $productToUpdate = Product::find($id);
@@ -238,7 +229,6 @@ class AdminController extends Controller
       $productToUpdate->name            = $request['name'];
   		$productToUpdate->brief           = $request['brief'];
   		$productToUpdate->description     = $request['description'];
-  		$productToUpdate->rating          = $request['rating'];
   		$productToUpdate->benefits        = $request['benefits'];
       $productToUpdate->uses            = $request['uses'];
   		$productToUpdate->subcategory_id  = $request['subcategory_id'];

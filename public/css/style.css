@@ -929,7 +929,7 @@ header{
 
 .searchHeader{
   display: none;
- 
+
 }
 
 .searchHeader .form-control{
@@ -1119,6 +1119,7 @@ footer a:hover{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-bottom:20px;
 }
 .form-group{
   width: 100%;
@@ -1127,9 +1128,12 @@ footer a:hover{
   margin-bottom: 10px;
 }
 .imgMob{
-  display: none;
-  width: 260px;
-  height: 250px;
+  width: 100px;
+}
+
+#trash {
+  align-self:flex-end;
+  font-size: 1.2em;
 }
 
 /* ADD admin */
@@ -1142,6 +1146,11 @@ footer a:hover{
   width: 95vw;
 }
 
+#rowImg {
+  display:flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
 /* --------------------------------------------------------------------------------- MEDIA QUERYs */
 /* Phones Landscape */
 @media (min-width:480px){
@@ -1418,7 +1427,7 @@ footer a:hover{
 
     .navbar-expand-md .navbar-collapse {
         justify-content: flex-end;
-       
+
     }
 
     .navbar-toggler{
@@ -1698,7 +1707,7 @@ input:checked + .slider:before {
 
  .searchHeader {
       display: flex;
-      
+
     }
 
 .navbar-expand-md .navbar-collapse {
