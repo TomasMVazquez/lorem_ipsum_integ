@@ -10,14 +10,12 @@
 /* Importamos los iconos */
 @import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 
-.form-control:focus {
-  border-color: grey;
-  box-shadow: 0 0 0 0.2rem #E0B9E3;
-}
+
 
 /* --------------------------------------------------------------------------------- GENERALES */
 * {
   box-sizing: border-box;
+
 }
 
 a {
@@ -49,6 +47,8 @@ body{
   flex:1;
 }
 
+
+
 /* El contenedor que no va a ir al borde y contiene información tiene que
 tener estas caracteristics col-12 col-md-11 col-xl-10 */
 
@@ -64,6 +64,10 @@ tener estas caracteristics col-12 col-md-11 col-xl-10 */
   border-color: #000;
 }
 
+.form-control:focus {
+  border-color: grey;
+  box-shadow: 0 0 0 0.2rem #E0B9E3;
+}
 
 /* ------------------  Titulo principal ------------------  */
 h1{
@@ -338,6 +342,14 @@ margin-bottom: 0em;
   display:none;
 }
 
+.erroravatar {
+  margin-top:0;
+}
+
+.errorPass {
+  flex-direction:column;
+}
+
 /* --------------------------------------------------------------------------------- PRODUCTOS */
 .row-sin-margen {
   margin-left: 0;
@@ -560,6 +572,14 @@ form button{
   padding-right: 0px;
 }
 
+.terminos {
+  color: dodgerblue;
+}
+
+.copete {
+  text-align: center;
+}
+
 /* ------------------  Style Imagen en formulario ------------------  */
 .imgcontainer {
   text-align: center;
@@ -570,14 +590,6 @@ img.avatar {
   width: 80%;
   border-radius: 50%;
 }
-
-/* .imgtexto {
-  color: #000;
-  background-color: rgba(255,255,255,0.5);
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-} */
 
 .imgtexto {
   color: #000;
@@ -598,6 +610,17 @@ img.avatar {
   text-align: center;
   padding: 10px 0;
 }
+
+.avatarContainerRegister {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.pointer {
+  cursor:pointer;
+}
+
 /* ------------------  Style Switch ------------------  */
 
 .containerSwitch{
@@ -700,6 +723,9 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.selectProvince {
+  display:none;
+}
 
 /* --------------------------------------------------------------------------------- PROFILE */
 .imgContainerProfile {
@@ -1235,6 +1261,10 @@ footer a:hover{
   /* ---------------------------------------------------------------------------------  REGISTER */
 
 .titulo {
+  text-align: left;
+}
+
+.copete {
   text-align: left;
 }
 

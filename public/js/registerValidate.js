@@ -46,7 +46,7 @@ elementsFilter.forEach(function (oneElement) {
 		if (elementValue === '' && oneElement.name !== 'avatar' && oneElement.name !== 'province') {
 			this.classList.add('is-invalid'); // agrego clase is-invalid
 			divError.style.display = 'block'; // muestro el div del error
-			divError.innerText = `El campo ${this.name} es obligatorio`; // seteo el texto del error en si
+			divError.innerText = `Este campo es obligatorio`; // seteo el texto del error en si
 
 			// Sumar una key al objeto de errors
 			errors[this.name] = true;

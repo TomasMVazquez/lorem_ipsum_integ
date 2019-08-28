@@ -9,19 +9,12 @@
     <!-- TITULO DE LA PAG -->
     <div class="col-12 col-md-11 col-xl-10">
       <h1 class="titulo">Registro</h1>
-      <p>
+      <p class="copete">
         Completá el formulario para crear tu cuenta.
       </p>
     </div>
     <!-- FIN TITULO DE LA PAG -->
   </div>
-
-
-{{-- @if ($errors)
-    @foreach ($errors->all() as $error)
-      <p>{{ $error }}</p>
-    @endforeach
-  @endif --}}
 
 
   <div class="mainContainer">
@@ -37,9 +30,9 @@
 
 
         <div class="imgcontainer col-12 col-md-5 col-xl-4">
-          <div style="position: relative; display: inline-block;text-align: center;">
+          <div class="avatarContainerRegister">
             <label for="avatar">
-              <img src="/imgs/img_avatar4.png" alt="Avatar" class="avatar" style="cursor:pointer ">
+              <img src="/imgs/img_avatar4.png" alt="Avatar" class="avatar pointer">
               <span class="imgtexto">Hacé click en la imagen <br> para agregar tu foto</span>
 
               <!-- Manejo de errores en la imagen -->
@@ -54,7 +47,7 @@
               <!-- Mensaje de error -->
             </div>
           </div>
-          <div class="invalid" style="margin-top:0">
+          <div class="invalid erroravatar">
             <!-- Mensaje de error -->
           </div>
         </div>
@@ -155,7 +148,7 @@
 
               </div>
           </div>
-          <div class="selectProvince form-group row" style="display:none">
+          <div class="selectProvince form-group row">
               <label for="province" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('Provincia') }}</label>
 
 
@@ -245,7 +238,7 @@
           <div class="form-group row">
             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
-            <div class="col-md-6" style="flex-direction:column">
+            <div class="col-md-6 errorPass">
               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
                 <div class="invalid">
                   <!-- Mensaje de error -->
@@ -262,7 +255,7 @@
       <div class="form-group row">
           <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Repetir Contraseña') }}</label>
 
-          <div class="col-md-6" style="flex-direction:column">
+          <div class="col-md-6 errorPass">
               <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
               <div class="invalid">
                 <!-- Mensaje de error -->
@@ -285,7 +278,7 @@
 
       <div>
           Al crear una cuenta, aceptás nuestros
-          <a href="#" style="color:dodgerblue">Términos & Condiciones</a>.
+          <a href="#" class="terminos">Términos & Condiciones</a>.
       </div>
 
         </div>
