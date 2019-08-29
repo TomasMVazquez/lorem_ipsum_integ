@@ -47,7 +47,6 @@ body{
 }
 
 
-
 /* El contenedor que no va a ir al borde y contiene información tiene que
 tener estas caracteristics col-12 col-md-11 col-xl-10 */
 
@@ -281,6 +280,10 @@ button:focus {
   outline: transparent;
 }
 
+/*--------------------------------------------------------------------------------img 404ERROR*/
+.tomGif{
+  width: 100%;
+}
 
 /* ---------------------------------------------------------------------------------  INDEX */
 
@@ -1347,6 +1350,14 @@ footer a:hover{
     display: none;
   }
 /*hasta aca va el estilo del index*/
+
+/*--------------------------------------------------------------------------------img 404ERROR*/
+.tomGif{
+  width: 100%;
+}
+
+
+
   /* --------------------------------------------------------------------------------- FOOTER */
 
   /* ---------------------------------------------------------------------------------  ADMIN VIEWS phone lands */
@@ -1684,6 +1695,11 @@ footer a:hover{
 
 /*----------------------INDEX--------------------------------------------/*
 
+/*--------------------------------------------------------------------------------img 404ERROR*/
+.tomGif{
+  width: 100%;
+}
+
 
 }
 /* Desktops */
@@ -1731,6 +1747,12 @@ footer a:hover{
    .modal-lg,
   .modal-xl {
     max-width: 600px;
+  }
+
+
+  /*--------------------------------------------------------------------------------img 404ERROR*/
+  .tomGif img{
+    width: 100%important!;
   }
 /* --------------------------------------------------------------------------------- LOG IN */
 
@@ -1982,7 +2004,7 @@ input:checked + .slider:before {
 /* Widescreen */
 @media (min-width:1200px){
 
-
+/*INDEX-----------------------------------------------------------------------*/
   h1 .title{
       font-family: 'Reenie Beanie', cursive;
       text-align: center;
@@ -2028,4 +2050,9 @@ input:checked + .slider:before {
   width: 90%;
 }
 
+}
+
+/*--------------------------------------------------------------------------------img 404ERROR*/
+.tomGif img{
+  width: 100%important!;
 }

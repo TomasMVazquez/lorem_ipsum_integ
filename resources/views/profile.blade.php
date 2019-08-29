@@ -234,10 +234,12 @@
                   </div>
                   <hr>
 
+                  {{--
+                  Remplazamos el cambio de contraseña desde el perfil por el reset.
                   <div class="btnForm">
                     <a class="btn btn-secondary" href="">Modificar Contraseña</a>
                   </div>
-                  <hr>
+                  <hr>--}}
                   <div class="btnForm btnLogOut">
                     <a class="btn btn-block log-out" href="/logout">Cerrar Sesión</a>
                   </div>
