@@ -46,7 +46,7 @@ $subcategories = Subcategory::all();
             </a>
               <div class="dropdown-menu ">
                   <a class="dropdown-item" href="/profile">Mi cuenta</a>
-                  <a class="dropdown-item" href="/admin">Crear/Editar</a>
+                  <a class="dropdown-item" href="/admin">Editar Productos</a>
                   <a class="dropdown-item" href="/admin/add">Agregar Productos</a>
                   <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
               </div>
@@ -133,7 +133,7 @@ $subcategories = Subcategory::all();
               <div class="dropdown-menu ">
 
                 <a class="dropdown-item" href="/profile">Mi cuenta</a>
-                <a class="dropdown-item" href="/admin">Crear/Editar</a>
+                <a class="dropdown-item" href="/admin">Editar Productos</a>
                 <a class="dropdown-item" href="/admin/add">Agregar Productos</a>
                 <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
               </div>
