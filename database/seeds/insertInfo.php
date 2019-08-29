@@ -228,7 +228,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '15'
             ),
             array(
-              'name'            => 'Serum Reparador Capilar - Oro Líquido 24k + Keratina',
+              'name'            => 'Shampoo Reparador Capilar - Oro Líquido 24k + Keratina',
               'brief'           => 'Producto desarrollado a base de siliconas de última generación con oro de 24 Kilates en suspensión.',
               'description'     => 'Es un producto desarrollado a base de siliconas de última generación con oro de 24 Kilates en suspensión, que por su alto poder antioxidante, estimula la actividad celular e ilumina tus cabellos haciéndolos lucir más sanos y jóvenes. Contiene Keratina, proteína vital para el cabello, que otorga propiedades humectantes y reparación inmediata. Aporta energía y le otorga un brillo final, haciendo que luzca  radiante y sensual.',
               'benefits'        => 'Brillo y protección instantánea.',
@@ -244,7 +244,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '1'
             ),
             array(
-              'name'            => 'Tratamiento Regenerador Capilar - Egyptian Gold',
+              'name'            => 'Shampoo Regenerador Capilar - Egyptian Gold',
               'brief'           => 'Es un producto desarrollado a base de siliconas de última generación con oro de 24 quilates en suspensión, que estimula la actividad celular y potencia la luminosidad.',
               'description'     => 'Por su contenido en Beta-Caroteno es un poderoso antioxidante que activa la capacidad celular contra los radicales libres. Su contenido en Keratina, proteína vital para el cabello, aporta y retiene la humedad. Otorga un Brillo Final que hará lucir tu cabello radiante y sensual.',
               'benefits'        => 'Hidratación Intensa / Reparación Profunda.',
@@ -252,9 +252,9 @@ class insertInfo extends Seeder
               'subcategory_id'  => '1'
             ),
             array(
-              'name'            => 'Coloración Capilar Profesional. Con ORO 24k y Keratina',
-              'brief'           => 'Elaborada con inmejorables componentes químicos; Kleno Color se diferencia y se destaca por contener ORO 24 Kilates en Suspensión más Keratina.',
-              'description'     => 'Elaborada con inmejorables componentes químicos; Kleno Color se diferencia y se destaca por contener ORO 24 Kilates en Suspensión más Keratina.
+              'name'            => 'Shampoo Profesional. Con ORO 24k y Keratina',
+              'brief'           => 'Elaborado con inmejorables componentes químicos; Kleno Color se diferencia y se destaca por contener ORO 24 Kilates en Suspensión más Keratina.',
+              'description'     => 'Elaborado con inmejorables componentes químicos; Kleno Color se diferencia y se destaca por contener ORO 24 Kilates en Suspensión más Keratina.
                                     Además del excelente color - por su poder antioxidante - le otorga al cabello juventud y vitalidad.
                                     Kleno Color está al servicio del profesional; para que estos encuentren el mejor resultado colorimétrico y comercial.',
 
@@ -266,7 +266,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '1'
             ),
             array(
-              'name'            => 'Shock Oro Keratin - Oro 24k y Keratina',
+              'name'            => 'Serum Oro Keratin - Oro 24k y Keratina',
               'brief'           => 'Ideal para cabellos debilitados por la coloración y demás procesos químicos.',
               'description'     => 'Ideal para cabellos debilitados por la coloración y demás procesos químicos. La Keratina, proteína natural del cabello, repara y cauteriza la fibra capilar dejándola sana, sin porosidad y con brillo. Su contenido en Oro 24 K aumenta aún más su brillo a la vez que otorga propiedades antioxidantes, retardando el envejecimiento natural de los mismos.',
 
@@ -276,7 +276,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '2'
             ),
             array(
-              'name'            => 'Loción Anticaída con Arginina, Biotina y Keratina',
+              'name'            => 'Serum Anticaída con Arginina, Biotina y Keratina',
               'brief'           => 'Complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.',
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
@@ -287,7 +287,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '2'
             ),
             array(
-              'name'            => 'Jabón Corporal',
+              'name'            => 'Loción Reconstructora',
               'brief'           => 'Complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.',
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
@@ -298,7 +298,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '3'
             ),
             array(
-              'name'            => 'Gel Corporal',
+              'name'            => 'Tratmiento renovador',
               'brief'           => 'Complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.',
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
@@ -309,7 +309,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '6'
             ),
             array(
-              'name'            => 'Crema Corporal',
+              'name'            => 'Hidratante Gold',
               'brief'           => 'Complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.',
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
@@ -320,7 +320,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '6'
             ),
             array(
-              'name'            => 'Protector Solar Facial',
+              'name'            => 'Tratamiento renovador Silver',
               'brief'           => 'Complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.',
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
@@ -331,7 +331,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '6'
             ),
             array(
-              'name'            => 'Máscara Facial',
+              'name'            => 'Máscara Hidratante',
               'brief'           => 'Complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.',
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
@@ -342,7 +342,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '6'
             ),
             array(
-              'name'            => 'Crema Facial',
+              'name'            => 'Crema Tratamiento anticaída',
               'brief'           => 'Complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.',
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
@@ -353,7 +353,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '6'
             ),
             array(
-              'name'            => 'Loción Facial',
+              'name'            => 'Loción Rizos hidratados',
               'brief'           => 'Complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.',
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
