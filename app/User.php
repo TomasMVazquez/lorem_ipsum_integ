@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Prophecy\Doubler\ClassPatch\DisableConstructorPatch;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -55,6 +56,7 @@ class User extends Authenticatable
       return $this->belongsToMany(Product::class, 'user_product', 'user_id', 'product_id');
 
     }
+
 
     public function isAdmin()
     {
