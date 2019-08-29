@@ -3,6 +3,7 @@ use App\Category;
 $categories = Category::all();
 use App\Subcategory;
 $subcategories = Subcategory::all();
+
 @endphp
 
 {{-- Comienzo del header --}}
@@ -22,7 +23,7 @@ $subcategories = Subcategory::all();
     </div>
     {{-- fin logo --}}
 
-    
+
 
     {{-- comienzo del perfil o del guest --}}
     {{-- en mobile desaparece --}}
@@ -34,8 +35,23 @@ $subcategories = Subcategory::all();
       </form>
 
       <div class="clmPerfil perfilHeader">
-        
+
           @auth
+
+        @if (Auth::user()->isAdmin())
+          <div class="dropdown">
+              {{-- Si estas logeado --}}
+            <a class="nav-link dropdown-toggle p-0" href="#" id="navbardropLogin" data-toggle="dropdown">
+              Bienvenide {{Auth::user()->first_name}}
+            </a>
+              <div class="dropdown-menu ">
+                  <a class="dropdown-item" href="/admin">Crear</a>
+                  <a class="dropdown-item" href="/admin/2">Editar Productos</a>
+                  <a class="dropdown-item" href="/admin/add">Agregar Productos</a>
+                  <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+              </div>
+              </div>
+            @else
           <div class="dropdown">
           {{-- Si estas logeado --}}
             <a class="nav-link dropdown-toggle p-0" href="#" id="navbardropLogin" data-toggle="dropdown">
@@ -47,7 +63,7 @@ $subcategories = Subcategory::all();
               <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
             </div>
           </div>
-
+        @endif
           <div class="img">
             <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="imagen de perfil del usuario logeado">
           </div>
@@ -128,6 +144,7 @@ $subcategories = Subcategory::all();
             Bienvenide {{Auth::user()->first_name}}
           </a>
           <div class="dropdown-menu ">
+
             <a class="dropdown-item" href="/profile">Mi cuenta</a>
             <a class="dropdown-item" href="/profile">Ver Favoritos</a>
             <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
