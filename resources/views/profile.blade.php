@@ -324,7 +324,7 @@
   <script type="text/javascript" src="/js/profileCountries.js"></script>
   <script type="text/javascript" src="/js/profileProvinces.js"></script>
   <script src="/js/registerValidate.js"></script>
-  <script src="/js/profileFav.js"></script>
+  <script src="/js/favorite.js"></script>
 
 @endsection
 
