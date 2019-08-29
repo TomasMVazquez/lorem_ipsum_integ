@@ -45,8 +45,8 @@ $subcategories = Subcategory::all();
               Bienvenide {{Auth::user()->first_name}}
             </a>
               <div class="dropdown-menu ">
-                  <a class="dropdown-item" href="/admin">Crear</a>
-                  <a class="dropdown-item" href="/admin/2">Editar Productos</a>
+                  <a class="dropdown-item" href="/profile">Mi cuenta</a>
+                  <a class="dropdown-item" href="/admin">Crear/Editar</a>
                   <a class="dropdown-item" href="/admin/add">Agregar Productos</a>
                   <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
               </div>
@@ -125,17 +125,32 @@ $subcategories = Subcategory::all();
         @endguest
         {{-- para mobile --}}
         @auth
-        <li class="text-center perfilMobile">
-          <a class="nav-link dropdown-toggle p-1" href="#" id="navbardrop" data-toggle="dropdown">
-            Bienvenide {{Auth::user()->first_name}}
-          </a>
-          <div class="dropdown-menu ">
+          @if (Auth::user()->isAdmin())
+            <li class="text-center perfilMobile">
+              <a class="nav-link dropdown-toggle p-1" href="#" id="navbardrop" data-toggle="dropdown">
+                Bienvenide {{Auth::user()->first_name}}
+              </a>
+              <div class="dropdown-menu ">
 
-            <a class="dropdown-item" href="/profile">Mi cuenta</a>
-            <a class="dropdown-item" href="/profile#myFavorites">Ver Favoritos</a>
-            <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
-          </div>
-        </li>
+                <a class="dropdown-item" href="/profile">Mi cuenta</a>
+                <a class="dropdown-item" href="/admin">Crear/Editar</a>
+                <a class="dropdown-item" href="/admin/add">Agregar Productos</a>
+                <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+              </div>
+            </li>
+          @else
+            <li class="text-center perfilMobile">
+              <a class="nav-link dropdown-toggle p-1" href="#" id="navbardrop" data-toggle="dropdown">
+                Bienvenide {{Auth::user()->first_name}}
+              </a>
+              <div class="dropdown-menu ">
+
+                <a class="dropdown-item" href="/profile">Mi cuenta</a>
+                <a class="dropdown-item" href="/profile#myFavorites">Ver Favoritos</a>
+                <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+              </div>
+            </li>
+          @endif
         @endauth
       </ul>
     </div>

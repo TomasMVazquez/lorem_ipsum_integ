@@ -148,7 +148,7 @@
                             <tr>
                               <th scope="row">{{ $product->name }}</th>
                               <td class="adminBrief">{{$product->brief}}</td>
-                              <td><a href="{{ route('edit', $product->id) }}" class="btn btn-outline-info">Editar</a></td>
+                              <td class="btnEdit"><a href="{{ route('edit', $product->id) }}" class="btn btn-outline-info">Editar</a></td>
                               <td>
                                 <form class="theDeleteBtn" action="/admin/{{ $product->id }}" method="post">
                                   @csrf

@@ -1,5 +1,4 @@
-/* Importamos la librería Normalize */
-/* @import url('normalize.css'); */
+
 /* Importamos la librería bootstrap*/
 @import url('bootstrap.css');
 
@@ -1145,6 +1144,15 @@ footer a:hover{
 .theDeleteBtn{
   border: none;
   margin: 0px;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+}
+.theDeleteBtn button{
+  width: auto;
+}
+.btnEdit{
+  text-align: center;
 }
 .adminBrief{
   display: none;
@@ -1153,7 +1161,9 @@ footer a:hover{
   padding: 10px;
   border:none;
 }
-
+.card-body{
+  padding: 0;
+}
 
 /* Edit admin */
 .editAdminMainConteiner{
@@ -1197,7 +1207,9 @@ footer a:hover{
   flex-direction:row;
   justify-content:space-between;
   width: auto;
+  margin-right: 10px;
 }
+
 #btnImgAdd{
   background: none;
   border: none;
@@ -1653,6 +1665,9 @@ footer a:hover{
   justify-content: flex-start;
 }
 
+.card-body{
+  padding: 1.25rem;
+}
 
 /*----------------------INDEX--------------------------------------------/*
 
