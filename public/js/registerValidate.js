@@ -13,6 +13,8 @@ allElements.pop();
 // Sacando al último elemento de un array - boton volver
 allElements.pop();
 
+// Sacando al último elemento de un array - boton recordarme
+allElements.pop();
 
 var elementsFilter = allElements.filter(function(oneElement){
     return oneElement.name !== 'subcategories[]' && oneElement.name !== 'notifications';

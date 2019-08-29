@@ -27,7 +27,7 @@
                  {{method_field('put')}}
 
                 <!-- CONTENEDOR IMAGEN AVATAR -->
-                
+
                   <label for="avatar" class="imgContainerProfile">
                       <input id="avatar" type="file" name="avatar" class="custom-file-input">
                       <div class="imgPerfil">
@@ -45,7 +45,7 @@
                     <!-- Mensaje de error -->
                   </div>
 
-              
+
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
 
                 <div class="container form-group">
@@ -92,11 +92,11 @@
                     <!-- Mensaje de error -->
                   </div>
 
-                 
+
               <label for="country" ><b>{{ __('País') }}</b></label>
 
 
-             
+
                     <input type="hidden" name="userCountry" value="{{ Auth::user()->country }}">
                     <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
 
@@ -112,15 +112,15 @@
                       <!-- Mensaje de error -->
                     </div>
 
-              
-         
+
+
           <div class="selectProvince" style="display: none;">
               <label for="province" ><b>{{ __('Provincia') }}</b></label>
 
 
-            
+
                @if (isset(Auth::user()->province))
-                  <input type="hidden" name="userProvince" value="{{ Auth::user()->province }}"> 
+                  <input type="hidden" name="userProvince" value="{{ Auth::user()->province }}">
                 @endif
 
 
@@ -135,7 +135,7 @@
                     <div class="invalid">
                       <!-- Mensaje de error -->
                     </div>
-             
+
           </div>
 
 
@@ -163,7 +163,7 @@
                                 <div class="col-8 col-md-6 p-0 mb-3">
                                   <label class="switch">
                                     <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}"
-                                    {{-- Si envio el formulario primero verifica si esta seteada la variable. 
+                                    {{-- Si envio el formulario primero verifica si esta seteada la variable.
                                       Si es así, lo recorro y le asigno a cada switch su correspondiente checked--}}
                                       @if ($_POST)
                                         @if (isset($categoriesInPost))
@@ -202,7 +202,7 @@
               <hr>
                   <!-- SWITCH PARA QUE QUIERO RECIBIR -->
                   <div class="container containerSwitch p-0">
-                    
+
                       <div class="containerUnSwitch col-12 p-0">
                         <label class="switch">
                           <input type="checkbox" name="notifications" value="
@@ -246,7 +246,7 @@
             </div>
           </aside>
           <!-- MAIN CON LOS FAVORITOS -->
-          <main class="containerMain col-12 col-lg-7">
+          <main id="myFavorites" class="containerMain col-12 col-lg-7">
             <div class="main">
 
               <hr>
@@ -300,7 +300,7 @@
                                     <i class="far fa-heart"></i>
                                 @endguest
                             </button>
-                          </form> 
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -327,4 +327,3 @@
   <script src="/js/favorite.js"></script>
 
 @endsection
-

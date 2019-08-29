@@ -70,9 +70,9 @@ $subcategories = Subcategory::all();
           @endauth
         {{-- Si no estas logeado --}}
         @guest
-       
+
           <a href="/login"><i class="fas fa-sign-in-alt mr-2"></i>¡Ingresá al sistema!</a>
-        
+
         @endguest
       </div>
     </div>
@@ -106,20 +106,6 @@ $subcategories = Subcategory::all();
               </li>
             @endforeach
           </ul>
-
-          {{-- <div class="dropdown-menu menu-products">
-            <a class="dropdown-item" href="/products">Todos</a>
-            @foreach ($categories as $category)
-              <a tabindex="-1" href="/products/category/{{ $category->id }}">{{ $category->name }}</a>
-              <div>
-              @foreach ($subcategories as $subcategory)
-                @if ($subcategory->category_id == $category->id)
-                  <a class="dropdown-item" href="/products/subcategory/{{ $subcategory->id }}">{{ $subcategory->name }}</a>
-                @endif
-              @endforeach
-            </div>
-            @endforeach
-          </div> --}}
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/faqs">Faqs</a>
@@ -146,7 +132,7 @@ $subcategories = Subcategory::all();
           <div class="dropdown-menu ">
 
             <a class="dropdown-item" href="/profile">Mi cuenta</a>
-            <a class="dropdown-item" href="/profile">Ver Favoritos</a>
+            <a class="dropdown-item" href="/profile#myFavorites">Ver Favoritos</a>
             <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
           </div>
         </li>
