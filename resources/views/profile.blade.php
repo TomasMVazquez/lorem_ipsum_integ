@@ -27,25 +27,25 @@
                  {{method_field('put')}}
 
                 <!-- CONTENEDOR IMAGEN AVATAR -->
-                <div class="imgContainerProfile">
-                  <label for="avatar">
-                    <input id="avatar" type="file" name="avatar" class="custom-file-input">
-                    <div class="imgPerfil">
-                      <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="Avatar"  style="cursor:pointer">
-                    </div>
-                  @error('avatar')
-                    <span class="invalid-feedback imgError" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
-                  <p class="m-3">¡Modifica tu foto clickeando en la imagen!</p>
+                
+                  <label for="avatar" class="imgContainerProfile">
+                      <input id="avatar" type="file" name="avatar" class="custom-file-input">
+                      <div class="imgPerfil">
+                        <img src="/storage/avatars/{{ Auth::user()->avatar }}" alt="Avatar"  style="cursor:pointer">
+                      </div>
+                    @error('avatar')
+                      <span class="invalid-feedback imgError" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
+                    <p class="m-3">¡Modifica tu foto clickeando en la imagen!</p>
                   </label>
 
                   <div class="invalid" style="margin-top:0">
                     <!-- Mensaje de error -->
                   </div>
 
-                </div>
+              
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
 
                 <div class="container form-group">
@@ -92,11 +92,11 @@
                     <!-- Mensaje de error -->
                   </div>
 
-                  <div class="form-group row">
-              <label for="country" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('País') }}</label>
+                 
+              <label for="country" ><b>{{ __('País') }}</b></label>
 
 
-              <div class="col-md-8 col-xl-10">
+             
                     <input type="hidden" name="userCountry" value="{{ Auth::user()->country }}">
                     <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
 
@@ -112,13 +112,13 @@
                       <!-- Mensaje de error -->
                     </div>
 
-              </div>
-          </div>
-          <div class="selectProvince form-group row" style="display: none;">
-              <label for="province" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('Provincia') }}</label>
+              
+         
+          <div class="selectProvince" style="display: none;">
+              <label for="province" ><b>{{ __('Provincia') }}</b></label>
 
 
-              <div class="col-md-8 col-xl-10">
+            
                @if (isset(Auth::user()->province))
                   <input type="hidden" name="userProvince" value="{{ Auth::user()->province }}"> 
                 @endif
@@ -135,7 +135,7 @@
                     <div class="invalid">
                       <!-- Mensaje de error -->
                     </div>
-              </div>
+             
           </div>
 
 
@@ -158,11 +158,13 @@
 
 
                         @foreach ($subcategories as $subcategory)
-
+                          {{-- Recorro las tabla de subcategorias y traigo solo las sub de la cat q corresponde--}}
                             @if ($subcategory->category_id == $category->id)
                                 <div class="col-8 col-md-6 p-0 mb-3">
                                   <label class="switch">
                                     <input type="checkbox" name="subcategories[]" value="{{$subcategory->id}}"
+                                    {{-- Si envio el formulario primero verifica si esta seteada la variable. 
+                                      Si es así, lo recorro y le asigno a cada switch su correspondiente checked--}}
                                       @if ($_POST)
                                         @if (isset($categoriesInPost))
                                           @foreach ($categoriesInPost as $categoryInPost)
@@ -170,6 +172,8 @@
                                             @endif
                                           @endforeach
                                         @endif
+
+                                      {{-- si el usuario ya tiene guardadas preferencias en user_subcategory chequeo cuales son las sub que coincide el id con el id de subcat para asignar a cada swicth su correspondiente checked --}}
 
                                         @else
                                           @if (isset(Auth::user()->subcategories))
@@ -180,10 +184,7 @@
                                             @endforeach
                                           @endif
                                         @endif >
-
-
-
-                                    <span class="slider round"></span>
+                                   <span class="slider round"></span>
                                   </label>
                                   <span class="switchText switchTextPerfil"> {{$subcategory->name}}</span>
                                 </div>
@@ -201,7 +202,7 @@
               <hr>
                   <!-- SWITCH PARA QUE QUIERO RECIBIR -->
                   <div class="container containerSwitch p-0">
-                    {{--  foreach ($notificaciones as $unaNotificacion) :  --}}
+                    
                       <div class="containerUnSwitch col-12 p-0">
                         <label class="switch">
                           <input type="checkbox" name="notifications" value="
@@ -228,7 +229,7 @@
 
                   </div>
 
-                  <div class="btnForm" style="margin-top:20px">
+                  <div class="btnForm">
                     <button class="btn-primary" type="submit">Actualizar</button>
                   </div>
                   <hr>
@@ -270,7 +271,7 @@
                       <div class="col-12 col-md-8 col-lg-9 p-0">
 
                         <h5 class="fav-title">{{$userProduct->name}}</h5>
-                        <p style="font-size: 14px;">{{$userProduct->brief}}</p>
+                        <p>{{$userProduct->brief}}</p>
 
                         <div class="d-flex justify-content-between align-items-center">
 
@@ -299,7 +300,7 @@
                                     <i class="far fa-heart"></i>
                                 @endguest
                             </button>
-                          </form>
+                          </form> 
                         </div>
                       </div>
                     </div>
@@ -323,7 +324,7 @@
   <script type="text/javascript" src="/js/profileCountries.js"></script>
   <script type="text/javascript" src="/js/profileProvinces.js"></script>
   <script src="/js/registerValidate.js"></script>
-  <script src="/js/favorite.js"></script>
+  <script src="/js/profileFav.js"></script>
 
 @endsection
 

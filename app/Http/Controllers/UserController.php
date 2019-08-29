@@ -14,8 +14,8 @@ class UserController extends Controller
     	$categories = Category::all();
     	$products = Product::all();
     	$subcategories = Subcategory::all();
-      $images = Image::all();
-    	return view('profile', compact('products','subcategories', 'categories','images'));
+     
+    	return view('profile', compact('products','subcategories', 'categories'));
     }
 
 

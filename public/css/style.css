@@ -755,12 +755,15 @@ input:checked + .slider:before {
 
 .selectProvince {
   display:none;
+  flex-direction: column;
 }
 
 /* --------------------------------------------------------------------------------- PROFILE */
 .imgContainerProfile {
   text-align: center;
-  /*margin: 12px 0 12px 0;*/
+ display: flex;
+ flex-direction: column;
+ align-items: center;
   margin:0;
 }
 
@@ -1470,6 +1473,9 @@ footer a:hover{
   width: 60%;
 }
 
+.favProduct p{
+  font-size: 13px;
+}
 
   /* --------------------------------------------------------------------------------- HEADER */
 
