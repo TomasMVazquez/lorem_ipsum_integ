@@ -79,6 +79,18 @@ h1{
 
 
 }
+.title{
+  font-family: 'Reenie Beanie', cursive;
+  text-align: center;
+  font-size: 10em;
+  line-height: 0.8em;
+  margin-top: 10px
+}
+/* --------------------------------------------------ERRORS--------------------------------*/
+  .tomGif {
+    align-content: center;
+}
+
 
 .tit-productos-cat {
   text-align: center;
@@ -307,10 +319,17 @@ h4 {
   margin: 20px;
 }
 
-.about{
-margin-top: 0.2em;
-margin-bottom: 0em;
+h1 .about{
+    margin-top: 0.2em;
+    margin-bottom: 0em;
     font-size:5em;
+    text-align: center;
+    font-family: 'Reenie Beanie', cursive;
+}
+.aboutsub{
+    margin-top: 0.2em;
+    margin-bottom: 0em;
+    font-size:4em;
     text-align: center;
     font-family: 'Reenie Beanie', cursive;
 }
@@ -323,6 +342,10 @@ margin-bottom: 0em;
   margin-right: 20px;
 }
 /*hasta aca va el estilo del index*/
+/* --------------------------------------------------ERRORS 404--------------------------------*/
+  .tomGif {
+    align-content: center;
+}
 
 /* --------------------------------------------------------------------------------- ERRORES EN LOGIN Y REGISTER */
 
@@ -1285,10 +1308,18 @@ footer a:hover{
   /*---------------INDEX----------------------------------------------------------------------*/
   .about{
     margin-top: 0.2em;
-    margin-left: 55px;
+  /*  margin-left: 55px;*/
     font-size:5em;
-    text-align: left;
+    /*text-align: left;*/
     font-family: 'Reenie Beanie', cursive;
+    }
+
+  .aboutsub{
+        margin-top: 0.2em;
+        margin-bottom: 0em;
+        font-size:4em;
+        text-align: center;
+        font-family: 'Reenie Beanie', cursive;
     }
 
   .aboutp{
@@ -1301,6 +1332,11 @@ footer a:hover{
     display: none;
   }
 /*hasta aca va el estilo del index*/
+
+/* --------------------------------------------------ERRORS--------------------------------*/
+  .tomGif {
+    align-content: center;
+}
   /* --------------------------------------------------------------------------------- FOOTER */
 
   /* ---------------------------------------------------------------------------------  ADMIN VIEWS phone lands */
@@ -1597,8 +1633,16 @@ footer a:hover{
     margin-top: 0.2em;
     margin-bottom: 0em;
     font-size:5em;
-    margin-left: 55px;
-    text-align: left;
+    /* margin-left: 55px;
+    text-align: left; */
+    font-family: 'Reenie Beanie', cursive;
+}
+
+.aboutsub{
+    margin-top: 0.2em;
+    margin-bottom: 0em;
+    font-size:4em;
+    text-align: center;
     font-family: 'Reenie Beanie', cursive;
 }
 
@@ -1619,8 +1663,12 @@ footer a:hover{
 }
 
 
-/*----------------------INDEX--------------------------------------------/*
 
+/*----------------------INDEX--------------------------------------------/*
+/* --------------------------------------------------ERRORS--------------------------------*/
+  .tomGif {
+    align-content: center;
+}
 
 }
 /* Desktops */
@@ -1643,6 +1691,13 @@ footer a:hover{
       font-family: 'Reenie Beanie', cursive;
   }
 
+  .aboutsub{
+      margin-top: 0.2em;
+      margin-bottom: 0em;
+      font-size:4em;
+      text-align: center;
+      font-family: 'Reenie Beanie', cursive;
+  }
 
     .aboutp{
       margin-left: 55px;
@@ -1658,9 +1713,14 @@ footer a:hover{
     display: none;
   }
 
+
    .modal-lg,
   .modal-xl {
     max-width: 600px;
+  }
+  /* --------------------------------------------------ERRORS--------------------------------*/
+    .tomGif {
+      align-content: center;
   }
 /* --------------------------------------------------------------------------------- LOG IN */
 
@@ -1921,8 +1981,15 @@ input:checked + .slider:before {
       font-family: 'Reenie Beanie', cursive;
   }
 
+  .aboutsub{
+      margin-top: 0.2em;
+      margin-bottom: 0em;
+      font-size:4em;
+      text-align: center;
+      font-family: 'Reenie Beanie', cursive;
+  }
 
-    .aboutp{
+.aboutp{
       margin-left: 55px;
       margin-right: 55px;
       margin-top: 0em;
@@ -1939,6 +2006,10 @@ input:checked + .slider:before {
 
     .favProduct img{
   width: 90%;
+}
+
+.tomGif {
+    align-content: center;
 }
 
 }
