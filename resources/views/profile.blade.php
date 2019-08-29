@@ -41,6 +41,9 @@
                   <p class="m-3">¡Modifica tu foto clickeando en la imagen!</p>
                   </label>
 
+                  <div class="invalid" style="margin-top:0">
+                    <!-- Mensaje de error -->
+                  </div>
 
                 </div>
                 <!-- FIN CONTENEDOR IMAGEN AVATAR -->
@@ -129,7 +132,9 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-
+                    <div class="invalid">
+                      <!-- Mensaje de error -->
+                    </div>
               </div>
           </div>
 
