@@ -32,7 +32,7 @@
         <div class="imgcontainer col-12 col-md-5 col-xl-4">
           <div class="avatarContainerRegister">
             <label for="avatar">
-              <img src="/storage/avatars/img_avatar4.png" alt="Avatar" class="avatar pointer">
+              <img src="/storage/avatars/avatarR.gif" alt="Avatar" class="avatar pointer">
               <span class="imgtexto">Hacé click en la imagen <br> para agregar tu foto</span>
 
               <!-- Manejo de errores en la imagen -->
