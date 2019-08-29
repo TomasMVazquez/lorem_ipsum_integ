@@ -101,6 +101,10 @@ class RegisterController extends Controller
         $image->storePubliclyAs("/public/avatars", $finalImage);
       }
 
+      if (isset($data["province"])) {
+        // Recupero
+        $provincia = $data["province"];
+      }
 
 
         $user = User::create([
@@ -109,12 +113,13 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'country' => $data['country'],
+            'province' => isset($provincia) ? $provincia : null,
             'avatar' => isset($finalImage) ? $finalImage : 'img_avatar4.png',
             'notifications'=> isset($data['notifications']) ? $data['notifications'] : null,
             'password' => Hash::make($data['password']),
         ]);
 
-        // if (isset($finalImage)) {
+        //if (isset($finalImage)) {
         //   $user->avatar = $finalImage;
         // }
 
@@ -124,7 +129,6 @@ class RegisterController extends Controller
           $subcategories = $data['subcategories'];
           $user->subcategories()->attach($subcategories);
         }
-
           return $user;
 
   }
