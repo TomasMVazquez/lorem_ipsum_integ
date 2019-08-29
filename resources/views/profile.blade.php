@@ -94,7 +94,7 @@
 
 
               <div class="col-md-8 col-xl-10">
-                    <input type="hidden" name="pais_del_usuario" value="{{ Auth::user()->country }}">
+                    <input type="hidden" name="userCountry" value="{{ Auth::user()->country }}">
                     <select class="form-control @error('country') is-invalid @enderror custom-select" name="country">
 
                       <option value="">Seleccionar país</option>
@@ -116,6 +116,11 @@
 
 
               <div class="col-md-8 col-xl-10">
+               @if (isset(Auth::user()->province))
+                  <input type="hidden" name="userProvince" value="{{ Auth::user()->province }}"> 
+                @endif
+
+
                     <select class="form-control @error('province') is-invalid @enderror custom-select"  name="province">
                       <option value="">Seleccionar provincia</option>
                     </select>
@@ -310,8 +315,10 @@
 @endsection
 
 @section('scriptJS')
-  <script type="text/javascript" src="/js/countries.js"></script>
-  <script type="text/javascript" src="/js/provinces.js"></script>
+  <script type="text/javascript" src="/js/profileCountries.js"></script>
+  <script type="text/javascript" src="/js/profileProvinces.js"></script>
   <script src="/js/registerValidate.js"></script>
   <script src="/js/favorite.js"></script>
+
 @endsection
+

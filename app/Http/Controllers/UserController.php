@@ -75,7 +75,11 @@ class UserController extends Controller
 		$userToUpdate->last_name = $req['last_name'];
 		$userToUpdate->email = $req['email'];
 		$userToUpdate->country = $req['country'];
-
+        
+        if(isset($req['province'])){
+            $userToUpdate->province = $req['province'];
+        }
+        
 
 		$userToUpdate->save();
 

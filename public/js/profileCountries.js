@@ -1,5 +1,15 @@
 var selectCountries = document.querySelector('select[name=country]');
 var divSelectProvince = document.querySelector('.selectProvince');
+var userCountry = document.querySelector('[name=userCountry]');
+
+
+if (userCountry != undefined) {
+  if (userCountry.value == 'AR') {
+    divSelectProvince.style.display = 'block';
+  }
+}
+
+
 
 
 
@@ -13,6 +23,11 @@ fetch('https://restcountries.eu/rest/v2/all')
       var option = document.createElement('option');
       var optionText = document.createTextNode(country.name);
       option.value = country.alpha2Code;
+      if (userCountry != undefined) {
+        if (userCountry.value == country.alpha2Code) {
+          option.setAttribute('selected', 'true')
+        }
+      }
       option.append(optionText);
       selectCountries.append(option);
     }
