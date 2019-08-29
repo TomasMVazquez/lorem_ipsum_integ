@@ -148,7 +148,7 @@
 
               </div>
           </div>
-          <div class="selectProvince form-group row"  style="display:none">
+          <div class="selectProvince form-group row selectProvinceReg"  style="display:none">
               <label for="province" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('Provincia') }}</label>
 
 

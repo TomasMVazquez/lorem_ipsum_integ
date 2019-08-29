@@ -417,7 +417,7 @@ h2.titseccion {
 .listado-productos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0;
   margin-bottom: 20px;
 }
@@ -745,6 +745,10 @@ input:checked + .slider:before {
 .selectProvince {
   display:none;
   flex-direction: column;
+}
+
+.selectProvinceReg {
+  flex-direction: row;
 }
 
 /* --------------------------------------------------------------------------------- PROFILE */
@@ -1145,7 +1149,7 @@ footer a:hover{
   border: none;
   margin: 0px;
   flex-direction: row;
-  display: flex;
+  display: none;
   justify-content: center;
 }
 .theDeleteBtn button{
@@ -1162,7 +1166,7 @@ footer a:hover{
   border:none;
 }
 .card-body{
-  padding: 0;
+  padding: 10px;
 }
 
 /* Edit admin */
@@ -1348,6 +1352,10 @@ footer a:hover{
 
   .tit-productos-cat {
     text-align: center;
+  }
+
+  .theDeleteBtn{
+    display: flex;
   }
 
   /* ---------------------------------------------------------------------------------  REGISTER */
