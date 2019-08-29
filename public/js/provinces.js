@@ -12,6 +12,7 @@ fetch('https://dev.digitalhouse.com/api/getProvincias')
       var option = document.createElement('option');
       var optionText = document.createTextNode(province.state);
       option.append(optionText);
+      option.value = province.state;
       selectProvinces.append(option);
     }
   })

@@ -134,7 +134,7 @@ class insertInfo extends Seeder
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
 
-              'benefits'        => 'Tratamiento anticaída con aminoácidos del crecimiento.',
+              'benefits'        => 'Crema hidratante para la ducha',
               'uses'            => 'Aplicar sobre el cuero cabelludo, sección por sección, sobre el cabello seco o secado previamente con una toalla. Realizar un masaje ejerciendo una ligera presión con las puntas de los dedos. Esta ampolla debe utilizarse en  tratamientos intensivos, alternando su uso con la Loción HAIR RESIST KLENO, 3 veces por semana. Se recomienda realizar éste tratamiento durante 2 meses, ya que los primeros resultados se verán a las 6 semanas de comenzado.
                                     Se aconseja lavar el cabello diariamente con Shampoo HAIR RESIST, ya que sus componentes favorecen al tratamiento.',
               'subcategory_id'  => '8'
@@ -145,7 +145,7 @@ class insertInfo extends Seeder
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
 
-              'benefits'        => 'Tratamiento anticaída con aminoácidos del crecimiento.',
+              'benefits'        => 'Humectante Silver Sea',
               'uses'            => 'Aplicar sobre el cuero cabelludo, sección por sección, sobre el cabello seco o secado previamente con una toalla. Realizar un masaje ejerciendo una ligera presión con las puntas de los dedos. Esta ampolla debe utilizarse en  tratamientos intensivos, alternando su uso con la Loción HAIR RESIST KLENO, 3 veces por semana. Se recomienda realizar éste tratamiento durante 2 meses, ya que los primeros resultados se verán a las 6 semanas de comenzado.
                                     Se aconseja lavar el cabello diariamente con Shampoo HAIR RESIST, ya que sus componentes favorecen al tratamiento.',
               'subcategory_id'  => '9'
@@ -156,7 +156,7 @@ class insertInfo extends Seeder
               'description'     => 'HAIR RESIST KLENO es un complejo biológico, botánico y biotecnológico destinado a reducir la pérdida de cabello y estimular su crecimiento.
                                     Por su alta concentración de Aminoácidos del crecimiento tales como la Arginina, Proteínas de Placenta, Proteínas de Soja; y Vitaminas tales como la Biotina (Vitamina B-9) y  el Panthenol (Vitamina B-5), HAIR RESIST KLENO es un poderoso agente nutritivo de la raíz, restructurando la fibra capilar y logrando que el cabello crezca más fuerte, obteniendo así cabellos resistentes, suaves y brillantes.',
 
-              'benefits'        => 'Tratamiento anticaída con aminoácidos del crecimiento.',
+              'benefits'        => 'Tratamiento para pieles resecas',
               'uses'            => 'Aplicar sobre el cuero cabelludo, sección por sección, sobre el cabello seco o secado previamente con una toalla. Realizar un masaje ejerciendo una ligera presión con las puntas de los dedos. Esta ampolla debe utilizarse en  tratamientos intensivos, alternando su uso con la Loción HAIR RESIST KLENO, 3 veces por semana. Se recomienda realizar éste tratamiento durante 2 meses, ya que los primeros resultados se verán a las 6 semanas de comenzado.
                                     Se aconseja lavar el cabello diariamente con Shampoo HAIR RESIST, ya que sus componentes favorecen al tratamiento.',
               'subcategory_id'  => '10'
@@ -236,7 +236,7 @@ class insertInfo extends Seeder
               'subcategory_id'  => '1'
             ),
             array(
-              'name'            => 'Shampoo Egyptian Gold',
+              'name'            => 'Shampoo Natural Silver',
               'brief'           => 'Es un producto desarrollado a base de siliconas de última generación con oro de 24 quilates en suspensión, que estimula la actividad celular y potencia la luminosidad.',
               'description'     => 'Su contenido en Keratina, proteína vital para el cabello, le otorga propiedades humectantes y reparación inmediata. Actúa delicadamente sobre el cabello respetando la estructura del mismo, dejándolo suave, sedoso e increíblemente brillante.',
               'benefits'        => 'Brillo y protección.',

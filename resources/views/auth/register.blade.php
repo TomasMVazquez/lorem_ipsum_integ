@@ -47,7 +47,7 @@
               <!-- Mensaje de error -->
             </div>
           </div>
-          <div class="invalid erroravatar">
+          <div class="invalid" style="margin-top:0">
             <!-- Mensaje de error -->
           </div>
         </div>
@@ -148,7 +148,7 @@
 
               </div>
           </div>
-          <div class="selectProvince form-group row">
+          <div class="selectProvince form-group row"  style="display:none">
               <label for="province" class="col-md-4 col-xl-2 col-form-label text-md-right">{{ __('Provincia') }}</label>
 
 
@@ -161,7 +161,9 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-
+                    <div class="invalid">
+                      <!-- Mensaje de error -->
+                    </div>
               </div>
           </div>
 
