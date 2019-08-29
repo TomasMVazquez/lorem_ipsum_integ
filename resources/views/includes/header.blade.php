@@ -70,9 +70,9 @@ $subcategories = Subcategory::all();
           @endauth
         {{-- Si no estas logeado --}}
         @guest
-        <div style="text-align: right;">
-          <p><i class="fas fa-sign-in-alt mr-2"></i><a href="/login">¡Ingresá al sistema!</a></p>
-        </div>
+       
+          <a href="/login"><i class="fas fa-sign-in-alt mr-2"></i>¡Ingresá al sistema!</a>
+        
         @endguest
       </div>
     </div>
