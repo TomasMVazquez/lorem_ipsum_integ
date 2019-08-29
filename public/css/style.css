@@ -308,9 +308,17 @@ h4 {
 }
 
 .about{
-margin-top: 0.2em;
-margin-bottom: 0em;
+    margin-top: 0.2em;
+    margin-bottom: 0em;
     font-size:5em;
+    text-align: center;
+    font-family: 'Reenie Beanie', cursive;
+}
+
+.aboutsub{
+    margin-top: 0.2em;
+    margin-bottom: 0em;
+    font-size:4em;
     text-align: center;
     font-family: 'Reenie Beanie', cursive;
 }
@@ -1180,7 +1188,7 @@ footer a:hover{
   display:flex;
   flex-direction:row;
   justify-content:space-between;
-  width: aut;
+  width: auto;
 }
 #btnImgAdd{
   background: none;
@@ -1290,6 +1298,14 @@ footer a:hover{
     font-size:5em;
     text-align: left;
     font-family: 'Reenie Beanie', cursive;
+    }
+
+  .aboutsub{
+      margin-top: 0.2em;
+      margin-bottom: 0em;
+      font-size:4em;
+      text-align: center;
+      font-family: 'Reenie Beanie', cursive;
     }
 
   .aboutp{
@@ -1603,6 +1619,13 @@ footer a:hover{
     font-family: 'Reenie Beanie', cursive;
 }
 
+.aboutsub{
+    margin-top: 0.2em;
+    margin-bottom: 0em;
+    font-size:4em;
+    text-align: center;
+    font-family: 'Reenie Beanie', cursive;
+}
 
   .aboutp{
     margin-left: 55px;
@@ -1644,6 +1667,13 @@ footer a:hover{
       font-family: 'Reenie Beanie', cursive;
   }
 
+  .aboutsub{
+      margin-top: 0.2em;
+      margin-bottom: 0em;
+      font-size:4em;
+      text-align: center;
+      font-family: 'Reenie Beanie', cursive;
+  }
 
     .aboutp{
       margin-left: 55px;
@@ -1922,6 +1952,13 @@ input:checked + .slider:before {
       font-family: 'Reenie Beanie', cursive;
   }
 
+  .aboutsub{
+      margin-top: 0.2em;
+      margin-bottom: 0em;
+      font-size:4em;
+      text-align: center;
+      font-family: 'Reenie Beanie', cursive;
+  }
 
     .aboutp{
       margin-left: 55px;
