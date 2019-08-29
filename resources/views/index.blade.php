@@ -100,9 +100,15 @@
   <div class="quienessomos">
     <h1 id="nosotres" class="about">Nosotres</h1>
     <p class="aboutp"><strong>Lorem Ipsum Cosmética</strong> nace para darle belleza y cuidado a tu pelo y tu piel.
-      Todos nuestros productos son hipoalergénicos y están testeados dermatológicamente con alternativas libres de crueldad.
-      Descubrí la riqueza y los beneficios de nuestros productos.
+      Somos una empresa dedicada al cuidado personal, porque conocemos su importancia. Nuestro objetivo es promover el bienestar general ofreciendo productos de la mas alta calidad.
     </p>
+<hr>
+    <h4 class="aboutsub"> Nuestra filosofía</h4>
+    <p class="aboutp">Todos nuestros productos son fabricados con ingredientes naturales, hipoalergénicos y están testeados dermatológicamente con alternativas libres de crueldad.</p>
+<hr>
+    <h4 class="aboutsub"> Conocenos</h4>
+    <p class="aboutp">  Descubrí la riqueza y los beneficios de nuestros productos visitando nuestro catálogo, donde además podrás encontrar productos de nuestros socios, a quienes les brindamos el servicio de distribución.</p>
+
   </div>
 
   <!--ver de sumar "Los favoritos de la semana"  -->
