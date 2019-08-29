@@ -39,17 +39,17 @@
           <a href="/products/{{ $product->id }}"><img src="/storage/items/{{ $product->images->first()->route }}" class="card-img-top" alt="{{ $product->name }}"></a>
           <div class="card-body detalle-producto">
             <div class="encabezado-producto">
-              <h5 class="card-title nombre-producto" style="text-align:left;">
+              <h5 class="card-title nombre-producto text-left">
                 <a href="/product-detail/{{ $product->id }}">
                   {{   $product->name  }}
                 </a>
               </h5>
               <div>
                 <ul class="corazon">
-                  <li style="width:20%">
-                    <form id="theFavForm" method="post" style="margin:0;">
-                      <input class="form-control" type="text" name="fav-id" readonly value="{{ $product->id }}" style="display:none;">
-                      <input class="form-control" type="text" name="user-id" readonly value="@auth{{Auth::user()->id}}@endauth" style="display:none;">
+                  <li class="w-20">
+                    <form class="m-0" id="theFavForm" method="post">
+                      <input class="form-control d-none" type="text" name="fav-id" readonly value="{{ $product->id }}">
+                      <input class="form-control d-none" type="text" name="user-id" readonly value="@auth{{Auth::user()->id}}@endauth">
                       <button class="btnHeart" type="submit" name="button">
                         @auth
                           @php
