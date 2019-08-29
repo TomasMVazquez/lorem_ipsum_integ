@@ -79,6 +79,11 @@ h1{
 
 }
 
+ .title h1{
+text-align: left;
+margin-right: 100px;
+}
+
 .tit-productos-cat {
   text-align: center;
   line-height: 0.6em;
@@ -1852,7 +1857,7 @@ input:checked + .slider:before {
   -webkit-clip-path: circle( at center);
   display: block;
   width: 100%;
-  min-width: 120px;
+  min-width: 70px;
   min-height: 70px;
   /*left: 50%;
   top:50%;
@@ -1976,6 +1981,16 @@ input:checked + .slider:before {
 }
 /* Widescreen */
 @media (min-width:1200px){
+
+
+  h1 .title{
+      font-family: 'Reenie Beanie', cursive;
+      text-align: center;
+      font-size: 5em;
+      line-height: 0.8em;
+      margin-top: 10px;
+
+}
 
 
   .about{
