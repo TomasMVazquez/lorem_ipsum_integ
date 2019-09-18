@@ -2,6 +2,7 @@
 use App\Http\Middleware\isAdmin;
 use Illuminate\Http\Request;
 use App\User;
+use App\Subcategory;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,3 +90,12 @@ Route::get('/removeImg/{id}', function($id){
     Image::find($id)->delete();
     return ['status' => 'taken out'];
 })->middleware('isAdmin');;
+
+//test
+Route::get('/subcategories/{category_id}', function($categoryId){
+  $subcategories = Subcategory::select('id','name')->where('category_id','=',$categoryId)->get();
+  foreach ($subcategories as $subcategory) {
+    $rdo[] = [$subcategory->id => $subcategory->name];
+  }
+  return $rdo;
+})->middleware('auth');

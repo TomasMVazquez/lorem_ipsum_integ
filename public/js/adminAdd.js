@@ -9,6 +9,42 @@ let rowImg = document.querySelector('#rowImg');
 
 let divImg = document.querySelectorAll('.imgFormGroup');
 
+let subCat = document.querySelector('#subcategories');
+let cat = document.querySelector('#categories');
+
+//test
+
+cat.addEventListener("change",function () {
+
+subCat.innerHTML = "";
+
+let varFet = window.fetch('http://localhost:8000/subcategories/' + cat.value, {
+    method: 'get' // Para enviar data via fetch
+  })
+    .then(response => response.json()) // response.json()
+    .then(function (rta) {
+      var firstOptSub = document.createElement('option');
+      firstOptSub.setAttribute('value','');
+      firstOptSub.innerText = 'Seleccionar Sub-Categoría';
+      subCat.append(firstOptSub);
+      
+      for (var i = 0; i < rta.length; i++) {
+        let key = Object.keys(rta[i]);
+        let value = Object.values(rta[i]);
+        var optSub = document.createElement('option');
+        optSub.setAttribute('value',key);
+        optSub.innerText = value;
+        subCat.append(optSub);
+      }
+    }) //console.log(rta)
+    .catch(error => console.log(error));
+
+
+});
+
+
+//end test
+
 // Objeto que acumula los errores
 var errores = {};
 
@@ -97,7 +133,7 @@ function recorrer() {
   			delete errores[this.name];
   		}
 
-  		console.log(errores);
+  		// console.log(errores);
   	});
 
     // Si el campo es el de image
@@ -155,7 +191,7 @@ elFormu.addEventListener('submit', function (event) {
 
 	if (Object.keys(errores).length > 0) {
 		alert('Campos vacíos');
-		console.log(errores);
+		// console.log(errores);
 		event.preventDefault();
 	}
 })

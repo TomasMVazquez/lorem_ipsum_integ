@@ -21,7 +21,7 @@
         <div class="row">
           <label class="col-4 col-md-2 text-right mrgMob">Categoría:</label>
           <div class="col-8 col-md-4 mrgMob">
-						<select class="form-control" name="category">
+						<select id="categories" class="form-control" name="category">
               <option value="" selected>Seleccionar Categoría</option>
 							@foreach ($categories as $category)
                 @if (old('category') == $category->id)
@@ -41,15 +41,15 @@
 
           <label class="col-4 col-md-2 text-right mrgMob">SubCategoría:</label>
           <div class="col-8 col-md-4 mrgMob">
-						<select class="form-control" name="subcategory">
+						<select id="subcategories" class="form-control" name="subcategory">
               <option value="" selected>Seleccionar Sub-Categoría</option>
-							@foreach ($subcategories as $subcategory)
+							{{-- @foreach ($subcategories as $subcategory)
                 @if (old('subcategory') == $subcategory->id)
                   <option selected value="{{ $subcategory->id }}"> {{ $subcategory->name }}</option>
                 @else
                   <option value="{{ $subcategory->id }}"> {{ $subcategory->name }}</option>
                 @endif
-							@endforeach
+							@endforeach --}}
 						</select>
             <div class="invalid">
               <!-- Mensaje de error -->
