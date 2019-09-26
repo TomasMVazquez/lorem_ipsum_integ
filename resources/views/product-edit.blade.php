@@ -23,7 +23,7 @@
         <div class="row">
           <label class="col-4 col-md-2 text-right mrgMob">Categoria:</label>
           <div class="col-8 col-md-4 mrgMob">
-						<select class="form-control" name="category">
+						<select id="categories" class="form-control" name="category">
 							@foreach ($categories as $category)
                 @if ($productToEdit->subcategory->category->id == $category->id)
                   <option value="{{ $category->id }}" selected> {{ $category->name }}</option>
@@ -42,7 +42,7 @@
 
           <label class="col-4 col-md-2 text-right mrgMob">Subcategoria:</label>
           <div class="col-8 col-md-4 mrgMob">
-						<select class="form-control" name="subcategory_id">
+						<select id="subcategories" class="form-control" name="subcategory_id">
 							@foreach ($subcategories as $subcategory)
                 @if ($productToEdit->subcategory_id == $subcategory->id)
                   <option value="{{ $subcategory->id }}" selected> {{ $subcategory->name }}</option>

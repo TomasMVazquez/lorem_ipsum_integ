@@ -12,7 +12,7 @@ let divImg = document.querySelectorAll('.imgFormGroup');
 let subCat = document.querySelector('#subcategories');
 let cat = document.querySelector('#categories');
 
-//test
+//Subcategories based on category
 
 cat.addEventListener("change",function () {
 
@@ -27,7 +27,7 @@ let varFet = window.fetch('http://localhost:8000/subcategories/' + cat.value, {
       firstOptSub.setAttribute('value','');
       firstOptSub.innerText = 'Seleccionar Sub-Categoría';
       subCat.append(firstOptSub);
-      
+
       for (var i = 0; i < rta.length; i++) {
         let key = Object.keys(rta[i]);
         let value = Object.values(rta[i]);
@@ -42,8 +42,6 @@ let varFet = window.fetch('http://localhost:8000/subcategories/' + cat.value, {
 
 });
 
-
-//end test
 
 // Objeto que acumula los errores
 var errores = {};
