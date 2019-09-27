@@ -78,6 +78,15 @@
                   </li>
                 </ul>
               </div>
+              <div class="">
+                <ul class="corazon">
+                  <li class="w-20">
+                    <button class="btnHeart" data-html="true" data-toggle="popover" id="showPopover">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
             <p class="card-text">
               {{str_limit($product->brief, $limit = 100, $end= '...')}} </p>
@@ -97,7 +106,9 @@
     </div>
   </div>
 </div>
+
 @endsection
 @section('scriptJS')
     <script src="/js/favorite.js"></script>
+    <script src="/js/share.js"></script>
 @endsection

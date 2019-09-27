@@ -17,6 +17,10 @@
 
 }
 
+.hide{
+  display: none;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -278,6 +282,10 @@ button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline: transparent;
+}
+
+.social-links-demo{
+  font-size: 2em;
 }
 
 /*--------------------------------------------------------------------------------img 404ERROR*/
